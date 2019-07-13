@@ -1,4 +1,4 @@
-## codefundo404-WeFoundIt
+## CODEfunDo404!-WeFoundIt!
 
  ![API](https://img.shields.io/badge/API-17%2B-blue.svg?style=flat)
  [![Build Status](https://travis-ci.org/googlesamples/google-services.svg?branch=master)](https://travis-ci.org/googlesamples/google-services)
