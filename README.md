@@ -10,29 +10,27 @@
   To Demonstrate how Azure Blockchain can be used to make Elections, referendum, and polls more secure, reliable, and transparent.
 
  # Overview
-  An Android Application with Azure Blockchain Database of number of people aroudn whole india.
-  As part of Digital India Initiative, Government of India is offering Datasets on Open Government Data Platform India. So we are using     this datasets.
-  And for this we are using Azure Blockchain technologies provied by Microsoft in order to gain high security and fast speed through         network.
+  An Android and Web-based Application with Azure Blockchain Database of the number of people around the whole of India. As part of the Digital India Initiative, the Government of India is offering Datasets on Open Government Data Platform India. So we are using this dataset. And for this, we are using Azure Blockchain technologies provided by Microsoft to gain high security and fast speed through the network.
   
   # Features And Ideation
-  -We are working  on the topic  ***Elections, referenda, and polls Management  System***
+  -We are working on the topic ***Elections, referenda, and polls Management System***
   
   -Android app and Website that will be open for three types of people :
     1)  Political Leaders
     2)  Individual
     3)  Admin Panel
     
- -Our Idea  is to design a app  for Android basically using Microsoft dependencies and some more and going to show the count of how many   people waround india to easily vote political leaders and on their own will .
+ -Our Idea is to design an app for Android and host a Website using Microsoft dependencies and some more and going to show the count of   how many people around are there around whole India and to easily vote their political leaders and on their own will.
+
+ -Voting will be via fingerprint authentication and/or Pin, Aadhaar API usage and two-step authentication.
  
- -Voting will be via with fingerprint authentication and/or Pin, aadhaar api usage and two step authentication.
+ -Map marking facilities and displaying of political leaders with their previous works
  
- - Map marking facilities and displaying of political leaders with their previous works 
+ -Along with that one can rate their political leaders and share reviews.
  
- - Along with that one can rate their political leaders and share reviews.
+ -Everyone would have a new profile management system with password protected.
  
- - Every one would be have a new profile management system with password protect.
+ -Auto registration for voter ID after 18+ age and remove all sorts of updating problems.
  
- - Auto registration for voter ID after 18+ age and remove all sort of updation problems.
- 
- -Avoid multiple users on same aadhaar to register
+ -Avoid multiple registrations on same aadhaar.
   
