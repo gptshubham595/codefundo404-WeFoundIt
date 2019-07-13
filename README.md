@@ -15,7 +15,7 @@
   # Features And Ideation
   -We are working on the topic ***Elections, referenda, and polls Management System***
   
-  -Android app and Website that will be open for three types of people :
+  -Android app and Website that will be open for three types of people:
     1)  Political Leaders
     2)  Individual
     3)  Admin Panel
