@@ -5,9 +5,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.codefundo.vote.R;
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -17,15 +19,23 @@ import java.util.Calendar;
 
 public class ReaderActivity extends AppCompatActivity {
     private Button scan_btn;
+    String aadhaar;
+    EditText ad,adt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reader);
         scan_btn = (Button) findViewById(R.id.scan_btn);
+        aadhaar=getIntent().getExtras().get("aadhaar").toString();
         final Activity activity = this;
+        ad=findViewById(R.id.ad);
+        ad.setText(aadhaar);
+        adt=findViewById(R.id.adto);
         scan_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
                 IntentIntegrator integrator = new IntentIntegrator(activity);
                 integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE);
                 integrator.setPrompt("Scan");
@@ -81,16 +91,15 @@ public class ReaderActivity extends AppCompatActivity {
             Toast.makeText(this, "Please Provide proper aadhaar", Toast.LENGTH_SHORT).show();
         }else {
             String uid = complete.substring(is + 5, is + 17);
-            Toast.makeText(this, uid, Toast.LENGTH_SHORT).show();
-            is = complete.indexOf("name=");
-            if (is == -1) {
-                Toast.makeText(this, "Please Provide proper aadhaar", Toast.LENGTH_SHORT).show();
-            }
+            Toast.makeText(this, uid , Toast.LENGTH_SHORT).show();
+            uid.trim();
+            adt.setText(uid);
+            if(ad.equals(adt)){
             String name = complete.substring(is + 6, complete.indexOf("gender") - 2);
             Toast.makeText(this, name, Toast.LENGTH_SHORT).show();
             String gender = complete.substring(complete.indexOf("gender=")+8 , complete.indexOf("yob")-2 );
-            if(gender=="M"){gender="Male";}
-            if(gender=="F"){gender="Female";}
+            if(gender.equals("M")){gender="Male";}
+            if(gender.equals("F")){gender="Female";}
             Toast.makeText(this, gender, Toast.LENGTH_SHORT).show();
             String dist = complete.substring(complete.indexOf("dist=")+6 , complete.indexOf("state")-2);
             Toast.makeText(this, dist, Toast.LENGTH_SHORT).show();
@@ -103,8 +112,11 @@ public class ReaderActivity extends AppCompatActivity {
             String yyyy=dob.substring(0,dob.indexOf('-'));
             String mmm=dob.substring(dob.indexOf('-'),dob.lastIndexOf('-'));
             String dd=dob.substring(dob.lastIndexOf('-'));
-            Toast.makeText(this, yyyy+" "+mmm+" "+dd, Toast.LENGTH_SHORT).show();
-            Toast.makeText(this, getAge(Integer.parseInt(yyyy),Integer.parseInt(mmm),Integer.parseInt(dd)), Toast.LENGTH_SHORT).show();
-        }
+          //  Toast.makeText(this, yyyy+" "+mmm+" "+dd, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Age ="+getAge(Integer.parseInt(yyyy),Integer.parseInt(mmm),Integer.parseInt(dd)), Toast.LENGTH_SHORT).show();
+
+        }else{
+                Toast.makeText(this, "Sorry Please Provide proper aadhaar", Toast.LENGTH_SHORT).show();
+            }}
     }
 }

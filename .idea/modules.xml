@@ -5,8 +5,6 @@
       <module fileurl="file://$PROJECT_DIR$/android-fingerprint-authentication.iml" filepath="$PROJECT_DIR$/android-fingerprint-authentication.iml" />
       <module fileurl="file://$PROJECT_DIR$/android-fingerprint-authentication-master.iml" filepath="$PROJECT_DIR$/android-fingerprint-authentication-master.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/fingerprint-auth/fingerprint-auth.iml" filepath="$PROJECT_DIR$/fingerprint-auth/fingerprint-auth.iml" />
       <module fileurl="file://$PROJECT_DIR$/fingerprint-auth/fingerprint-auth.iml" filepath="$PROJECT_DIR$/fingerprint-auth/fingerprint-auth.iml" />
     </modules>
   </component>

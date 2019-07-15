@@ -11,8 +11,10 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.codefundo.sample.MainActivity">
-
+    tools:context="com.codefundo.vote.MainActivity">
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
     <ViewSwitcher
         android:id="@+id/main_switcher"
         android:layout_width="wrap_content"
@@ -22,28 +24,48 @@
             android:layout_width="300dp"
             android:layout_height="300dp"
             android:src="@drawable/ic_finger_print"
-            tools:ignore="ContentDescription"/>
+            />
 
-        <EditText
-            android:id="@+id/pin_et"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:hint="Passcode"
-            android:inputType="number"
-            android:maxLength="4"
-            android:minEms="8"/>
+
     </ViewSwitcher>
-
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="160dp"
+        android:src="@drawable/done"
+        android:visibility="invisible"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:id="@+id/tick"
+        />
+</RelativeLayout>
     <TextView
         android:id="@+id/auth_message_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
         android:gravity="center"
         android:textSize="18sp"/>
-
+    <EditText
+        android:id="@+id/pin_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:hint="PIN code"
+        android:inputType="number"
+        android:visibility="gone"
+        android:maxLength="8"
+        android:minEms="8" />
+    <Button
+        android:id="@+id/submit"
+        style="@android:style/Widget.Holo.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Submit"
+        android:visibility="gone"
+        android:textColor="@android:color/holo_blue_dark"/>
     <Button
         android:id="@+id/go_to_settings_btn"
         style="@android:style/Widget.Holo.Button.Borderless"

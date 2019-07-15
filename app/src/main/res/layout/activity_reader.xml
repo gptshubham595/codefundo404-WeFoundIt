@@ -22,4 +22,17 @@
         android:layout_centerVertical="true"
         android:text="Click here to SCAN"
         android:id="@+id/scan_btn"/>
+    <EditText
+        android:layout_width="wrap_content"
+        android:text="aadhaar"
+        android:layout_margin="20dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/ad"/>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ad"
+        android:layout_margin="20dp"
+        android:text="scanned"
+        android:id="@+id/adto"/>
 </RelativeLayout>

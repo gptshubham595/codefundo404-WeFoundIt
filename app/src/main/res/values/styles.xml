@@ -8,4 +8,11 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="dialog" parent="android:Theme.DeviceDefault.Light.Dialog">
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowMinWidthMajor">45%</item>
+        <item name="android:windowMinWidthMinor">45%</item>
+    </style>
+
 </resources>
