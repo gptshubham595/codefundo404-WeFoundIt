@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,24 +8,21 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".ReaderActivity">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textSize="25dp"
-        android:layout_centerHorizontal="true"/>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+        android:layout_margin="30dp"
         android:text="Click here to SCAN"
         android:id="@+id/scan_btn"/>
     <EditText
         android:layout_width="wrap_content"
         android:text="aadhaar"
         android:layout_margin="20dp"
+        android:visibility="gone"
         android:layout_height="wrap_content"
         android:id="@+id/ad"/>
     <EditText
@@ -33,6 +30,170 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/ad"
         android:layout_margin="20dp"
+        android:visibility="gone"
         android:text="scanned"
         android:id="@+id/adto"/>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_below="@id/scan_btn"
+    android:layout_margin="10dp"
+    android:layout_height="match_parent"
+    android:id="@+id/lin"
+    android:orientation="vertical">
+    <EditText
+
+        android:layout_width="match_parent"
+        android:layout_margin="4dp"
+        android:hint="UID"
+        android:drawableLeft="@drawable/ic_error"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:id="@+id/uid"
+        android:typeface="serif"
+        android:background="#D3CBCB"
+        android:layout_height="45dp" />
+    <EditText
+
+        android:textSize="12sp"
+        android:drawableLeft="@drawable/ic_error"
+        android:textStyle="bold"
+        android:hint="NAME"
+        android:id="@+id/name"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:inputType="textCapCharacters"
+        android:typeface="serif"
+        android:background="#D3CBCB"
+        android:layout_margin="4dp"
+        android:layout_width="match_parent"
+        android:layout_height="45dp" />
+    <EditText
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:textSize="12sp"
+        android:hint="District"
+        android:drawableLeft="@drawable/ic_error"
+        android:textStyle="bold"
+        android:typeface="serif"
+        android:id="@+id/dist"
+        android:inputType="textCapCharacters"
+        android:background="#D3CBCB"
+        android:layout_margin="4dp"
+        android:layout_width="match_parent"
+        android:layout_height="45dp" />
+
+    <EditText
+        android:id="@+id/state"
+        android:hint="State"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_gravity="center"
+        android:layout_margin="4dp"
+        android:background="#D3CBCB"
+        android:drawableLeft="@drawable/ic_error"
+        android:gravity="center"
+        android:inputType="textCapCharacters"
+        android:textColor="#000000"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:typeface="serif" />
+    <EditText
+        android:textSize="12sp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:id="@+id/pc"
+        android:hint="Pin Code"
+        android:typeface="serif"
+        android:background="#D3CBCB"
+        android:layout_width="match_parent"
+        android:drawableLeft="@drawable/ic_error"
+        android:layout_margin="4dp"
+        android:layout_height="45dp" />
+    <EditText
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:hint="DOB"
+        android:typeface="serif"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:id="@+id/dob"
+        android:inputType="date"
+        android:background="#D3CBCB"
+        android:layout_margin="4dp"
+        android:drawableLeft="@drawable/ic_error"
+        android:layout_width="match_parent"
+        android:layout_height="45dp" />
+    <EditText
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:typeface="serif"
+        android:hint="Gender"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:id="@+id/gender"
+        android:background="#D3CBCB"
+        android:drawableLeft="@drawable/ic_error"
+        android:layout_margin="4dp"
+        android:layout_width="match_parent"
+        android:layout_height="45dp" />
+    <EditText
+        android:textSize="12sp"
+        android:id="@+id/age"
+        android:hint="Age"
+        android:inputType="number"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:drawableLeft="@drawable/ic_error"
+        android:typeface="serif"
+        android:background="#D3CBCB"
+        android:layout_margin="4dp"
+        android:layout_width="match_parent"
+        android:layout_height="45dp" />
+    <EditText
+        android:textSize="12sp"
+        android:id="@+id/number"
+        android:inputType="number"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:hint="Enter mobile Number"
+        android:typeface="serif"
+        android:layout_width="match_parent"
+        android:layout_height="45dp" />
+    <EditText
+        android:textSize="12sp"
+        android:id="@+id/email"
+        android:inputType="textEmailAddress"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:hint="Enter Email Id"
+        android:typeface="serif"
+        android:layout_width="match_parent"
+        android:layout_height="45dp" />
+
+</LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="45dp"
+        android:layout_below="@id/lin"
+        android:text="Register And Vote"
+        android:id="@+id/btn"/>
 </RelativeLayout>
+</ScrollView>

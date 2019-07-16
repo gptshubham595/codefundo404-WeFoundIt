@@ -1,1 +1,1 @@
-include ':app', ':fingerprint-auth'
+include ':app', ':fingerprint-auth',':PhoneVerification'

@@ -21,15 +21,20 @@ import com.codefundo.vote.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
+import static java.lang.Thread.sleep;
+
 
 public class MainActivity2 extends AppCompatActivity {
     Button scan;
     EditText e;
+    FirebaseAuth mAuth;
+    String aadhaar;
     Boolean result=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mainf);
+        mAuth = FirebaseAuth.getInstance();
         scan = (Button) findViewById(R.id.scan);
         scan.setEnabled(false);
         e=findViewById(R.id.num);
@@ -38,13 +43,18 @@ public class MainActivity2 extends AppCompatActivity {
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String aadhaar=e.getText().toString();
+                aadhaar=e.getText().toString();
                 if((!TextUtils.isEmpty(aadhaar))&& aadhaar.length()==12){
                     result=Verhoeff.validateVerhoeff(aadhaar);
                     if(!result){
                         Toast.makeText(MainActivity2.this, "Sorry Please Provide Proper Aadhaar Number", Toast.LENGTH_SHORT).show();
                     }else{
                         Toast.makeText(MainActivity2.this, "Verified Aadhaar Number", Toast.LENGTH_SHORT).show();
+                        try {
+                            sleep(20);
+                        } catch (InterruptedException e1) {
+                            e1.printStackTrace();
+                        }
                         showDialog(MainActivity2.this);
                         //scan.setEnabled(true);
                     }
@@ -54,14 +64,13 @@ public class MainActivity2 extends AppCompatActivity {
             }
 
         });
-        final String ad =e.getText().toString();
 
 
         scan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent rIntent = new Intent(MainActivity2.this, ReaderActivity.class);
-                rIntent.putExtra("aadhaar",e.getText().toString());
+                rIntent.putExtra("aadhaar",aadhaar);
                 startActivity(rIntent);
             }
         });

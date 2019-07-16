@@ -3,6 +3,7 @@ package com.codefundo.vote;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -33,6 +34,7 @@ public class AuthSuccessScreen extends AppCompatActivity {
     private DatabaseReference mUserDatabase,mDatabase;
     private EditText cnfirmpinEt,pinEt;
     private Button savepin;
+    public static String pin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +43,7 @@ public class AuthSuccessScreen extends AppCompatActivity {
         savepin.setEnabled(false);
         pinEt = (EditText) findViewById(R.id.pin_et);
         cnfirmpinEt = (EditText) findViewById(R.id.pin_et2);
-        final String id = Settings.Secure.getString(getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID) + "@gmail.com";
+        @SuppressLint("HardwareIds") final String id = Settings.Secure.getString(getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID) + "@gmail.com";
         mAuth = FirebaseAuth.getInstance();
         mLoginProgress = new ProgressDialog(this,R.style.dialog);
         mUserDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
@@ -99,6 +101,7 @@ public class AuthSuccessScreen extends AppCompatActivity {
 
     private void Login(String id, String pass) {
         savepin.setEnabled(true);
+        pin=pass;
         mAuth.signInWithEmailAndPassword(id, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {

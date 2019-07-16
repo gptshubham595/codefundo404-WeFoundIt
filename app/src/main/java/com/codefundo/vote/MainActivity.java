@@ -1,6 +1,7 @@
 package com.codefundo.vote;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.hardware.fingerprint.FingerprintManager;
@@ -8,6 +9,7 @@ import android.hardware.fingerprint.FingerprintManager;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.text.Editable;
@@ -37,6 +39,7 @@ import com.multidots.fingerprintauth.FingerPrintUtils;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
 
 import static java.lang.Thread.sleep;
 
@@ -46,29 +49,29 @@ public class MainActivity extends AppCompatActivity implements FingerPrintAuthCa
     private ViewSwitcher mSwitcher;
     private Button mGoToSettingsBtn,submit;
     private FingerPrintAuthHelper mFingerPrintAuthHelper;
-    private ProgressDialog mLoginProgress;
     private FirebaseAuth mAuth;
-    private DatabaseReference mUserDatabase,mDatabase;
     SharedPreferences prefs=null;
     Boolean isFirstRun=false;
     String first="false";
+    private SharedPreferences prefs1=null;
+    private long timeLeft;
+    private CountDownTimer timer;
+    TextView _tv;
+    static int count=0,count2=0,count3=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         mAuth = FirebaseAuth.getInstance();
-        mLoginProgress = new ProgressDialog(this,R.style.dialog);
-
-        mUserDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
-
         prefs= getSharedPreferences("com.codefundo.vote", MODE_PRIVATE);
         isFirstRun=prefs.getBoolean("isFirstRun", true);
         if(isFirstRun){
             Toast.makeText(this, "First Time User", Toast.LENGTH_SHORT).show();
 
         }
-    first=isFirstRun.toString();
+        first=isFirstRun.toString();
+
+        _tv = (TextView) findViewById( R.id.counter);
         img=findViewById(R.id.tick);
         mGoToSettingsBtn = (Button) findViewById(R.id.go_to_settings_btn);
         mGoToSettingsBtn.setOnClickListener(new View.OnClickListener() {
@@ -80,11 +83,69 @@ public class MainActivity extends AppCompatActivity implements FingerPrintAuthCa
 
         mSwitcher = (ViewSwitcher) findViewById(R.id.main_switcher);
         mAuthMsgTv = (TextView) findViewById(R.id.auth_message_tv);
+        initTasks();
 
+        checkTimer();
         mFingerPrintAuthHelper = FingerPrintAuthHelper.getHelper(this, this);
+
+    }
+////==================
+private void initTasks() {
+   // logInButton = (Button) findViewById(R.id.bt);
+
+    prefs1 = getSharedPreferences("file", Context.MODE_PRIVATE);
+}
+
+    private void checkTimer() {
+        if (prefs1.contains("time"))
+            setTimer();
+        else {
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putLong("time", -1L);
+            editor.apply();
+        }
     }
 
+    private void setTimer() {
+        timeLeft = prefs1.getLong("time", -1L);
+        if (timeLeft != -1L)
+        {startTimer(timeLeft);
+        _tv.setText(timeLeft+"");}
+        else
+           mFingerPrintAuthHelper.startAuth();
 
+    }
+
+    private void startTimer(long time) {
+       // logInButton.setEnabled(false);
+        mFingerPrintAuthHelper.stopAuth();
+        timer = new CountDownTimer(time, 1000) {
+
+            @Override
+            public void onFinish() {
+                //logInButton.setEnabled(true);
+                saveToPref(-1L);
+                _tv.setText("Try Now");
+                mFingerPrintAuthHelper.startAuth();
+            }
+
+            @Override
+            public void onTick(long millisUntilFinished) {
+                //update UI, if required
+                timeLeft = millisUntilFinished;
+                saveToPref(timeLeft);
+                _tv.setText(timeLeft+"");
+            }
+        };
+    }
+
+    private void saveToPref(long timeLeft){
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putLong("time", timeLeft);
+        _tv.setText(timeLeft+"");
+        editor.apply();
+    }
+////==================
 
     @Override
     protected void onResume() {
@@ -95,6 +156,9 @@ public class MainActivity extends AppCompatActivity implements FingerPrintAuthCa
             // using the following line to edit/commit prefs
             prefs.edit().putBoolean("isFirstRun", false).commit();
         }
+        initTasks();
+
+        checkTimer();
         mAuthMsgTv.setText("Scan your finger");
 
         //start finger print authentication
@@ -110,6 +174,7 @@ public class MainActivity extends AppCompatActivity implements FingerPrintAuthCa
     @Override
     public void onNoFingerPrintHardwareFound() {
         mAuthMsgTv.setText("Your device does not have finger print scanner.SORRY!");
+        Toast.makeText(this, "Your device does not have finger print scanner.SORRY!", Toast.LENGTH_SHORT).show();
         //mAuthMsgTv.setText("Your device does not have finger print scanner. Please type 1234 to authenticate.");
         //mSwitcher.showNext();
         Intent i=new Intent(MainActivity.this, AuthSuccessScreen.class);
@@ -129,8 +194,10 @@ public class MainActivity extends AppCompatActivity implements FingerPrintAuthCa
     public void onBelowMarshmallow() {
         mAuthMsgTv.setText("You are running older version of android that does not support finger print authentication. Please type 1234 to authenticate.");
      //   mSwitcher.showNext();
+        Toast.makeText(this, "Your device does not have finger print scanner.SORRY!", Toast.LENGTH_SHORT).show();
         Intent i=new Intent(MainActivity.this, AuthSuccessScreen.class);
         i.putExtra("first",first);
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(i);
 
     }
@@ -151,9 +218,10 @@ public class MainActivity extends AppCompatActivity implements FingerPrintAuthCa
             e.printStackTrace();
         }
         Toast.makeText(MainActivity.this, "Success !!", Toast.LENGTH_SHORT).show();
-         Intent i=new Intent(MainActivity.this, AuthSuccessScreen.class);
-         i.putExtra("first",first);
-         startActivity(i);
+        Intent i=new Intent(MainActivity.this, AuthSuccessScreen.class);
+        i.putExtra("first",first);
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(i);
     }
 
 
@@ -166,18 +234,52 @@ public class MainActivity extends AppCompatActivity implements FingerPrintAuthCa
     public void onAuthFailed(int errorCode, String errorMessage) {
         switch (errorCode) {
             case AuthErrorCodes.CANNOT_RECOGNIZE_ERROR:
-                mAuthMsgTv.setText("Cannot recognize your finger print. Please try again or enter via PIN.");
+                count++;
+                mAuthMsgTv.setText("Cannot recognize your finger print. Please try again or enter via PIN.Attemp = "+count);
+                if(count==5){mAuthMsgTv.setText("Sorry Please Try after 5 mins !.You Exceeded 2 times.");
+
+                    startTimer(120000);
+                    mFingerPrintAuthHelper.stopAuth();
+                    new CountDownTimer(120000, 1000) { // adjust the milli seconds here
+
+                        public void onTick(long millisUntilFinished) {
+
+                            _tv.setText(""+String.format("%d min, %d sec",
+                                    TimeUnit.MILLISECONDS.toMinutes( millisUntilFinished),
+                                    TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) -
+                                            TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished))));
+                        }
+
+                        public void onFinish() {
+                            _tv.setText("Try Now!!");
+                            mFingerPrintAuthHelper.startAuth();
+                        }
+                    }.start();
+                if(count==10){Intent i=new Intent(MainActivity.this, AuthSuccessScreen.class);
+                    i.putExtra("first",first);
+                    i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(i);}
+                }
                 break;
             case AuthErrorCodes.NON_RECOVERABLE_ERROR:
-                mAuthMsgTv.setText("Cannot initialize finger print authentication. . Please try again or enter via PIN.");
-                Intent i=new Intent(MainActivity.this, AuthSuccessScreen.class);
-                i.putExtra("first",first);
-                startActivity(i);
+                mAuthMsgTv.setText("Cannot initialize finger print authentication. .");
+                count2++;
+                if(count2==5){Intent i=new Intent(MainActivity.this, AuthSuccessScreen.class);
+                    i.putExtra("first",first);
+                    i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(i);}
+
 
                 //mSwitcher.showNext();
                 break;
             case AuthErrorCodes.RECOVERABLE_ERROR:
                 mAuthMsgTv.setText(errorMessage);
+                count3++;
+                if(count3==5){Intent i=new Intent(MainActivity.this, AuthSuccessScreen.class);
+                    i.putExtra("first",first);
+                    i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(i);}
+
                 break;
         }
     }
