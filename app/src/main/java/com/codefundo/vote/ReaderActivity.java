@@ -26,6 +26,7 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+import com.phonenumberui.PhoneNumberActivity;
 
 import java.util.Calendar;
 import java.util.Objects;
@@ -37,6 +38,8 @@ public class ReaderActivity extends AppCompatActivity {
     String aadhaar;
     FirebaseAuth mAuth;
     FirebaseUser fbUser;
+    private String mobileNumber = "";
+    private Button btnVerify;
     EditText ad,adt;
     EditText uid1,name1,dist1,state1,pc1,age1,gender1,dob1,number,email;
     @Override
@@ -156,7 +159,7 @@ public class ReaderActivity extends AppCompatActivity {
         reg_vote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                try{
+                /*try{
                 //mAuth.signInWithEmailAndPassword(id,pin);
                 fbUser.updateEmail(email.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
@@ -168,6 +171,9 @@ public class ReaderActivity extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<Void> task) {
                                     Toast.makeText(getApplicationContext(), "Verification Email Sent To Your Email.. Please Verify and Login", Toast.LENGTH_LONG).show();
                                     // Logout From Firebase
+                                    /*Intent intent = new Intent(ReaderActivity.this, MainActivitymob.class);
+                                    intent.putExtra("PHONE_NUMBER", number.getText().toString());
+                                    startActivityForResult(intent, 1080);
                                 }
                             });
 
@@ -195,8 +201,10 @@ public class ReaderActivity extends AppCompatActivity {
                         }
 
                     }
-                });}catch (Exception e){e.printStackTrace();}
-
+                });}catch (Exception e){e.printStackTrace();}*/
+                Intent intent = new Intent(ReaderActivity.this, MainActivitymob.class);
+                intent.putExtra("PHONE_NUMBER", number.getText().toString());
+                startActivityForResult(intent, 1080);
             }
         });
 
@@ -204,8 +212,6 @@ public class ReaderActivity extends AppCompatActivity {
         scan_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
                 IntentIntegrator integrator = new IntentIntegrator(activity);
                 integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE);
                 integrator.setPrompt("Scan");
@@ -215,6 +221,7 @@ public class ReaderActivity extends AppCompatActivity {
                 integrator.initiateScan();
             }
         });
+
     }
 
     @Override

@@ -15,12 +15,17 @@ package com.phonenumberui;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.AppCompatButton;
-import android.support.v7.widget.AppCompatEditText;
-import android.support.v7.widget.AppCompatTextView;
-import android.support.v7.widget.Toolbar;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.AppCompatEditText;
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.view.View;
@@ -56,6 +61,17 @@ public class PhoneNumberActivity extends AppCompatActivity {
 
         setUpUI();
         setUpToolBar();
+
+        Utility.hideKeyBoardFromView(mActivity);
+        etPhoneNumber.setError(null);
+        if (validate()) {
+            Intent verificationIntent = new Intent(mActivity, VerificationCodeActivity.class);
+            verificationIntent.putExtra(AppConstant.PhoneNumber, etPhoneNumber.getText().toString().trim());
+            verificationIntent.putExtra(AppConstant.PhoneCode, mSelectedCountry.getPhoneCode() + "");
+            verificationIntent.setFlags(Intent.FLAG_ACTIVITY_FORWARD_RESULT);
+            startActivity(verificationIntent);
+            finish();
+        }
 
     }
 

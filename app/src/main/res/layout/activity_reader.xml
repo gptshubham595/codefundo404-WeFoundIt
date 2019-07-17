@@ -169,6 +169,8 @@
         android:textColor="#000000"
         android:textStyle="bold"
         android:hint="Enter mobile Number"
+        android:minEms="10"
+        android:maxLength="10"
         android:typeface="serif"
         android:layout_width="match_parent"
         android:layout_height="45dp" />

@@ -16,9 +16,11 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.widget.RecyclerView;
+
 import android.util.AttributeSet;
 import android.view.MotionEvent;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.Collections;

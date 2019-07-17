@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements FingerPrintAuthCa
 
         }
         first=isFirstRun.toString();
-
+    //    startActivity(new Intent(getApplicationContext(),MainActivitymob.class));
         _tv = (TextView) findViewById( R.id.counter);
         img=findViewById(R.id.tick);
         mGoToSettingsBtn = (Button) findViewById(R.id.go_to_settings_btn);
@@ -235,7 +235,8 @@ private void initTasks() {
         switch (errorCode) {
             case AuthErrorCodes.CANNOT_RECOGNIZE_ERROR:
                 count++;
-                mAuthMsgTv.setText("Cannot recognize your finger print. Please try again or enter via PIN.Attemp = "+count);
+                Toast.makeText(this, "You Have MAX 5 ATTEMPTS ", Toast.LENGTH_SHORT).show();
+                mAuthMsgTv.setText("Cannot recognize your finger print.Attempt = "+count);
                 if(count==5){mAuthMsgTv.setText("Sorry Please Try after 5 mins !.You Exceeded 2 times.");
 
                     startTimer(120000);

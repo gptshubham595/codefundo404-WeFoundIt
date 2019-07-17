@@ -58,7 +58,7 @@ public class AuthSuccessScreen extends AppCompatActivity {
 
             }
         });
-            Login(id,pinEt.getText().toString());
+
         }
         else{
         cnfirmpinEt.setVisibility(View.GONE);
@@ -144,7 +144,7 @@ public class AuthSuccessScreen extends AppCompatActivity {
 
     }
 
-    private void register_user(String id, String pass) {
+    private void register_user(final String id, String pass) {
 
         mAuth.createUserWithEmailAndPassword(id, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
@@ -190,6 +190,7 @@ public class AuthSuccessScreen extends AppCompatActivity {
 
                                 Toast.makeText(getApplicationContext(),"Registered!! ",Toast.LENGTH_LONG).show();
                                 Toast.makeText(AuthSuccessScreen.this, "PIN SAVED", Toast.LENGTH_SHORT).show();
+                                Login(id,pinEt.getText().toString());
                             }
 
                         }

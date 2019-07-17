@@ -15,7 +15,7 @@
       },
       "oauth_client": [
         {
-          "client_id": "191797349159-6e1r2juuv9mmffg9b1ovfq4h8v2bbkke.apps.googleusercontent.com",
+          "client_id": "191797349159-jh363dn3dm2hoks43jur4qj0li4nltl4.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.codefundo.vote",
@@ -45,128 +45,17 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:191797349159:android:3eb5c676a0330b9a",
+        "mobilesdk_app_id": "1:191797349159:android:9ede9b8ec647612e",
         "android_client_info": {
-          "package_name": "com.fingerprint.sample"
+          "package_name": "com.phonenumberui"
         }
       },
       "oauth_client": [
         {
-          "client_id": "191797349159-3qus75houobgkb6b74ap2snvfrj0lkiu.apps.googleusercontent.com",
+          "client_id": "191797349159-2579hn9ihpf33rpkvdaq5nscehb6tkh6.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.fingerprint.sample",
-            "certificate_hash": "930e8e999db6d6dcfa147ca5bd63e854ccc1be03"
-          }
-        },
-        {
-          "client_id": "191797349159-eif3knu8r2im6f140t8hkktpg6hc7llg.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyBxr9mHoL9kqIzOtGPKI5OQjrZhzWGk00k"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "191797349159-eif3knu8r2im6f140t8hkktpg6hc7llg.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:191797349159:android:27d3c0238b0f94aa",
-        "android_client_info": {
-          "package_name": "com.innomalist.taxi.driver"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "191797349159-oqg2tl13hlnc5e9hf5rrqks0pkrmii2j.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.innomalist.taxi.driver",
-            "certificate_hash": "930e8e999db6d6dcfa147ca5bd63e854ccc1be03"
-          }
-        },
-        {
-          "client_id": "191797349159-eif3knu8r2im6f140t8hkktpg6hc7llg.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyBxr9mHoL9kqIzOtGPKI5OQjrZhzWGk00k"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "191797349159-eif3knu8r2im6f140t8hkktpg6hc7llg.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:191797349159:android:af2e4d388ae851bd",
-        "android_client_info": {
-          "package_name": "com.innomalist.taxi.rider"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "191797349159-87ipbt9aa1ivpsuneugaqiic13vrq3gg.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.innomalist.taxi.rider",
-            "certificate_hash": "930e8e999db6d6dcfa147ca5bd63e854ccc1be03"
-          }
-        },
-        {
-          "client_id": "191797349159-eif3knu8r2im6f140t8hkktpg6hc7llg.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyBxr9mHoL9kqIzOtGPKI5OQjrZhzWGk00k"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "191797349159-eif3knu8r2im6f140t8hkktpg6hc7llg.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:191797349159:android:5dc4cfe336c86b0f",
-        "android_client_info": {
-          "package_name": "com.shubham.ai"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "191797349159-s4ngfu0qn69smcnv8483qcjuf6cbevjt.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.shubham.ai",
+            "package_name": "com.phonenumberui",
             "certificate_hash": "930e8e999db6d6dcfa147ca5bd63e854ccc1be03"
           }
         },

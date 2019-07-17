@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <android.support.v7.widget.Toolbar
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,7 +19,7 @@
             android:orientation="vertical"
             android:visibility="visible">
 
-            <android.support.v7.widget.AppCompatTextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvToolbarBack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -32,7 +32,7 @@
                 android:textColor="@color/white"
                 android:textSize="20sp" />
 
-            <android.support.v7.widget.AppCompatTextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvToolbarTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -46,7 +46,7 @@
                 android:textColor="@color/white"
                 android:textSize="20sp" />
         </RelativeLayout>
-    </android.support.v7.widget.Toolbar>
+    </androidx.appcompat.widget.Toolbar>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -58,7 +58,7 @@
         android:orientation="vertical">
 
 
-        <android.support.v7.widget.AppCompatTextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
@@ -75,32 +75,32 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-            <android.support.v7.widget.AppCompatEditText
+            <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/etDigit1"
                 style="@style/etDigits"
                 android:nextFocusDown="@+id/etDigit2" />
 
-            <android.support.v7.widget.AppCompatEditText
+            <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/etDigit2"
                 style="@style/etDigits"
                 android:nextFocusDown="@+id/etDigit3" />
 
-            <android.support.v7.widget.AppCompatEditText
+            <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/etDigit3"
                 style="@style/etDigits"
                 android:nextFocusDown="@+id/etDigit4" />
 
-            <android.support.v7.widget.AppCompatEditText
+            <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/etDigit4"
                 style="@style/etDigits"
                 android:nextFocusDown="@+id/etDigit5" />
 
-            <android.support.v7.widget.AppCompatEditText
+            <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/etDigit5"
                 style="@style/etDigits"
                 android:nextFocusDown="@+id/etDigit6" />
 
-            <android.support.v7.widget.AppCompatEditText
+            <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/etDigit6"
                 style="@style/etDigits" />
         </LinearLayout>
@@ -113,7 +113,7 @@
             android:background="@drawable/rounded_corner_red_rectangle"
             android:gravity="center">
 
-            <android.support.v7.widget.AppCompatButton
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnContinue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -150,7 +150,7 @@
             android:paddingLeft="20dp"
             android:paddingRight="6dp">
 
-            <android.support.v7.widget.AppCompatButton
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnResendCode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -166,7 +166,7 @@
                 android:textColor="@color/colorPrimary"
                 android:textSize="20sp" />
 
-            <android.support.v7.widget.AppCompatTextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvCountDownTimer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
