@@ -8,8 +8,11 @@ import android.hardware.fingerprint.FingerprintManager;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.StrictMode;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.text.Editable;
@@ -42,6 +45,7 @@ import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
 import static java.lang.Thread.sleep;
+import java.sql.*;
 
 public class MainActivity extends AppCompatActivity implements FingerPrintAuthCallback {
     private ImageView img;
@@ -53,8 +57,8 @@ public class MainActivity extends AppCompatActivity implements FingerPrintAuthCa
     SharedPreferences prefs=null;
     Boolean isFirstRun=false;
     String first="false";
-    private SharedPreferences prefs1=null;
-    private long timeLeft;
+    private SharedPreferences prefs1=null,setornot=null;
+    private long timeLeft,pinis;
     private CountDownTimer timer;
     TextView _tv;
     static int count=0,count2=0,count3=0;
@@ -64,6 +68,11 @@ public class MainActivity extends AppCompatActivity implements FingerPrintAuthCa
         setContentView(R.layout.activity_main);
         mAuth = FirebaseAuth.getInstance();
         prefs= getSharedPreferences("com.codefundo.vote", MODE_PRIVATE);
+
+        /*
+        CheckLogin checkLogin=new CheckLogin();
+        checkLogin.execute("");
+        /////*/
         isFirstRun=prefs.getBoolean("isFirstRun", true);
         if(isFirstRun){
             Toast.makeText(this, "First Time User", Toast.LENGTH_SHORT).show();
@@ -94,13 +103,16 @@ private void initTasks() {
    // logInButton = (Button) findViewById(R.id.bt);
 
     prefs1 = getSharedPreferences("file", Context.MODE_PRIVATE);
+//   setornot = getSharedPreferences("setornot", Context.MODE_PRIVATE);
+
 }
 
     private void checkTimer() {
-        if (prefs1.contains("time"))
+
+        if (prefs.contains("time"))
             setTimer();
         else {
-            SharedPreferences.Editor editor = prefs.edit();
+            SharedPreferences.Editor editor = prefs1.edit();
             editor.putLong("time", -1L);
             editor.apply();
         }
@@ -140,12 +152,14 @@ private void initTasks() {
     }
 
     private void saveToPref(long timeLeft){
-        SharedPreferences.Editor editor = prefs.edit();
+        SharedPreferences.Editor editor = prefs1.edit();
         editor.putLong("time", timeLeft);
         _tv.setText(timeLeft+"");
         editor.apply();
     }
 ////==================
+
+
 
     @Override
     protected void onResume() {
@@ -169,6 +183,15 @@ private void initTasks() {
     protected void onPause() {
         super.onPause();
         mFingerPrintAuthHelper.stopAuth();
+
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        saveToPref(timeLeft);
+   //     ExitActivity.exitApplication(getApplicationContext());
+
     }
 
     @Override
@@ -237,7 +260,7 @@ private void initTasks() {
                 count++;
                 Toast.makeText(this, "You Have MAX 5 ATTEMPTS ", Toast.LENGTH_SHORT).show();
                 mAuthMsgTv.setText("Cannot recognize your finger print.Attempt = "+count);
-                if(count==5){mAuthMsgTv.setText("Sorry Please Try after 5 mins !.You Exceeded 2 times.");
+                if(count==5){mAuthMsgTv.setText("Sorry Please Try after 5 mins !.You Exceeded 5 times.");
 
                     startTimer(120000);
                     mFingerPrintAuthHelper.stopAuth();
@@ -256,6 +279,12 @@ private void initTasks() {
                             mFingerPrintAuthHelper.startAuth();
                         }
                     }.start();
+                    timeLeft = prefs1.getLong("time", -1L);
+                    if (timeLeft != -1L)
+                    {startTimer(timeLeft);
+                        _tv.setText(timeLeft+"");}
+                    else
+                        mFingerPrintAuthHelper.startAuth();
                 if(count==10){Intent i=new Intent(MainActivity.this, AuthSuccessScreen.class);
                     i.putExtra("first",first);
                     i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -263,7 +292,13 @@ private void initTasks() {
                 }
                 break;
             case AuthErrorCodes.NON_RECOVERABLE_ERROR:
-                mAuthMsgTv.setText("Cannot initialize finger print authentication. .");
+                mAuthMsgTv.setText("Cannot initialize finger print authentication. .Sorry Please Try after 5 mins !.You Exceeded 5 times.");
+                timeLeft = prefs1.getLong("time", -1L);
+                if (timeLeft != -1L)
+                {startTimer(timeLeft);
+                    _tv.setText(timeLeft+"");}
+                else
+                    mFingerPrintAuthHelper.startAuth();
                 count2++;
                 if(count2==5){Intent i=new Intent(MainActivity.this, AuthSuccessScreen.class);
                     i.putExtra("first",first);
@@ -285,5 +320,64 @@ private void initTasks() {
         }
     }
 
+    /*public Connection connectionclass() {
+    StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+    StrictMode.setThreadPolicy(policy);
+    Connection connection = null;
+    String connectionURL = null;
+    try {
+        Class.forName("net.sourceforge.jtds.jdbc.Driver");
+        connectionURL = "jdbc:jtds:sqlserver://db-kvse4w-vot.database.windows.net:1433;DatabaseName=kvse4w-vot;user=dbadmin@db-kvse4w-vot;password=Shivamclass12$#;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
+        connection = DriverManager.getConnection(connectionURL);
+    } catch (SQLException se) {
+        se.printStackTrace();
+    } catch (ClassNotFoundException ce) {
+        ce.printStackTrace();
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+return connection;
+    }*/
 
+    /*public class CheckLogin extends AsyncTask<String,String,String> {
+        String z="";
+        Boolean isSuccess=true;
+        String name1="";
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            Toast.makeText(MainActivity.this, s, Toast.LENGTH_SHORT).show();
+            if(isSuccess){
+                Toast.makeText(MainActivity.this, name1, Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        @Override
+        protected String doInBackground(String... strings) {
+            try{
+                Connection con = connectionclass();
+                if(con==null){z="Check Internet";}
+                else{
+                    String query="select * from Users";
+                    Statement stmt=con.createStatement();
+                    ResultSet rs=stmt.executeQuery(query);
+                    if(rs.next()){name1=rs.getString("Username");
+                    z="query successful";
+                    isSuccess=true;
+                    con.close();
+                    }else{
+                        z="invalid query";
+                        isSuccess=false;
+                    }
+                }
+            }catch (Exception e){isSuccess=false;z=e.getMessage(); e.printStackTrace();}
+            return z;
+        }
+    }*/
 }

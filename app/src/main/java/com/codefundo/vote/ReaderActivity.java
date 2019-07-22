@@ -2,6 +2,7 @@ package com.codefundo.vote;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -24,6 +25,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.phonenumberui.PhoneNumberActivity;
@@ -36,8 +39,9 @@ import static com.codefundo.vote.AuthSuccessScreen.pin;
 public class ReaderActivity extends AppCompatActivity {
     private Button scan_btn,reg_vote;
     String aadhaar;
-    FirebaseAuth mAuth;
     FirebaseUser fbUser;
+    private FirebaseAuth mAuth;
+    private DatabaseReference mUserDatabase,mDatabase,mDatabase2;
     private String mobileNumber = "";
     private Button btnVerify;
     EditText ad,adt;
@@ -49,6 +53,8 @@ public class ReaderActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         fbUser = mAuth.getCurrentUser();
+        @SuppressLint("HardwareIds") final String id = Settings.Secure.getString(getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID) + "@gmail.com";
+        mUserDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
 
         scan_btn = (Button) findViewById(R.id.scan_btn);
         aadhaar=getIntent().getExtras().get("aadhaar").toString();
@@ -154,11 +160,39 @@ public class ReaderActivity extends AppCompatActivity {
 
         ad.setText(aadhaar.trim());
         adt=findViewById(R.id.adto);
-        @SuppressLint("HardwareIds") final String id = Settings.Secure.getString(getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID) + "@gmail.com";
 
         reg_vote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                try{
+                    FirebaseUser current_user = FirebaseAuth.getInstance().getCurrentUser();
+                    String uid = current_user.getUid();
+                    mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(id).child("email");
+                    mDatabase.setValue(email.getText().toString());
+                    mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(id).child("mobile");
+                    mDatabase.setValue(number.getText().toString());
+                    mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(id).child("aadhaar");
+                    mDatabase.setValue(uid1.getText().toString());
+                    mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(id).child("age");
+                    mDatabase.setValue(age1.getText().toString());
+                    mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(id).child("dist");
+                    mDatabase.setValue(dist1.getText().toString());
+                    mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(id).child("state");
+                    mDatabase.setValue(state1.getText().toString());
+                    mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(id).child("gender");
+                    mDatabase.setValue(gender1.getText().toString());
+                    mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(id).child("name");
+                    mDatabase.setValue(name1.getText().toString());
+                    mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(id).child("pincode");
+                    mDatabase.setValue(pc1.getText().toString());
+                    mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(id).child("dob");
+                    mDatabase.setValue(dob1.getText().toString());
+                    mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(id).child("ADMIN");
+                    mDatabase.setValue("YES");
+
+                }catch (Exception e ){e.printStackTrace();}
+
+
                 /*try{
                 //mAuth.signInWithEmailAndPassword(id,pin);
                 fbUser.updateEmail(email.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -280,6 +314,7 @@ public class ReaderActivity extends AppCompatActivity {
 
             else {
                 Toast.makeText(this, "Matched", Toast.LENGTH_SHORT).show();
+                reg_vote.setEnabled(true);
                 is = complete.indexOf("name=");
                 String name = complete.substring(is + 6, complete.indexOf("gender") - 2);
                 Toast.makeText(this, name, Toast.LENGTH_SHORT).show();
