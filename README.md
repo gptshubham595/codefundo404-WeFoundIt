@@ -14,11 +14,6 @@
   
   # Features And Ideation
   - We are working on the topic ***Elections, referenda, and polls Management System***
-  
-  - Android app and Website that will be open for three types of people :
-    1) Political Leaders
-    2)  Individual
-    3)  Admin Panel
     
   - Our Idea is to design an app for Android and host a Website using Microsoft dependencies and some more and going to show the count       of how many people around are there around whole India and to easily vote their political leaders and on their own will.
 
@@ -33,4 +28,20 @@
   - Auto registration for voter ID after 18+ age and remove all sorts of updating problems.
  
   - Avoid multiple registrations on same aadhaar.
+  
+  - Avoid Screen Recording and taking screenshots.
+  
+  - Anonymous rartings and ppublic chat rooms will be there
+  
+  - Map integration will be there for displaying political leaders are from which place
+  
+  - App will display that which political leaders has done what and with what ratings.
+  
+  - Completely Anonymous voting
+  
+  - Also Results will be with seconds just after the voting.
+  
+  
+  
+  
   
