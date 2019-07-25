@@ -1,6 +1,5 @@
-[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Finger%20Print%20Auth%20Helper-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/4493) [ ![Download](https://api.bintray.com/packages/multidots/md-maven/fingerprint-auth/images/download.svg) ](https://bintray.com/multidots/md-maven/fingerprint-auth/_latestVersion) [![Build Status](https://travis-ci.org/multidots/android-fingerprint-authentication.svg?branch=master)](https://travis-ci.org/multidots/android-fingerprint-authentication)
 ## CODEfunDo404!-WeFoundIt!
-
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Finger%20Print%20Auth%20Helper-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/4493)
  ![API](https://img.shields.io/badge/API-17%2B-blue.svg?style=flat)
  [![Build Status](https://travis-ci.org/googlesamples/google-services.svg?branch=master)](https://travis-ci.org/googlesamples/google-services)
  ![](https://img.shields.io/badge/-Java-brightgreen.svg)
