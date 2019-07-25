@@ -41,7 +41,7 @@
   
   - Also Results will be with seconds just after the voting.
   
-  
+  - Also it will be decided that you have to be in a particular radius of police station to give vote to avoid forcefully vote or scams.
   
   
   
