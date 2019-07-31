@@ -41,6 +41,7 @@ import com.multidots.fingerprintauth.AuthErrorCodes;
 import com.multidots.fingerprintauth.FingerPrintAuthCallback;
 import com.multidots.fingerprintauth.FingerPrintAuthHelper;
 import com.multidots.fingerprintauth.FingerPrintUtils;
+import com.scottyab.rootbeer.RootBeer;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -73,7 +74,15 @@ public class FingerActivity extends AppCompatActivity implements FingerPrintAuth
         mAuth = FirebaseAuth.getInstance();
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
         prefs= getSharedPreferences("com.codefundo.votenew", MODE_PRIVATE);
-
+        int adb = Settings.Secure.getInt(getApplicationContext().getContentResolver(), Settings.Secure.ADB_ENABLED, 0);
+        RootBeer rootBeer = new RootBeer(getApplicationContext());
+       if( rootBeer.isRootedWithoutBusyBoxCheck() || rootBeer.isRooted()){
+           Toast.makeText(this, "Sorry We Can't Run in a rooted Device", Toast.LENGTH_SHORT).show();
+           ExitActivity.exitApplication(getApplicationContext());       }
+        if( adb==1){
+            Toast.makeText(this, "Sorry We Can't Run here!! Disable USB Debugging Mode", Toast.LENGTH_SHORT).show();
+            //ExitActivity.exitApplication(getApplicationContext());
+        }
         /*
         CheckLogin checkLogin=new CheckLogin();
         checkLogin.execute("");
@@ -195,7 +204,14 @@ public class FingerActivity extends AppCompatActivity implements FingerPrintAuth
     protected void onStop() {
         super.onStop();
         saveToPref(timeLeft);
-        //     ExitActivity.exitApplication(getApplicationContext());
+           //  ExitActivity.exitApplication(getApplicationContext());
+
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        saveToPref(timeLeft);
+       // ExitActivity.exitApplication(getApplicationContext());
 
     }
 

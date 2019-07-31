@@ -20,7 +20,7 @@ android {
     buildTypes {
         release {
             minifyEnabled false
-			
+
         }
     }
     packagingOptions {
@@ -79,5 +79,7 @@ dependencies {
     implementation 'com.github.jineshfrancs:CaptchaImageView:1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
+    implementation 'com.github.Stericson:RootShell:1.6'
+    implementation 'com.scottyab:rootbeer-lib:0.0.7'
 }
 apply plugin: 'com.google.gms.google-services'

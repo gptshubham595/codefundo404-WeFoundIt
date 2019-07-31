@@ -7,10 +7,16 @@ import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     AppCompatButton addfam;
     RecyclerView   allfamilylist;
     String email;
-    DatabaseReference allfamdatabaseReference,totalfam;
+    DatabaseReference allfamdatabaseReference,mUser,totalfam;
     AppCompatTextView fam;
     private FirebaseAuth mAuth;
     @Override
@@ -90,18 +96,15 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, model.getName(), Toast.LENGTH_SHORT).show();
                 viewHolder.setName(model.getName());
                 viewHolder.setImage(model.getImage());
-                viewHolder.setAadhaar(model
-                        .getAadhaar());
+                viewHolder.setAadhaar(model.getAadhaar());
                 viewHolder.setDob(model.getDob());
                 viewHolder.setEligible(model.getEligible());
                 viewHolder.setGender(model.getGender());
-
                 final String userid=getRef(position).getKey();
                 viewHolder.mview.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
-
+                        showDialog(MainActivity.this,model.getAadhaar());
                     }
                 });
             }
@@ -156,5 +159,69 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+    public void showDialog2(Activity activity, final String aadhaar) {
+        final Dialog dialog = new Dialog(activity);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setCancelable(false);
+        dialog.setContentView(R.layout.newcustom_layout);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
 
+        Button cancel = dialog.findViewById(R.id.retry);
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.cancel();
+            }
+        });
+        Button ok = dialog.findViewById(R.id.ok);
+        ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.cancel();
+                deleteit(aadhaar);
+            }
+        });
+
+
+        dialog.show();
+    }
+    public void showDialog(Activity activity, final String aadhaar) {
+        final Dialog dialog = new Dialog(activity);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setCancelable(false);
+        dialog.setContentView(R.layout.newcustom_layout2);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        Button delete = dialog.findViewById(R.id.delete);
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.cancel();
+                showDialog2(MainActivity.this,aadhaar);
+
+            }
+        });
+        Button vote = dialog.findViewById(R.id.vote);
+        vote.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.cancel();
+                voteit(aadhaar);
+            }
+        });
+
+
+        dialog.show();
+    }
+
+    private void voteit(String aadhaar) {
+    Intent i =new Intent(getApplicationContext(),VOTEFINAL.class);
+    i.putExtra("aadhaar",aadhaar);
+    startActivity(i);
+    }
+
+    private void deleteit(String aadhaar) {
+    mUser= FirebaseDatabase.getInstance().getReference().child("Users").child(email).child("FAMILY_MEMBER").child(aadhaar);
+    mUser.keepSynced(true);
+    mUser.removeValue();
+    }
 }

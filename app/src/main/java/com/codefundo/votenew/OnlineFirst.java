@@ -1,6 +1,7 @@
 package com.codefundo.votenew;
 
 import android.app.Application;
+import android.view.WindowManager;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
