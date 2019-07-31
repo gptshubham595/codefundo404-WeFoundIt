@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">VOTE4US</string>
+    <string name="emailreq">- Enter your mail id to register . \n eg: example@test.com </string>
+
+    <string name="passreq">- Enter your password to register . \n eg: 12345678 </string>
+
+    <string name="loginreq">- After confirming mail just click sign in. </string>
+
+    <string name="registerreq">- Enter mail and password and press sign up \n also confirm your account via mail id. </string>
+
+    <string name="forgotreq">- Enter mail and press forgot option \n check mail for changing password </string>
+
+    <string name="title_activity_login">Sign in</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
 </resources>

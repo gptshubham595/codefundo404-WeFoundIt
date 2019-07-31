@@ -1,0 +1,139 @@
+<!--
+  ~ Copyright (c) 2019. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+  ~ Morbi non lorem porttitor neque feugiat blandit. Ut vitae ipsum eget quam lacinia accumsan.
+  ~ Etiam sed turpis ac ipsum condimentum fringilla. Maecenas magna.
+  ~ Proin dapibus sapien vel ante. Aliquam erat volutpat. Pellentesque sagittis ligula eget metus.
+  ~ Vestibulum commodo. Ut rhoncus gravida arcu.
+  -->
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent"
+    android:layout_margin="40dp"
+    android:padding="8dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="@drawable/shape"
+        android:layout_margin="20dp"
+        android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_margin="25dp"
+        android:layout_height="match_parent">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content"
+        android:textColor="#3c3c44"
+        android:layout_margin="8dp"
+        android:text="VOTE4US"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="22sp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#3c3c44"
+        android:layout_marginTop="44dp"
+        android:text="Email"
+        android:textStyle="bold"
+        android:gravity="left"
+        android:textSize="17sp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:id="@+id/emailreq"
+        android:layout_height="wrap_content"
+        android:textColor="#3c3c44"
+        android:layout_marginTop="72dp"
+        android:text="@string/emailreq"
+        android:textStyle="italic"
+        android:gravity="left"
+        android:textSize="15sp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#3c3c44"
+        android:layout_below="@id/emailreq"
+        android:layout_marginTop="24dp"
+        android:text="Password"
+        android:textStyle="bold"
+        android:gravity="left"
+        android:textSize="17sp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#3c3c44"
+        android:id="@+id/passreq"
+        android:layout_below="@id/emailreq"
+        android:layout_marginTop="52dp"
+        android:text="@string/passreq"
+        android:textStyle="italic"
+        android:gravity="left"
+        android:textSize="15sp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#3c3c44"
+        android:layout_below="@id/passreq"
+        android:layout_marginTop="24dp"
+        android:text="Login"
+        android:textStyle="bold"
+        android:gravity="left"
+        android:textSize="17sp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#3c3c44"
+        android:layout_below="@id/passreq"
+        android:layout_marginTop="52dp"
+        android:text="@string/loginreq"
+        android:textStyle="italic"
+        android:id="@+id/loginreq"
+        android:gravity="left"
+        android:textSize="15sp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#3c3c44"
+        android:layout_below="@id/loginreq"
+        android:layout_marginTop="24dp"
+        android:text="Register"
+        android:textStyle="bold"
+        android:gravity="left"
+        android:textSize="17sp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#3c3c44"
+        android:layout_below="@id/loginreq"
+        android:layout_marginTop="52dp"
+        android:text="@string/registerreq"
+        android:textStyle="italic"
+        android:id="@+id/registerreq"
+        android:gravity="left"
+        android:textSize="15sp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#3c3c44"
+        android:layout_below="@id/registerreq"
+        android:layout_marginTop="24dp"
+        android:text="Forgot"
+        android:textStyle="bold"
+        android:gravity="left"
+        android:textSize="17sp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#3c3c44"
+        android:layout_below="@id/registerreq"
+        android:layout_marginTop="52dp"
+        android:text="@string/forgotreq"
+        android:textStyle="italic"
+        android:gravity="left"
+        android:textSize="15sp" />
+    </RelativeLayout>
+    </RelativeLayout>
+</ScrollView>

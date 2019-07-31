@@ -1,84 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.codefundo.vote.MainActivity">
-<RelativeLayout
+    tools:context=".MainActivity">
+<LinearLayout
     android:layout_width="wrap_content"
+    android:orientation="horizontal"
+    android:id="@+id/lin"
     android:layout_height="wrap_content">
-    <ViewSwitcher
-        android:id="@+id/main_switcher"
+    <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <ImageView
-            android:layout_width="300dp"
-            android:layout_height="300dp"
-            android:src="@drawable/ic_finger_print"
-            />
-
-
-    </ViewSwitcher>
-    <ImageView
-        android:layout_width="150dp"
-        android:layout_height="160dp"
-        android:src="@drawable/done"
-        android:visibility="invisible"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:id="@+id/tick"
-        />
-</RelativeLayout>
-    <TextView
-        android:id="@+id/auth_message_tv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        android:gravity="center"
-        android:textSize="18sp"/>
-    <EditText
-        android:id="@+id/pin_et"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:hint="PIN code"
-        android:inputType="number"
+        android:textSize="18sp"
+        android:layout_margin="20dp"
         android:visibility="gone"
-        android:maxLength="8"
-        android:minEms="8" />
-    <TextView
-        android:id="@+id/counter"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-         />
-    <Button
-        android:id="@+id/submit"
-        style="@android:style/Widget.Holo.Button.Borderless"
+        android:text="Total Family Members :"
+        android:layout_height="wrap_content" />
+    <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Submit"
+        android:textSize="18sp"
+        android:layout_margin="20dp"
+        android:id="@+id/fam"
         android:visibility="gone"
-        android:textColor="@android:color/holo_blue_dark"/>
-    <Button
-        android:id="@+id/go_to_settings_btn"
-        style="@android:style/Widget.Holo.Button.Borderless"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Open Settings"
-        android:textColor="@android:color/holo_blue_dark"/>
+        android:text="0"
+        android:layout_height="wrap_content" />
 </LinearLayout>
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:textSize="18sp"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:id="@+id/addfam"
+        android:layout_below="@id/lin"
+        android:text="Add Family Members"
+        android:backgroundTint="@android:color/holo_green_dark"
+        android:drawableRight="@drawable/ic_add_box_black_24dp"
+        android:layout_height="wrap_content" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_below="@id/addfam"
+        android:id="@+id/recycler"
+        android:layout_margin="20dp"
+        android:layout_height="match_parent">
+    </androidx.recyclerview.widget.RecyclerView>
+</RelativeLayout>

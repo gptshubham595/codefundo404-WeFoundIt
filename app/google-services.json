@@ -1,42 +1,42 @@
 {
   "project_info": {
-    "project_number": "191797349159",
-    "firebase_url": "https://alarm-edb8c.firebaseio.com",
-    "project_id": "alarm-edb8c",
-    "storage_bucket": "alarm-edb8c.appspot.com"
+    "project_number": "125014748717",
+    "firebase_url": "https://test-2a6ee.firebaseio.com",
+    "project_id": "test-2a6ee",
+    "storage_bucket": "test-2a6ee.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:191797349159:android:6d686fb2ea69e433",
+        "mobilesdk_app_id": "1:125014748717:android:dfffd64e2b5c85f1",
         "android_client_info": {
-          "package_name": "com.codefundo.vote"
+          "package_name": "com.codefundo.phone"
         }
       },
       "oauth_client": [
         {
-          "client_id": "191797349159-jh363dn3dm2hoks43jur4qj0li4nltl4.apps.googleusercontent.com",
+          "client_id": "125014748717-72s1pomlo5qvrivs0qfi0cei95e46h6u.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.codefundo.vote",
-            "certificate_hash": "930e8e999db6d6dcfa147ca5bd63e854ccc1be03"
+            "package_name": "com.codefundo.phone",
+            "certificate_hash": "7b098dcbde1dcd60ffb98e8c51475b5fdf1f3182"
           }
         },
         {
-          "client_id": "191797349159-eif3knu8r2im6f140t8hkktpg6hc7llg.apps.googleusercontent.com",
+          "client_id": "125014748717-ibfm0fvg24o3bni7mduciil3emtbrfl3.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBxr9mHoL9kqIzOtGPKI5OQjrZhzWGk00k"
+          "current_key": "AIzaSyBtm9u0VyFtWL-b51Z14yATGuugqln5140"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "191797349159-eif3knu8r2im6f140t8hkktpg6hc7llg.apps.googleusercontent.com",
+              "client_id": "125014748717-0n3hir7gomdc83khvfpnhacj7b9p59gp.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
@@ -45,35 +45,35 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:191797349159:android:9ede9b8ec647612e",
+        "mobilesdk_app_id": "1:125014748717:android:6d686fb2ea69e433",
         "android_client_info": {
-          "package_name": "com.phonenumberui"
+          "package_name": "com.codefundo.vote"
         }
       },
       "oauth_client": [
         {
-          "client_id": "191797349159-2579hn9ihpf33rpkvdaq5nscehb6tkh6.apps.googleusercontent.com",
+          "client_id": "125014748717-p74j5ad47bc8sbg4j3ri8ovns9c2g33t.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.phonenumberui",
-            "certificate_hash": "930e8e999db6d6dcfa147ca5bd63e854ccc1be03"
+            "package_name": "com.codefundo.vote",
+            "certificate_hash": "7b098dcbde1dcd60ffb98e8c51475b5fdf1f3182"
           }
         },
         {
-          "client_id": "191797349159-eif3knu8r2im6f140t8hkktpg6hc7llg.apps.googleusercontent.com",
+          "client_id": "125014748717-ibfm0fvg24o3bni7mduciil3emtbrfl3.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBxr9mHoL9kqIzOtGPKI5OQjrZhzWGk00k"
+          "current_key": "AIzaSyBtm9u0VyFtWL-b51Z14yATGuugqln5140"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "191797349159-eif3knu8r2im6f140t8hkktpg6hc7llg.apps.googleusercontent.com",
+              "client_id": "125014748717-0n3hir7gomdc83khvfpnhacj7b9p59gp.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

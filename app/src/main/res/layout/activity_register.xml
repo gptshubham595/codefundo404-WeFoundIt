@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2019. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+  ~ Morbi non lorem porttitor neque feugiat blandit. Ut vitae ipsum eget quam lacinia accumsan.
+  ~ Etiam sed turpis ac ipsum condimentum fringilla. Maecenas magna.
+  ~ Proin dapibus sapien vel ante. Aliquam erat volutpat. Pellentesque sagittis ligula eget metus.
+  ~ Vestibulum commodo. Ut rhoncus gravida arcu.
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:gravity="center"
+    tools:context=".Register">
+
+    <FrameLayout
+        android:id="@+id/login_layout"
+        android:layout_width="300dp"
+        android:background="@drawable/shape"
+        android:layout_height="460dp"
+        android:layout_gravity="center">
+
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/email"
+            android:layout_width="220dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:gravity="center|left"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:textSize="20sp"
+            android:visibility="visible"
+            app:errorEnabled="true"
+            app:met_baseColor="#000000"
+            app:met_floatingLabel="highlight"
+            app:met_primaryColor="@android:color/black"
+            app:met_singleLineEllipsis="true" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="220dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="80dp"
+            app:passwordToggleEnabled="true"
+            app:errorEnabled="true"
+            app:counterEnabled="true"
+            android:layout_height="wrap_content">
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:layout_width="220dp"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF"
+                app:met_baseColor="#000000"
+                android:id="@+id/password"
+                android:inputType="textPassword"
+                android:hint="Password"
+                app:met_primaryColor="@android:color/black"
+                app:met_singleLineEllipsis="true"
+                android:textSize="20sp"
+                android:visibility="visible"
+                android:layout_height="wrap_content"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/aadhaar"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="140dp"
+            android:gravity="center|left"
+            android:hint="Aadhaar"
+            android:inputType="number"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:textSize="20sp"
+            android:visibility="visible"
+            android:maxLength="12"
+            android:minEms="12"
+            app:errorEnabled="true"
+            app:met_baseColor="#000000"
+            app:met_floatingLabel="highlight"
+            app:met_primaryColor="@android:color/black"
+            app:met_singleLineEllipsis="true" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/mobile"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="200dp"
+            android:gravity="center|left"
+            android:hint="Mobile Number"
+            android:inputType="number"
+            android:textSize="20sp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:visibility="visible"
+            android:maxLength="10"
+            android:minEms="10"
+            app:errorEnabled="true"
+            app:met_baseColor="#000000"
+            app:met_floatingLabel="highlight"
+            app:met_primaryColor="@android:color/black"
+            app:met_singleLineEllipsis="true" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_alignEnd="@+id/login_layout"
+            android:layout_marginTop="250dp"
+            android:gravity="center">
+
+            <LinearLayout
+                android:id="@+id/one"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:gravity="center">
+
+                <test.jinesh.captchaimageviewlib.CaptchaImageView
+                    android:id="@+id/image"
+                    android:layout_width="200dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="6"
+                    android:scaleType="fitXY" />
+
+                <ImageView
+                    android:id="@+id/regen"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@android:drawable/ic_menu_rotate"
+                    android:gravity="center"
+
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/one"
+                android:layout_margin="5dp"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/captchaInput"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+        </RelativeLayout>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/register"
+            android:visibility="visible"
+            android:layout_width="220dp"
+            android:layout_height="40dp"
+            android:backgroundTint="@android:color/holo_green_dark"
+            android:text="Register"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="407dp"
+            android:layout_gravity="center_horizontal"/>
+
+    </FrameLayout>
+</RelativeLayout>
