@@ -11,7 +11,7 @@ public allfamily(){
     public allfamily(String name, String image, String dob, String eligible,String gender) {
         this.name = name;
         this.image = image;
-      //  this.aadhaar = aadhaar;
+        this.aadhaar = aadhaar;
         this.dob = dob;
         this.eligible = eligible;
         this.gender = gender;

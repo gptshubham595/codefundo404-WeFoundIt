@@ -20,6 +20,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -345,7 +346,7 @@ public class SnapActivity extends AppCompatActivity {
         });
 
     }
-
+   
     private void adddatatobase(String uid,String name, String state, String pc, String dist, String age, String gender, String dob,String mobile) {
         mLoginProgress.show();
 

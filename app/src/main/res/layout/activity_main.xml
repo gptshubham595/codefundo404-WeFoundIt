@@ -8,7 +8,6 @@
 <LinearLayout
     android:layout_width="wrap_content"
     android:orientation="horizontal"
-    android:id="@+id/lin"
     android:layout_height="wrap_content">
     <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="wrap_content"
@@ -26,6 +25,123 @@
         android:text="0"
         android:layout_height="wrap_content" />
 </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:id="@+id/lin"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:textSize="18sp"
+            android:layout_margin="20dp"
+            android:text="VOTING DAY "
+            android:layout_height="wrap_content" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:textSize="18sp"
+            android:layout_margin="20dp"
+            android:id="@+id/day"
+            android:text="XX "
+            android:layout_height="wrap_content" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:textSize="18sp"
+            android:layout_margin="20dp"
+            android:text="/"
+            android:layout_height="wrap_content" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:textSize="18sp"
+            android:layout_margin="20dp"
+            android:id="@+id/month"
+            android:text="XX"
+            android:layout_height="wrap_content" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:textSize="18sp"
+            android:layout_margin="20dp"
+            android:text="/"
+            android:layout_height="wrap_content" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:textSize="18sp"
+            android:layout_margin="20dp"
+            android:id="@+id/year"
+            android:text="XXXX"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:textSize="18sp"
+            android:layout_margin="20dp"
+            android:text="Countdown :"
+            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:textSize="18sp"
+            android:layout_margin="20dp"
+            android:id="@+id/dayleft"
+            android:text="XX"
+            android:layout_height="wrap_content" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:textSize="18sp"
+            android:layout_margin="20dp"
+            android:text=":"
+            android:layout_height="wrap_content" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:textSize="18sp"
+            android:layout_margin="20dp"
+            android:id="@+id/hourleft"
+            android:text="XX"
+            android:layout_height="wrap_content" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:textSize="18sp"
+            android:layout_margin="20dp"
+            android:text=":"
+            android:layout_height="wrap_content" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:textSize="18sp"
+            android:layout_margin="20dp"
+            android:id="@+id/minleft"
+            android:text="XX"
+            android:layout_height="wrap_content" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:textSize="18sp"
+                android:layout_margin="20dp"
+                android:text=":"
+                android:layout_height="wrap_content" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:textSize="18sp"
+            android:layout_margin="20dp"
+            android:id="@+id/secleft"
+            android:text="XX"
+            android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+    </LinearLayout>
     <androidx.appcompat.widget.AppCompatButton
         android:layout_width="match_parent"
         android:textSize="18sp"

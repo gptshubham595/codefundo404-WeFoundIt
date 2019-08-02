@@ -13,6 +13,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -32,13 +33,24 @@ import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
+
 public class MainActivity extends AppCompatActivity {
     AppCompatButton addfam;
     RecyclerView   allfamilylist;
     String email;
+    long startTime;
     DatabaseReference allfamdatabaseReference,mUser,totalfam;
     AppCompatTextView fam;
+    AppCompatTextView counter;
+    static long milliseconds = 0;
+    AppCompatTextView day;
     private FirebaseAuth mAuth;
+    long diff=0,oldLong=0,NewLong=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +68,9 @@ public class MainActivity extends AppCompatActivity {
         allfamdatabaseReference.keepSynced(true);
         fam=findViewById(R.id.fam);
         Toast.makeText(this, email, Toast.LENGTH_SHORT).show();
+        day=findViewById(R.id.day);
+        setday();
+
         totalfam= FirebaseDatabase.getInstance().getReference().child("Users").child(email).child("TOTAL_FAMILY_MEMBER");
         totalfam.addValueEventListener(new ValueEventListener() {
             @Override
@@ -85,6 +100,124 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void setday() {
+        DatabaseReference mUser2= FirebaseDatabase.getInstance().getReference().child("DATA");
+        DatabaseReference dayref=mUser2.child("day");
+        DatabaseReference monthref=mUser2.child("month");
+        DatabaseReference yearref=mUser2.child("year");
+        DatabaseReference finalref=mUser2.child("FINAL");
+
+        dayref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String value = dataSnapshot.getValue(String.class);
+                AppCompatTextView day=findViewById(R.id.day);
+                day.setText(value);
+                Toast.makeText(MainActivity.this, value, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+            }
+        });
+
+        monthref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String value = dataSnapshot.getValue(String.class);
+                AppCompatTextView month=findViewById(R.id.month);
+                month.setText(value);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+            }
+        });
+
+        yearref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String value = dataSnapshot.getValue(String.class);
+                AppCompatTextView year=findViewById(R.id.year);
+                year.setText(value);
+
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+            }
+        });
+        finalref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String value = dataSnapshot.getValue(String.class);
+                //counter(value);
+
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+            }
+        });
+    }
+    private void counter(String Final)
+    {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy, HH:mm:ss");
+        formatter.setLenient(false);
+        String endTime = Final;
+
+        Date endDate;
+        try {
+            endDate = formatter.parse(endTime);
+             milliseconds = endDate.getTime();
+
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+         startTime = System.currentTimeMillis();
+
+        diff = milliseconds - startTime;
+
+
+         new CountDownTimer(milliseconds, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+
+                startTime=startTime-1;
+                Long serverUptimeSeconds =
+                        (millisUntilFinished - startTime) / 1000;
+
+                String daysLeft = String.format("%d", serverUptimeSeconds / 86400);
+                AppCompatTextView dayleft=findViewById(R.id.dayleft);
+                dayleft.setText(daysLeft);
+
+                String hoursLeft = String.format("%d", (serverUptimeSeconds % 86400) / 3600);
+                AppCompatTextView hourleft=findViewById(R.id.hourleft);
+                hourleft.setText(hoursLeft);
+
+                String minutesLeft = String.format("%d", ((serverUptimeSeconds % 86400) % 3600) / 60);
+                AppCompatTextView minleft=findViewById(R.id.minleft);
+                minleft.setText(minutesLeft);
+
+                String secondsLeft = String.format("%d", ((serverUptimeSeconds % 86400) % 3600) % 60);
+                AppCompatTextView secleft=findViewById(R.id.secleft);
+                secleft.setText(secondsLeft);
+
+            }
+
+            @Override
+            public void onFinish() {
+
+            }
+        }.start();
+    }
+
+
     @Override
     protected void onStart() {
         super.onStart();

@@ -22,6 +22,9 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.iid.FirebaseInstanceId;
@@ -101,6 +104,9 @@ public class Register extends AppCompatActivity {
                     mLoginProgress.setMessage("Please wait while we create your account !");
                     mLoginProgress.setCanceledOnTouchOutside(false);
                     mLoginProgress.show();
+
+
+
                     register_user( emailis, passwordis,aadhaaris,mobileis);
                 }else{captchaInput.setError("Enter correct Captcha code"); captchaImageView.regenerate();}}else{
                     Toast.makeText(Register.this, "Please Enter Proper Aadhaar", Toast.LENGTH_SHORT).show();
@@ -112,8 +118,8 @@ public class Register extends AppCompatActivity {
     }
 
     private void register_user(final String email, String password, final String aadhaaris, final String mobileis) {
-
-        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        if(finddupuser(email,aadhaaris)!=0)
+        {mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
 
@@ -129,7 +135,7 @@ public class Register extends AppCompatActivity {
                     String device_token = FirebaseInstanceId.getInstance().getToken();
 
                     HashMap<String, String> userMap = new HashMap<>();
-                    userMap.put("aadhaar", aadhaaris);
+                    userMap.put("aadhaar", "A"+aadhaaris);
                     userMap.put("mobile", mobileis);
                     userMap.put("TOTAL_FAMILY_MEMBER", "0");
                     userMap.put("device_token", device_token);
@@ -153,7 +159,7 @@ public class Register extends AppCompatActivity {
 
 
                 } else {
-
+                    mLoginProgress.dismiss();
                     mLoginProgress.hide();
                     Toast.makeText(getApplicationContext(), "Cannot Sign in. Please check the form and try again.", Toast.LENGTH_LONG).show();
 
@@ -162,7 +168,49 @@ public class Register extends AppCompatActivity {
             }
         });
 
+    }else{
+            Toast.makeText(this, "Sorry Admin already exist!!", Toast.LENGTH_SHORT).show();
+            mLoginProgress.dismiss();
+        }
     }
+
+    public int finddupuser(String email,final String aadhaar){
+        String emailpartwithout[] =email.split("@",2);
+        final int[] check = {0};
+        mUserDatabase=FirebaseDatabase.getInstance().getReference().child("Users");
+        mUserDatabase.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                alladmin admin = dataSnapshot.getValue(alladmin.class); // pojo
+                if(admin.getAadhaar().equals("A"+aadhaar)) {
+                    check[0] =1;
+                }
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+    return check[0];
+    }
+
     private void makedialog(){
         final AlertDialog alertDialog = new AlertDialog.Builder(this)
                 .setView(R.layout.dialog_option)
