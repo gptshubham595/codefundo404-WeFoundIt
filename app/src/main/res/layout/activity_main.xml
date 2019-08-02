@@ -87,7 +87,7 @@
             android:layout_width="wrap_content"
             android:textSize="18sp"
             android:layout_margin="20dp"
-            android:text="Countdown :"
+            android:text="COUNTDOWN FOR THE FINAL VOTING DAY:"
             android:layout_height="wrap_content" />
         <LinearLayout
             android:layout_width="match_parent"

@@ -77,7 +77,7 @@ public class ReaderActivity extends AppCompatActivity {
     private String mobileNumber = "";
     private Button btnVerify;
     EditText ad,adt;
-    EditText uid1,name1,dist1,state1,pc1,age1,gender1,dob1,number,email;
+    EditText uid1,name1,dist1,state1,pc1,age1,gender1,dob1,number,email,pin;
     static int count=0;
 
 
@@ -105,6 +105,7 @@ public class ReaderActivity extends AppCompatActivity {
         emailfinal=getIntent().getExtras().get("email").toString().toLowerCase();
         final Activity activity = this;
         email=findViewById(R.id.email);
+        pin=findViewById(R.id.pin);
         uid1=findViewById(R.id.uid);
         name1=findViewById(R.id.name);
         dist1=findViewById(R.id.dist);
@@ -180,24 +181,7 @@ public class ReaderActivity extends AppCompatActivity {
 
         number=findViewById(R.id.number);
         reg_vote=findViewById(R.id.btn);
-        reg_vote.setEnabled(false);
-        number.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(s.toString().length()==10&& !TextUtils.isEmpty(email.getText().toString())){reg_vote.setEnabled(true);}
-                else{number.setError("10 digit Number");reg_vote.setEnabled(false);}
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
 
 
 
@@ -209,6 +193,8 @@ public class ReaderActivity extends AppCompatActivity {
         reg_vote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(number.getText().toString().length()==10 && !TextUtils.isEmpty(email.getText().toString())&&!TextUtils.isEmpty(pin.getText().toString())){
+
                 try{
 
                     senddatatosnap(uid1.getText().toString(),name1.getText().toString(),state1.getText().toString(),pc1.getText().toString(),dist1.getText().toString(),age1.getText().toString(),gender1.getText().toString(),dob1.getText().toString(),number.getText().toString());
@@ -216,7 +202,8 @@ public class ReaderActivity extends AppCompatActivity {
                 }catch (Exception e ){e.printStackTrace();}
 
 
-                         }
+                         }if(number.getText().toString().length()!=10){number.setError("Enter correct number");}
+                if(TextUtils.isEmpty(pin.getText().toString())){pin.setError("Enter 4 digit pin");}}
         });
 
 
@@ -346,6 +333,8 @@ public class ReaderActivity extends AppCompatActivity {
         i.putExtra("email", emailfinal);
         i.putExtra("mobile", mobile);
         i.putExtra("aadhaar", uid);
+        i.putExtra("email", email.getText().toString().trim());
+        i.putExtra("pin", pin.getText().toString().trim());
         startActivity(i);
     }
 

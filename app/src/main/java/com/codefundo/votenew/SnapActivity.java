@@ -70,7 +70,8 @@ public class SnapActivity extends AppCompatActivity {
     private StorageReference mImageStorage;
 
     private ProgressDialog mProgressDialog;
-    String name,aadhaar,state,pc,age,dist,gender,dob,mobile,emailfinal;
+    String name,aadhaar,state,pc,age,dist,gender,dob,mobile,emailfinal,email,pin;
+    String[] emailpartwithout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,6 +86,7 @@ public class SnapActivity extends AppCompatActivity {
         //////
         try {
             emailfinal=getIntent().getExtras().get("email").toString().toLowerCase();
+            emailpartwithout =emailfinal.split("@",2);
             name = getIntent().getExtras().get("name").toString();
             aadhaar = getIntent().getExtras().get("aadhaar").toString();
             state = getIntent().getExtras().get("state").toString();
@@ -94,11 +96,14 @@ public class SnapActivity extends AppCompatActivity {
             gender = getIntent().getExtras().get("gender").toString();
             dob = getIntent().getExtras().get("dob").toString();
             mobile = getIntent().getExtras().get("mobile").toString();
+            email = getIntent().getExtras().get("email").toString();
+            pin = getIntent().getExtras().get("pin").toString();
         }catch (Exception e ){e.printStackTrace();}
 
         //////
+        String emailpartwithout[] =email.split("@",2);
 
-        mUserDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(emailfinal).child("FAMILY_MEMBER");
+        mUserDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(emailpartwithout[0]).child("FAMILY_MEMBER");
         mUserDatabase.keepSynced(true);
         mDisplayImage = (CircleImageView) findViewById(R.id.settings_image);
         mImageBtn = (Button) findViewById(R.id.settings_image_btn);
@@ -186,7 +191,7 @@ public class SnapActivity extends AppCompatActivity {
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
 
             if (resultCode == RESULT_OK) {
-
+                Toast.makeText(this, "Step 1", Toast.LENGTH_SHORT).show();
 
                 mProgressDialog = new ProgressDialog(SnapActivity.this);
                 mProgressDialog.setTitle("Uploading Image...");
@@ -201,7 +206,7 @@ public class SnapActivity extends AppCompatActivity {
 
                 String current_user_id = mAuth.getCurrentUser().getUid();
 
-
+                Toast.makeText(this, "Step 2", Toast.LENGTH_SHORT).show();
                 Bitmap thumb_bitmap = null;
                 try {
                     thumb_bitmap = new Compressor(this)
@@ -212,68 +217,48 @@ public class SnapActivity extends AppCompatActivity {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-
+                Toast.makeText(this, "Step 3", Toast.LENGTH_SHORT).show();
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
                 thumb_bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
                 final byte[] thumb_byte = baos.toByteArray();
 
-
+                Toast.makeText(this, "Step 4", Toast.LENGTH_SHORT).show();
                 StorageReference filepath = mImageStorage.child("profile_images").child(aadhaar + ".jpg");
                 final StorageReference thumb_filepath = mImageStorage.child("profile_images").child("thumbs").child(aadhaar + ".jpg");
 
 
-
+                Toast.makeText(this, "Step 5", Toast.LENGTH_SHORT).show();
                 filepath.putFile(resultUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
 
                         if(task.isSuccessful()){
-
+                            Toast.makeText(SnapActivity.this, "Step 6", Toast.LENGTH_SHORT).show();
                             download_url = task.getResult().getDownloadUrl().toString();
 
                             UploadTask uploadTask = thumb_filepath.putBytes(thumb_byte);
                             uploadTask.addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                                 @Override
                                 public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> thumb_task) {
-
+                                    Toast.makeText(SnapActivity.this, "Step 7", Toast.LENGTH_SHORT).show();
                                     thumb_downloadUrl = thumb_task.getResult().getDownloadUrl().toString();
 
-
+                                    Toast.makeText(SnapActivity.this, thumb_downloadUrl, Toast.LENGTH_SHORT).show();
                                     if(thumb_task.isSuccessful()){
-
-  /*                                      Map update_hashMap = new HashMap();
-                                        update_hashMap.put("image", download_url);
-                                        update_hashMap.put("thumb_image", thumb_downloadUrl);
-                                        mUserDatabase.updateChildren(update_hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                            @Override
-                                            public void onComplete(@NonNull Task<Void> task) {
-
-                                                if(task.isSuccessful()){
-
-                                                    mProgressDialog.dismiss();
-                                                    Toast.makeText(SnapActivity.this, "Success Uploading.", Toast.LENGTH_LONG).show();
-                                                    checkphoto();
-
-                                                }
-
-                                            }
-                                        });
-*/
+                                        Toast.makeText(SnapActivity.this, "Step 8", Toast.LENGTH_SHORT).show();
                                         Toast.makeText(SnapActivity.this, "Success Uploading.", Toast.LENGTH_LONG).show();
-                                        adddatatobase(aadhaar,name,state,pc,dist,age,gender,dob,mobile);
+                                        adddatatobase(aadhaar,name,state,pc,dist,age,gender,dob,mobile,email,pin);
 
                                         Toast.makeText(getApplicationContext(),"Registered!!",Toast.LENGTH_LONG).show();
                                         checkphoto();
-
                                     } else {
-
+                                        Toast.makeText(SnapActivity.this, "Step 9", Toast.LENGTH_SHORT).show();
                                         Toast.makeText(SnapActivity.this, "Error in uploading thumbnail.", Toast.LENGTH_LONG).show();
                                         mProgressDialog.dismiss();
                                         Intent i=new Intent(getApplicationContext(),ReaderActivity.class);
                                         i.putExtra("email",emailfinal);
                                         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                         startActivity(i);
-
                                     }
 
 
@@ -295,7 +280,7 @@ public class SnapActivity extends AppCompatActivity {
 
 
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
-
+                Toast.makeText(SnapActivity.this, "Step ERR", Toast.LENGTH_SHORT).show();
                 Exception error = result.getError();
 
             }
@@ -305,7 +290,7 @@ public class SnapActivity extends AppCompatActivity {
     }
 
     private void checkphoto() {
-
+        Toast.makeText(SnapActivity.this, "check", Toast.LENGTH_SHORT).show();
         DatabaseReference mUserDatabase2=mUserDatabase.child("image");
         mUserDatabase2.addValueEventListener(new ValueEventListener() {
             @Override
@@ -347,10 +332,11 @@ public class SnapActivity extends AppCompatActivity {
 
     }
 
-    private void adddatatobase(String uid,String name, String state, String pc, String dist, String age, String gender, String dob,String mobile) {
+    private void adddatatobase(String uid,String name, String state, String pc, String dist, String age, String gender, String dob,String mobile,String email,String pin) {
         mLoginProgress.show();
 
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(emailfinal).child("FAMILY_MEMBER").child(uid);
+
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(emailpartwithout[0]).child("FAMILY_MEMBER").child(uid);
         HashMap<String, String> userMap = new HashMap<>();
         userMap.put("name", name);
         userMap.put("state", state);
@@ -360,7 +346,9 @@ public class SnapActivity extends AppCompatActivity {
         userMap.put("gender", gender);
         userMap.put("dob", dob);
         userMap.put("mobile", mobile);
+        userMap.put("pin", pin);
         userMap.put("aadhaar", uid);
+        userMap.put("email", email);
         userMap.put("image", download_url);
         userMap.put("thumb_image", thumb_downloadUrl);
 
@@ -382,7 +370,7 @@ public class SnapActivity extends AppCompatActivity {
             }
         });
 
-        DatabaseReference myRef = FirebaseDatabase.getInstance().getReference().child("Users").child(emailfinal.toLowerCase()).child("TOTAL_FAMILY_MEMBER");
+        DatabaseReference myRef = FirebaseDatabase.getInstance().getReference().child("Users").child(emailpartwithout[0]).child("TOTAL_FAMILY_MEMBER");
         myRef.keepSynced(true);
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
