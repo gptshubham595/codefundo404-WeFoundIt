@@ -145,19 +145,19 @@ public class MainActivity extends AppCompatActivity {
 
                 String daysLeft = String.format("%d", serverUptimeSeconds / 86400);
                 AppCompatTextView dayleft=findViewById(R.id.dayleft);
-                dayleft.setText(daysLeft+"dd");
+                dayleft.setText(daysLeft+"d");
 
                 String hoursLeft = String.format("%d", (serverUptimeSeconds % 86400) / 3600);
                 AppCompatTextView hourleft=findViewById(R.id.hourleft);
-                hourleft.setText(hoursLeft+"hr");
+                hourleft.setText(hoursLeft+"h");
 
                 String minutesLeft = String.format("%d", ((serverUptimeSeconds % 86400) % 3600) / 60);
                 AppCompatTextView minleft=findViewById(R.id.minleft);
-                minleft.setText(minutesLeft+"mm");
+                minleft.setText(minutesLeft+"m");
 
                 String secondsLeft = String.format("%d", ((serverUptimeSeconds % 86400) % 3600) % 60);
                 AppCompatTextView secleft=findViewById(R.id.secleft);
-                secleft.setText(secondsLeft+"ss");
+                secleft.setText(secondsLeft+"s");
 
             }
 
@@ -262,6 +262,11 @@ public class MainActivity extends AppCompatActivity {
         public void setEligible(String eligible) {
             TextView eligibileview = (TextView) mview.findViewById(R.id.eligible);
             eligibileview.setText(eligible);
+            ImageView tick = mview.findViewById(R.id.tick);
+            ImageView cancel = mview.findViewById(R.id.cross);
+
+            if(eligible.equals("YES")){tick.setVisibility(View.VISIBLE);}
+            else{cancel.setVisibility(View.VISIBLE);}
         }
 
 

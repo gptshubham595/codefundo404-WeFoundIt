@@ -90,52 +90,54 @@
             android:text="Countdown :"
             android:layout_height="wrap_content" />
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:gravity="center"
             android:layout_height="wrap_content">
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:textSize="18sp"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:id="@+id/dayleft"
             android:text="XX"
             android:layout_height="wrap_content" />
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:textSize="18sp"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:text=":"
             android:layout_height="wrap_content" />
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:textSize="18sp"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:id="@+id/hourleft"
             android:text="XX"
             android:layout_height="wrap_content" />
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:textSize="18sp"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:text=":"
             android:layout_height="wrap_content" />
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:textSize="18sp"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:id="@+id/minleft"
             android:text="XX"
             android:layout_height="wrap_content" />
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:textSize="18sp"
-                android:layout_margin="20dp"
+                android:layout_margin="10dp"
                 android:text=":"
                 android:layout_height="wrap_content" />
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:textSize="18sp"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:id="@+id/secleft"
             android:text="XX"
             android:layout_height="wrap_content" />
