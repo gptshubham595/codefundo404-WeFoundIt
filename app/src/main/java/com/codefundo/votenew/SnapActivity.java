@@ -346,7 +346,7 @@ public class SnapActivity extends AppCompatActivity {
         });
 
     }
-   
+
     private void adddatatobase(String uid,String name, String state, String pc, String dist, String age, String gender, String dob,String mobile) {
         mLoginProgress.show();
 

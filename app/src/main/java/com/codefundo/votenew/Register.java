@@ -27,6 +27,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
@@ -91,10 +92,10 @@ public class Register extends AppCompatActivity {
                 String aadhaaris = aadhaar.getText().toString();
                 String mobileis = mobile.getText().toString();
                 if(TextUtils.isEmpty(emailis)){email.setError("Enter email!");}
-                if(TextUtils.isEmpty(passwordis)){password.setError("Enter password!");}
+                if(TextUtils.isEmpty(passwordis) || passwordis.length()<8){password.setError("Enter min 8 digit password!");}
                 if(TextUtils.isEmpty(mobileis) || ! isValidMobile(mobileis)){mobile.setError("Enter correct mobile!");}
                 if(TextUtils.isEmpty(aadhaaris) || !Verhoeff.validateVerhoeff(aadhaaris)){aadhaar.setError("Enter Proper aadhaar!");}
-                if(!TextUtils.isEmpty(emailis) && isValidMail(emailis) && isValidMobile(mobileis) && !TextUtils.isEmpty(passwordis) && Verhoeff.validateVerhoeff(aadhaaris)) {
+                if(passwordis.length()>=8 && !TextUtils.isEmpty(emailis) && isValidMail(emailis) && isValidMobile(mobileis) && !TextUtils.isEmpty(passwordis) && Verhoeff.validateVerhoeff(aadhaaris)) {
                     if(captchaInput.getText().toString().equals(captchaImageView.getCaptchaCode())){
                         Toast.makeText(Register.this, "Matched", Toast.LENGTH_SHORT).show();
                     password.setError(null);
@@ -175,8 +176,9 @@ public class Register extends AppCompatActivity {
     }
 
     public int finddupuser(String email,final String aadhaar){
-        String emailpartwithout[] =email.split("@",2);
+
         final int[] check = {0};
+        final int[] check2 = {0};
         mUserDatabase=FirebaseDatabase.getInstance().getReference().child("Users");
         mUserDatabase.addChildEventListener(new ChildEventListener() {
             @Override
@@ -208,7 +210,25 @@ public class Register extends AppCompatActivity {
             }
         });
 
-    return check[0];
+
+        mUserDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot userSnapshot: dataSnapshot.getChildren()){
+                    allfamily fam_mem=userSnapshot.getValue(allfamily.class);
+                    if(fam_mem.getAadhaar().equals(aadhaar)) {
+                        check2[0]=1;
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        return check[0]&check2[0];
+
     }
 
     private void makedialog(){

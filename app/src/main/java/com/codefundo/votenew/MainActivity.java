@@ -23,6 +23,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -39,6 +40,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class MainActivity extends AppCompatActivity {
     AppCompatButton addfam;
     RecyclerView   allfamilylist;
@@ -48,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
     AppCompatTextView fam;
     AppCompatTextView counter;
     static long milliseconds = 0;
-    AppCompatTextView day;
+    AppCompatTextView day,month,year;
     private FirebaseAuth mAuth;
     long diff=0,oldLong=0,NewLong=0;
     @Override
@@ -69,7 +72,16 @@ public class MainActivity extends AppCompatActivity {
         fam=findViewById(R.id.fam);
         Toast.makeText(this, email, Toast.LENGTH_SHORT).show();
         day=findViewById(R.id.day);
-        setday();
+        month=findViewById(R.id.month);
+        year=findViewById(R.id.year);
+        /////
+                 Toast.makeText(MainActivity.this, ""+ getData(email,"month"), Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, ""+ getData(email,"day"), Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, ""+ getData(email,"year"), Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, ""+ getData(email,"finaltime"), Toast.LENGTH_SHORT).show();
+
+
+
 
         totalfam= FirebaseDatabase.getInstance().getReference().child("Users").child(email).child("TOTAL_FAMILY_MEMBER");
         totalfam.addValueEventListener(new ValueEventListener() {
@@ -101,68 +113,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void setday() {
-        DatabaseReference mUser2= FirebaseDatabase.getInstance().getReference().child("DATA");
-        DatabaseReference dayref=mUser2.child("day");
-        DatabaseReference monthref=mUser2.child("month");
-        DatabaseReference yearref=mUser2.child("year");
-        DatabaseReference finalref=mUser2.child("FINAL");
 
-        dayref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String value = dataSnapshot.getValue(String.class);
-                AppCompatTextView day=findViewById(R.id.day);
-                day.setText(value);
-                Toast.makeText(MainActivity.this, value, Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) {
-            }
-        });
-
-        monthref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String value = dataSnapshot.getValue(String.class);
-                AppCompatTextView month=findViewById(R.id.month);
-                month.setText(value);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) {
-            }
-        });
-
-        yearref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String value = dataSnapshot.getValue(String.class);
-                AppCompatTextView year=findViewById(R.id.year);
-                year.setText(value);
-
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) {
-            }
-        });
-        finalref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String value = dataSnapshot.getValue(String.class);
-                //counter(value);
-
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) {
-            }
-        });
-    }
     private void counter(String Final)
     {
         SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy, HH:mm:ss");
@@ -194,19 +145,19 @@ public class MainActivity extends AppCompatActivity {
 
                 String daysLeft = String.format("%d", serverUptimeSeconds / 86400);
                 AppCompatTextView dayleft=findViewById(R.id.dayleft);
-                dayleft.setText(daysLeft);
+                dayleft.setText(daysLeft+"dd");
 
                 String hoursLeft = String.format("%d", (serverUptimeSeconds % 86400) / 3600);
                 AppCompatTextView hourleft=findViewById(R.id.hourleft);
-                hourleft.setText(hoursLeft);
+                hourleft.setText(hoursLeft+"hr");
 
                 String minutesLeft = String.format("%d", ((serverUptimeSeconds % 86400) % 3600) / 60);
                 AppCompatTextView minleft=findViewById(R.id.minleft);
-                minleft.setText(minutesLeft);
+                minleft.setText(minutesLeft+"mm");
 
                 String secondsLeft = String.format("%d", ((serverUptimeSeconds % 86400) % 3600) % 60);
                 AppCompatTextView secleft=findViewById(R.id.secleft);
-                secleft.setText(secondsLeft);
+                secleft.setText(secondsLeft+"ss");
 
             }
 
@@ -243,7 +194,46 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         allfamilylist.setAdapter(firebaseRecyclerAdapter);
+
+
+
+
+
+
     }
+    public  String getData(String email, final String yeard){
+        final String[] value = new String[1];
+        String emailpartwithout[] =email.split("@",2);
+        String emailfinal=emailpartwithout[0].toLowerCase();
+        DatabaseReference  mUserDatabase=FirebaseDatabase.getInstance().getReference().child("Users").child(emailfinal).child("DATE").child(yeard);
+        mUserDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                value[0] = dataSnapshot.getValue(String.class);
+             //   Toast.makeText(MainActivity.this, "Hello day="+ value[0], Toast.LENGTH_SHORT).show();
+               if(yeard.equals("year"))
+                year.setText(value[0]);
+               else if(yeard.equals("day"))
+                    day.setText(value[0]);
+                else if(yeard.equals("month"))
+                    month.setText(value[0]);
+                else if(yeard.equals("finaltime"))
+                    counter(value[0]);
+                else
+                   Toast.makeText(MainActivity.this, "Sorry", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Toast.makeText(MainActivity.this, "SORRY", Toast.LENGTH_SHORT).show();
+            }
+        });
+        return value[0];
+    }
+
     public static class Allfamilyviewholder extends RecyclerView.ViewHolder{
         View mview;
 
@@ -276,7 +266,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         public void setImage(final String user_thumb_image){
-            final ImageView thumb_image = (ImageView) mview.findViewById(R.id.familymemberimage);
+            final CircleImageView thumb_image =  mview.findViewById(R.id.familymemberimage);
             Picasso.with(mview.getContext()).load(user_thumb_image).networkPolicy(NetworkPolicy.OFFLINE).placeholder(R.drawable.ic_person_black_24dp).into(thumb_image, new Callback() {
                 @Override
                 public void onSuccess() {

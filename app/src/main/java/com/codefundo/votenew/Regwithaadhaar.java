@@ -20,7 +20,12 @@ import android.widget.Toast;
 
 import com.codefundo.votenew.R;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import static java.lang.Thread.sleep;
 
@@ -28,6 +33,7 @@ import static java.lang.Thread.sleep;
 public class Regwithaadhaar extends AppCompatActivity {
     Button scan;
     EditText e;
+    DatabaseReference mUserDatabase;
     FirebaseAuth mAuth;
     String aadhaar,email;
     Boolean result=false;
@@ -58,7 +64,10 @@ public class Regwithaadhaar extends AppCompatActivity {
                         } catch (InterruptedException e1) {
                             e1.printStackTrace();
                         }
-                        showDialog(Regwithaadhaar.this);
+                        if(finddupuser(aadhaar)!=0)
+                        {showDialog(Regwithaadhaar.this);}else{
+                            Toast.makeText(Regwithaadhaar.this, "Sorry User already exist!", Toast.LENGTH_SHORT).show();
+                        }
                         //scan.setEnabled(true);
                     }
                 }else{
@@ -106,5 +115,59 @@ public class Regwithaadhaar extends AppCompatActivity {
 
 
         dialog.show();
+    }
+    public int finddupuser(final String aadhaar){
+
+        final int[] check = {0};
+        final int[] check2 = {0};
+        mUserDatabase=FirebaseDatabase.getInstance().getReference().child("Users");
+        mUserDatabase.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                alladmin admin = dataSnapshot.getValue(alladmin.class); // pojo
+                if(admin.getAadhaar().equals("A"+aadhaar)) {
+                    check[0]=1;
+                }
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        mUserDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot userSnapshot: dataSnapshot.getChildren()){
+                    allfamily fam_mem=userSnapshot.getValue(allfamily.class);
+                    if(fam_mem.getAadhaar().equals(aadhaar)) {
+                        check2[0] =1;
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        if(check2[0]==0 && check[0]==0){return 1;}
+        else return 0;
     }
 }
