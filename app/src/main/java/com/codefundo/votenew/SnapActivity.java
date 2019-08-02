@@ -378,37 +378,10 @@ public class SnapActivity extends AppCompatActivity {
             public void onClick(View v) {
                 dialog.cancel();
 
-                DatabaseReference mUserDatabase2=mUserDatabase.child("image");
-                mUserDatabase2.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        // This method is called once with the initial value and again
-                        // whenever data at this location is updated.
-                        String value = dataSnapshot.getValue(String.class);
-                        //     Log.d(TAG, "Value is: " + value);
-                        if(!value.equals("default")){
+                Intent i =new Intent(getApplicationContext(),MainActivity.class);
+                i.putExtra("email",emailfinal);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(i);
 
-                            Intent i=new Intent(getApplicationContext(),MainActivity.class);
-                            i.putExtra("email",emailfinal);
-                            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                            startActivity(i);
-
-                        }else{
-                            Toast.makeText(SnapActivity.this, "Please Upload your photo", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError error) {
-                        // Failed to read value
-                        //   Log.w(TAG, "Failed to read value.", error.toException());
-                    }
-                });
-
-            }
-        });
-
-
-        dialog.show();
-    }
+            }});}
 }
