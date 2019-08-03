@@ -11,6 +11,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -41,8 +42,13 @@ import com.theartofdev.edmodo.cropper.CropImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.security.Key;
+import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.crypto.Cipher;
+import javax.crypto.spec.SecretKeySpec;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import id.zelory.compressor.Compressor;
@@ -225,7 +231,12 @@ public class SnapActivity extends AppCompatActivity {
                                     if(thumb_task.isSuccessful()){
                                         Toast.makeText(SnapActivity.this, "Step 8", Toast.LENGTH_SHORT).show();
                                         Toast.makeText(SnapActivity.this, "Success Uploading.", Toast.LENGTH_LONG).show();
-                                        adddatatobase(aadhaar,name,state,pc,dist,age,gender,dob,mobile,email,pin);
+                                        try {
+                                            adddatatobase(aadhaar,name,state,pc,dist,age,gender,dob,mobile,email,pin);
+                                        } catch (Exception e) {
+                                            e.printStackTrace();
+                                        }
+
 
                                         Toast.makeText(getApplicationContext(),"Registered!!",Toast.LENGTH_LONG).show();
 
@@ -285,23 +296,41 @@ public class SnapActivity extends AppCompatActivity {
 
     }
 
-    private void adddatatobase(String uid,String name, String state, String pc, String dist, String age, String gender, String dob,String mobile,String email,String pin) {
+    private void adddatatobase(String uid,String name, String state, String pc, String dist, String age, String gender, String dob,String mobile,String email,String pin) throws Exception {
         mLoginProgress.show();
+        String encryptedpin=AESCrypt.encrypt(pin);
+
+        String emailpartwithout[] =email.split("@",2);
+        int before=emailpartwithout[0].length();
+        int after=emailpartwithout[1].length();
+
+        StringBuilder first = new StringBuilder(email.charAt(0));
+        StringBuilder last =  new StringBuilder("");
+        while(before>1){
+            first.append("x"); before--;}
+        first.append("@");
+        while(after>1){
+            last.append("x"); after--;}
+        last.append(email.charAt(email.length() - 1));
+        String encryptedemail=first.toString()+last.toString();
 
 
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(emailpartwithout[0]).child("FAMILY_MEMBER").child(uid);
         HashMap<String, String> userMap = new HashMap<>();
         userMap.put("name", name);
         userMap.put("state", state);
-        userMap.put("pin", pc);
+        userMap.put("pincode", pc);
         userMap.put("district", dist);
         userMap.put("age", age);
         userMap.put("gender", gender);
         userMap.put("dob", dob);
         userMap.put("mobile", mobile);
-        userMap.put("pin", pin);
+        userMap.put("pin", encryptedpin);
         userMap.put("aadhaar", uid);
         userMap.put("email", email);
+        userMap.put("hiddenemail", encryptedemail);
+        userMap.put("slotend", "18.08.2019, 10:35:35");
+        userMap.put("slotstart", "18.08.2019, 10:05:36");
         userMap.put("image", download_url);
         userMap.put("thumb_image", thumb_downloadUrl);
 
@@ -384,4 +413,5 @@ public class SnapActivity extends AppCompatActivity {
                 startActivity(i);
 
             }});}
+
 }

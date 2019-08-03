@@ -117,7 +117,7 @@
             android:layout_width="50dp"
             android:layout_margin="5dp"
             android:id="@+id/tick"
-            android:visibility="visible"
+            android:visibility="gone"
             android:src="@drawable/done"
             android:layout_height="100dp" />
         <ImageView

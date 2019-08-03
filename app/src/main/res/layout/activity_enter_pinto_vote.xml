@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:layout_margin="12dp"
+    tools:context="com.codefundo.votenew.EnterPintoVote">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:background="@drawable/shape"
+        android:layout_height="wrap_content">
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginTop="50dp"
+            android:layout_centerHorizontal="true"
+            app:passwordToggleEnabled="true"
+            android:layout_height="wrap_content"
+            android:id="@+id/pin"
+            >
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/pin_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:drawableStart="@drawable/ic_lock"
+                android:inputType="textPassword"
+                android:layout_centerInParent="true"
+                android:hint="4 digit PIN code"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:maxLength="4"
+                android:minEms="4" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            app:passwordToggleEnabled="true"
+            android:layout_height="wrap_content"
+            android:id="@+id/cnpin"
+            android:layout_below="@id/pin"
+            >
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/pin_et2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:hint="Confirm 4 digit PIN code"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="10dp"
+                android:inputType="numberPassword"
+                android:layout_centerInParent="true"
+                android:textSize="20sp"
+                android:maxLength="4"
+                android:textStyle="bold"
+                android:drawableStart="@drawable/ic_lock"
+                android:minEms="4" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/pin_email2"
+            android:layout_below="@id/cnpin"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:inputType="textEmailAddress"
+            android:textSize="20sp"
+            android:text="Enter VOTERS email"
+            android:textStyle="bold"
+             />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/getmail"
+            android:layout_below="@id/pin_email2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:inputType="textEmailAddress"
+            android:textSize="20sp"
+            android:text="Enter email that is like that:"
+            android:textStyle="bold"
+            />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            app:passwordToggleEnabled="true"
+            android:layout_height="wrap_content"
+            android:id="@+id/email"
+            android:layout_below="@id/getmail"
+            >
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/pin_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:hint="Email"
+                android:layout_margin="5dp"
+                android:inputType="textEmailAddress"
+                android:textSize="20sp"
+                android:maxLength="8"
+                android:textStyle="bold"
+                android:drawableStart="@android:drawable/ic_dialog_email"
+                android:minEms="8" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/email"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/votenow"
+            android:text="VOTE NOW" />
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/votenow"
+            android:layout_centerHorizontal="true"
+            android:visibility="visible"
+            android:id="@+id/forgot"
+            android:layout_marginBottom="50dp"
+            android:text="FORGOT PIN" />
+
+    </RelativeLayout>
+</RelativeLayout>

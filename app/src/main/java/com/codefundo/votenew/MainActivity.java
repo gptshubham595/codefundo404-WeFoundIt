@@ -290,7 +290,7 @@ public class MainActivity extends AppCompatActivity {
     public void showDialog2(Activity activity, final String aadhaar) {
         final Dialog dialog = new Dialog(activity);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setCancelable(false);
+        dialog.setCancelable(true);
         dialog.setContentView(R.layout.newcustom_layout);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
 
@@ -333,7 +333,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 dialog.cancel();
-                voteit(aadhaar);
+                voteit(aadhaar,email);
             }
         });
 
@@ -341,10 +341,11 @@ public class MainActivity extends AppCompatActivity {
         dialog.show();
     }
 
-    private void voteit(String aadhaar) {
-    Intent i =new Intent(getApplicationContext(),VOTEFINAL.class);
+    private void voteit(String aadhaar,String email) {
+    Intent i =new Intent(getApplicationContext(),EnterPintoVote.class);
     i.putExtra("aadhaar",aadhaar);
-    startActivity(i);
+    i.putExtra("email",email);
+        startActivity(i);
     }
 
     private void deleteit(String aadhaar) {

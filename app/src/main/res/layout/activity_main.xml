@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:layout_margin="5dp"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 <LinearLayout
@@ -29,12 +30,15 @@
         android:layout_width="match_parent"
         android:orientation="vertical"
         android:gravity="center"
+        android:background="@drawable/shape"
         android:id="@+id/lin"
         android:layout_height="wrap_content">
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:textSize="18sp"
-            android:layout_margin="20dp"
+            android:textStyle="bold"
+            android:typeface="serif"
+            android:layout_marginTop="30dp"
             android:text="VOTING DAY "
             android:layout_height="wrap_content" />
     <LinearLayout
@@ -46,33 +50,33 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:textSize="18sp"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:id="@+id/day"
             android:text="XX "
             android:layout_height="wrap_content" />
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:textSize="18sp"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:text="/"
             android:layout_height="wrap_content" />
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:textSize="18sp"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:id="@+id/month"
             android:text="XX"
             android:layout_height="wrap_content" />
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:textSize="18sp"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:text="/"
             android:layout_height="wrap_content" />
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:textSize="18sp"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:id="@+id/year"
             android:text="XXXX"
             android:layout_height="wrap_content" />
@@ -86,7 +90,10 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:textSize="18sp"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_gravity="center"
             android:text="COUNTDOWN FOR THE FINAL VOTING DAY:"
             android:layout_height="wrap_content" />
         <LinearLayout
@@ -94,6 +101,7 @@
             android:orientation="horizontal"
             android:layout_gravity="center"
             android:gravity="center"
+            android:layout_marginBottom="10dp"
             android:layout_height="wrap_content">
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
@@ -158,6 +166,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_below="@id/addfam"
+        android:background="#6BB6B3B3"
         android:id="@+id/recycler"
         android:layout_margin="20dp"
         android:layout_height="match_parent">
