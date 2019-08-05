@@ -317,7 +317,8 @@ public class SnapActivity extends AppCompatActivity {
 
         StringBuilder first = new StringBuilder(email.charAt(0));
         StringBuilder last =  new StringBuilder("");
-        while(before>2){
+        first.append(email.charAt(0));
+        while(before>1){
             first.append("x"); before--;}
         first.append("@");
         while(after>1){
