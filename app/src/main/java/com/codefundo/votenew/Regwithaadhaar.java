@@ -66,7 +66,8 @@ public class Regwithaadhaar extends AppCompatActivity {
                             e1.printStackTrace();
                         }
                         if(checkfinaluser[0]==1){
-                            Toast.makeText(Regwithaadhaar.this, "USER ALREADY REGISTERED!!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Regwithaadhaar.this, "USER ALREADY REGISTERED!!" +
+                                    "", Toast.LENGTH_SHORT).show();
                         }
                         //scan.setEnabled(true);
                     }
@@ -184,7 +185,8 @@ public class Regwithaadhaar extends AppCompatActivity {
 
             }
         });
-        Toast.makeText(this, ""+checkfinaluser[0], Toast.LENGTH_SHORT).show();
+        if(checkfinaluser[0]==1)
+        Toast.makeText(this, "USER ALREADY REGISTERD!!"+checkfinaluser[0], Toast.LENGTH_SHORT).show();
 
     }
 

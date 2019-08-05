@@ -15,10 +15,8 @@
   <component name="ChangeListManager">
     <list default="true" id="66fc0cab-2188-4d58-a818-adc887e831b8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/release/app-release.apk" beforeDir="false" afterPath="$PROJECT_DIR$/app/release/app-release.apk" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/Regwithaadhaar.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/Regwithaadhaar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/SnapActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/SnapActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_fam.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_fam.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -83,8 +81,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/Regwithaadhaar.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="444">
-              <caret line="161" column="54" selection-start-line="161" selection-start-column="54" selection-end-line="161" selection-end-column="54" />
+            <state relative-caret-position="518">
+              <caret line="188" column="54" selection-start-line="188" selection-start-column="54" selection-end-line="188" selection-end-column="54" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1716#3064#0" expanded="true" />
@@ -163,8 +161,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>FirebaseDatabase</find>
-      <find>FOUND</find>
       <find>8</find>
       <find>pin</find>
       <find>allfamda</find>
@@ -193,6 +189,8 @@
       <find>emailp</find>
       <find>emailwi</find>
       <find>finddup</find>
+      <find>checkfin</find>
+      <find>chec</find>
     </findStrings>
   </component>
   <component name="GenerateSignedApkSettings">
@@ -371,7 +369,7 @@
     <property name="ExportApk.SignV1" value="true" />
     <property name="ExportApk.SignV2" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/android-sdk" />
-    <property name="device.picker.selection" value="Pixel_2_API_28" />
+    <property name="device.picker.selection" value="85ZSY9HEHIZLGEFI" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
     <property name="show.migrate.to.gradle.popup" value="false" />
@@ -484,6 +482,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="1" />
@@ -948,8 +947,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/Regwithaadhaar.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="444">
-          <caret line="161" column="54" selection-start-line="161" selection-start-column="54" selection-end-line="161" selection-end-column="54" />
+        <state relative-caret-position="518">
+          <caret line="188" column="54" selection-start-line="188" selection-start-column="54" selection-end-line="188" selection-end-column="54" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1716#3064#0" expanded="true" />
