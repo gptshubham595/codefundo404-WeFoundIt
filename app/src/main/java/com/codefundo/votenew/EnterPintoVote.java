@@ -47,14 +47,14 @@ public class EnterPintoVote extends AppCompatActivity {
             aadhaar=getIntent().getExtras().get("aadhaar").toString().toLowerCase();
         }catch (Exception e ){e.printStackTrace();}
 
-        mUser= FirebaseDatabase.getInstance().getReference().child("Users").child(emailintent).child("FAMILY_MEMBER").child(aadhaar);
+        mUser= FirebaseDatabase.getInstance().getReference().child("Users").child(emailintent).child("familymember").child(aadhaar);
         mUser.keepSynced(true);
         hidmail=mUser.child("hiddenemail");
         hidmail.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String value = dataSnapshot.getValue(String.class);
-                email.setText(value);
+                getmail.setText(value);
             }
 
             @Override

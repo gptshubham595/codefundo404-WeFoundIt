@@ -83,6 +83,8 @@
                 <EditText
                     android:id="@+id/captchaInput"
                     android:layout_width="0dp"
+                    android:maxLength="6"
+                    android:minEms="6"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
 

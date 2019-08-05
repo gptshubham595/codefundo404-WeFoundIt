@@ -132,7 +132,7 @@ public class Register extends AppCompatActivity {
                     String uid = current_user.getUid();
 
                     mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(emailpartwithout[0]);
-
+                    mDatabase.keepSynced(true);
                     String device_token = FirebaseInstanceId.getInstance().getToken();
 
                     HashMap<String, String> userMap = new HashMap<>();
@@ -174,34 +174,20 @@ public class Register extends AppCompatActivity {
             mLoginProgress.dismiss();
         }
     }
+    public boolean findDupUser2(final String name){
 
-    public int finddupuser(String email,final String aadhaar){
-
-        final int[] check = {0};
-        final int[] check2 = {0};
-        mUserDatabase=FirebaseDatabase.getInstance().getReference().child("Users");
-        mUserDatabase.addChildEventListener(new ChildEventListener() {
+        final boolean[] check = {false};
+        mUserDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
+        mUserDatabase.keepSynced(true);
+        mUserDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                alladmin admin = dataSnapshot.getValue(alladmin.class); // pojo
-                if(admin.getAadhaar().equals("A"+aadhaar)) {
-                    check[0] =1;
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot userSnapshot: dataSnapshot.getChildren()){
+                    alladmin2 allAdmin = userSnapshot.getValue(alladmin2.class);
+                    if( allAdmin.getFamilyMembers().contains(name)) {
+                        check[0] = true;
+                    }
                 }
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
             }
 
             @Override
@@ -209,14 +195,21 @@ public class Register extends AppCompatActivity {
 
             }
         });
+        Toast.makeText(this, "find="+check[0], Toast.LENGTH_SHORT).show();
+        return check[0];
+    }
+    public int finddupuser(String email,final String aadhaar){
 
+        final int[] check2 = {0};
+        mUserDatabase=FirebaseDatabase.getInstance().getReference().child("Users");
+        mUserDatabase.keepSynced(true);
 
         mUserDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot userSnapshot: dataSnapshot.getChildren()){
                     allfamily fam_mem=userSnapshot.getValue(allfamily.class);
-                    if(fam_mem.getAadhaar().equals(aadhaar)) {
+                    if(fam_mem.getAadhaar().equals("A"+aadhaar)) {
                         check2[0]=1;
                     }
                 }
@@ -227,7 +220,9 @@ public class Register extends AppCompatActivity {
 
             }
         });
-        return check[0]&check2[0];
+
+
+        return check2[0];
 
     }
 

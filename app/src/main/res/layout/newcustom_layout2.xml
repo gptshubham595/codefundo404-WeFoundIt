@@ -28,6 +28,15 @@
             app:cardBackgroundColor="#FAFAFA"
             app:cardElevation="0dp"
             android:layout_gravity="bottom">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="140dp">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:id="@+id/cancel_action"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/ic_cancel_red_24dp"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -74,6 +83,7 @@
                         />
                 </LinearLayout>
             </LinearLayout>
+            </RelativeLayout>
         </androidx.cardview.widget.CardView>
 
 

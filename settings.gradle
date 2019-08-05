@@ -1,1 +1,2 @@
-include ':app',':fingerprint-auth'
+include ':app',':fingerprint-auth',':jtds-1.3.1'
+

@@ -2,9 +2,9 @@ package com.codefundo.votenew;
 
 public class alladmin {
     public  String aadhaar,device_token,mobile;
-public alladmin(){
+    public alladmin(){
 
-}
+    }
 
     public alladmin(String aadhaar, String device_token, String mobile) {
         this.aadhaar = aadhaar;

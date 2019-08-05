@@ -64,8 +64,9 @@ public class Regwithaadhaar extends AppCompatActivity {
                         } catch (InterruptedException e1) {
                             e1.printStackTrace();
                         }
-                        if(finddupuser(aadhaar)!=0)
-                        {showDialog(Regwithaadhaar.this);}else{
+                        if(!findDupUser2(aadhaar))
+                        {showDialog(Regwithaadhaar.this);}
+                        else{
                             Toast.makeText(Regwithaadhaar.this, "Sorry User already exist!", Toast.LENGTH_SHORT).show();
                         }
                         //scan.setEnabled(true);
@@ -116,17 +117,47 @@ public class Regwithaadhaar extends AppCompatActivity {
 
         dialog.show();
     }
-    public int finddupuser(final String aadhaar){
 
-        final int[] check = {0};
-        final int[] check2 = {0};
+    public boolean findDupUser2(final String name){
+
+        final boolean[] check = {false};
+        mUserDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
+        mUserDatabase.keepSynced(true);
+        mUserDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot userSnapshot: dataSnapshot.getChildren()){
+                    alladmin2 allAdmin = userSnapshot.getValue(alladmin2.class);
+                    if (allAdmin != null && allAdmin.getFamilyMembers().contains(name)) {
+                        check[0] = true;
+                        Toast.makeText(Regwithaadhaar.this, "DUPUSER2", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        Toast.makeText(this, "find="+check[0], Toast.LENGTH_SHORT).show();
+        return check[0];
+    }
+
+    public boolean finddupuser(final String aadhaar){
+
+        final boolean[] check = {false};
+        final boolean[] check2 = {false};
         mUserDatabase=FirebaseDatabase.getInstance().getReference().child("Users");
+
         mUserDatabase.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 alladmin admin = dataSnapshot.getValue(alladmin.class); // pojo
+                Toast.makeText(Regwithaadhaar.this, ""+admin.getAadhaar(), Toast.LENGTH_SHORT).show();
                 if(admin.getAadhaar().equals("A"+aadhaar)) {
-                    check[0]=1;
+                    check[0]=true;
+                    Toast.makeText(Regwithaadhaar.this, "admin found", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -150,24 +181,6 @@ public class Regwithaadhaar extends AppCompatActivity {
 
             }
         });
-
-        mUserDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot userSnapshot: dataSnapshot.getChildren()){
-                    allfamily fam_mem=userSnapshot.getValue(allfamily.class);
-                    if(fam_mem.getAadhaar().equals(aadhaar)) {
-                        check2[0] =1;
-                    }
-                }
+        return check[0];
             }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-        if(check2[0]==0 && check[0]==0){return 1;}
-        else return 0;
-    }
 }

@@ -4,7 +4,7 @@ import java.sql.*;
 
 public class READSQL {
 
-    public static final String url = "jdbc:sqlserver://***.database.windows.net:1433;database=***;user=***password=***;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
+    public static final String url = "jdbc:jtds:sqlserver://db-kvse4w-vot.database.windows.net:1433;database=kvse4w-vot;user=dbadmin@db-kvse4w-vot;password=Shivamclass12$#;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
     public static final String name = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
 
     public static Connection conn = null;

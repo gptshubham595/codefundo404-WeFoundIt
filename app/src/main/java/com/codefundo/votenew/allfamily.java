@@ -4,11 +4,11 @@ import com.google.firebase.database.PropertyName;
 
 public class allfamily {
     public  String name,image,aadhaar,dob,eligible,gender;
-public allfamily(){
+    public allfamily(){
 
-}
+    }
 
-    public allfamily(String name, String image, String dob, String eligible,String gender) {
+    public allfamily(String name, String image, String aadhaar,String dob, String eligible,String gender) {
         this.name = name;
         this.image = image;
         this.aadhaar = aadhaar;

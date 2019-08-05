@@ -63,11 +63,11 @@ public class MainActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         email="";
         try{
-        email=getIntent().getExtras().get("email").toString().toLowerCase();}catch (Exception e ){e.printStackTrace();}
+            email=getIntent().getExtras().get("email").toString().toLowerCase();}catch (Exception e ){e.printStackTrace();}
         allfamilylist=(RecyclerView) findViewById(R.id.recycler);
         allfamilylist.setHasFixedSize(true);
         allfamilylist.setLayoutManager(new LinearLayoutManager(this));
-        allfamdatabaseReference= FirebaseDatabase.getInstance().getReference().child("Users").child(email).child("FAMILY_MEMBER");
+        allfamdatabaseReference= FirebaseDatabase.getInstance().getReference().child("Users").child(email).child("familymember");
         allfamdatabaseReference.keepSynced(true);
         fam=findViewById(R.id.fam);
         Toast.makeText(this, email, Toast.LENGTH_SHORT).show();
@@ -75,15 +75,16 @@ public class MainActivity extends AppCompatActivity {
         month=findViewById(R.id.month);
         year=findViewById(R.id.year);
         /////
-                 Toast.makeText(MainActivity.this, ""+ getData(email,"month"), Toast.LENGTH_SHORT).show();
-                Toast.makeText(MainActivity.this, ""+ getData(email,"day"), Toast.LENGTH_SHORT).show();
-                Toast.makeText(MainActivity.this, ""+ getData(email,"year"), Toast.LENGTH_SHORT).show();
-                Toast.makeText(MainActivity.this, ""+ getData(email,"finaltime"), Toast.LENGTH_SHORT).show();
+        Toast.makeText(MainActivity.this, ""+ getData(email,"month"), Toast.LENGTH_SHORT).show();
+        Toast.makeText(MainActivity.this, ""+ getData(email,"day"), Toast.LENGTH_SHORT).show();
+        Toast.makeText(MainActivity.this, ""+ getData(email,"year"), Toast.LENGTH_SHORT).show();
+        Toast.makeText(MainActivity.this, ""+ getData(email,"finaltime"), Toast.LENGTH_SHORT).show();
 
 
 
 
         totalfam= FirebaseDatabase.getInstance().getReference().child("Users").child(email).child("TOTAL_FAMILY_MEMBER");
+        totalfam.keepSynced(true);
         totalfam.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -105,9 +106,9 @@ public class MainActivity extends AppCompatActivity {
         addfam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            Intent i= new Intent(getApplicationContext(),Regwithaadhaar.class);
-            i.putExtra("email",email);
-            startActivity(i);
+                Intent i= new Intent(getApplicationContext(),Regwithaadhaar.class);
+                i.putExtra("email",email);
+                startActivity(i);
 
             }
         });
@@ -123,19 +124,19 @@ public class MainActivity extends AppCompatActivity {
         Date endDate;
         try {
             endDate = formatter.parse(endTime);
-             milliseconds = endDate.getTime();
+            milliseconds = endDate.getTime();
 
         } catch (ParseException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
-         startTime = System.currentTimeMillis();
+        startTime = System.currentTimeMillis();
 
         diff = milliseconds - startTime;
 
 
-         new CountDownTimer(milliseconds, 1000) {
+        new CountDownTimer(milliseconds, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
 
@@ -206,23 +207,24 @@ public class MainActivity extends AppCompatActivity {
         String emailpartwithout[] =email.split("@",2);
         String emailfinal=emailpartwithout[0].toLowerCase();
         DatabaseReference  mUserDatabase=FirebaseDatabase.getInstance().getReference().child("Users").child(emailfinal).child("DATE").child(yeard);
+        mUserDatabase.keepSynced(true);
         mUserDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
                 value[0] = dataSnapshot.getValue(String.class);
-             //   Toast.makeText(MainActivity.this, "Hello day="+ value[0], Toast.LENGTH_SHORT).show();
-               if(yeard.equals("year"))
-                year.setText(value[0]);
-               else if(yeard.equals("day"))
+                //   Toast.makeText(MainActivity.this, "Hello day="+ value[0], Toast.LENGTH_SHORT).show();
+                if(yeard.equals("year"))
+                    year.setText(value[0]);
+                else if(yeard.equals("day"))
                     day.setText(value[0]);
                 else if(yeard.equals("month"))
                     month.setText(value[0]);
                 else if(yeard.equals("finaltime"))
                     counter(value[0]);
                 else
-                   Toast.makeText(MainActivity.this, "Sorry", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Sorry", Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -242,8 +244,8 @@ public class MainActivity extends AppCompatActivity {
             mview=itemView;
         }
         public void setName(String famname){
-              TextView nameview = (TextView) mview.findViewById(R.id.famname);
-                nameview.setText(famname);
+            TextView nameview = (TextView) mview.findViewById(R.id.famname);
+            nameview.setText(famname);
         }
         public void setGender(String gender){
             TextView genderview = (TextView) mview.findViewById(R.id.gender);
@@ -290,7 +292,7 @@ public class MainActivity extends AppCompatActivity {
     public void showDialog2(Activity activity, final String aadhaar) {
         final Dialog dialog = new Dialog(activity);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setCancelable(true);
+        dialog.setCancelable(false);
         dialog.setContentView(R.layout.newcustom_layout);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
 
@@ -320,6 +322,13 @@ public class MainActivity extends AppCompatActivity {
         dialog.setContentView(R.layout.newcustom_layout2);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         Button delete = dialog.findViewById(R.id.delete);
+        ImageView cancel = dialog.findViewById(R.id.cancel_action);
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.cancel();
+            }
+        });
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -342,15 +351,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void voteit(String aadhaar,String email) {
-    Intent i =new Intent(getApplicationContext(),EnterPintoVote.class);
-    i.putExtra("aadhaar",aadhaar);
-    i.putExtra("email",email);
+        Intent i =new Intent(getApplicationContext(),EnterPintoVote.class);
+        i.putExtra("aadhaar",aadhaar);
+        i.putExtra("email",email);
         startActivity(i);
     }
 
     private void deleteit(String aadhaar) {
-    mUser= FirebaseDatabase.getInstance().getReference().child("Users").child(email).child("FAMILY_MEMBER").child(aadhaar);
-    mUser.keepSynced(true);
-    mUser.removeValue();
+        mUser= FirebaseDatabase.getInstance().getReference().child("Users").child(email).child("familymember").child(aadhaar);
+        mUser.keepSynced(true);
+        mUser.removeValue();
     }
 }

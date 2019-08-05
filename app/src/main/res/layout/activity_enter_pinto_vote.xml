@@ -46,6 +46,7 @@
             app:passwordToggleEnabled="true"
             android:layout_height="wrap_content"
             android:id="@+id/cnpin"
+            android:visibility="gone"
             android:layout_below="@id/pin"
             >
             <androidx.appcompat.widget.AppCompatEditText
@@ -79,7 +80,7 @@
             android:layout_marginRight="25dp"
             android:inputType="textEmailAddress"
             android:textSize="20sp"
-            android:text="Enter VOTERS email"
+            android:text="Enter VOTERS email like this"
             android:textStyle="bold"
              />
         <androidx.appcompat.widget.AppCompatTextView
@@ -121,10 +122,9 @@
                 android:layout_margin="5dp"
                 android:inputType="textEmailAddress"
                 android:textSize="20sp"
-                android:maxLength="8"
                 android:textStyle="bold"
                 android:drawableStart="@android:drawable/ic_dialog_email"
-                android:minEms="8" />
+                 />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button

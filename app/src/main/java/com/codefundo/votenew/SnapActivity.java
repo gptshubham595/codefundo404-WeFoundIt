@@ -11,6 +11,8 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
@@ -113,7 +115,7 @@ public class SnapActivity extends AppCompatActivity {
         //////
         String emailpartwithout[] =email.split("@",2);
 
-        mUserDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(emailpartwithout[0]).child("FAMILY_MEMBER");
+        mUserDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(emailpartwithout[0]).child("familymember");
         mUserDatabase.keepSynced(true);
         mDisplayImage = (CircleImageView) findViewById(R.id.settings_image);
         mImageBtn = (Button) findViewById(R.id.settings_image_btn);
@@ -138,12 +140,17 @@ public class SnapActivity extends AppCompatActivity {
             public void onClick(View view) {
 
 
-                Intent galleryIntent = new Intent();
+               Intent galleryIntent = new Intent();
                 galleryIntent.setType("image/*");
                 galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
                 startActivityForResult(Intent.createChooser(galleryIntent, "SELECT IMAGE"), GALLERY_PICK);
 
-
+                /*Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                File photo = new File(Environment.getExternalStorageDirectory(),  "Pic.jpg");
+                intent.putExtra(MediaStore.EXTRA_OUTPUT,
+                        Uri.fromFile(photo));
+                Uri imageUri = Uri.fromFile(photo);
+                startActivityForResult(intent, 1);*/
             }
         });
 
@@ -306,7 +313,7 @@ public class SnapActivity extends AppCompatActivity {
 
         StringBuilder first = new StringBuilder(email.charAt(0));
         StringBuilder last =  new StringBuilder("");
-        while(before>1){
+        while(before>2){
             first.append("x"); before--;}
         first.append("@");
         while(after>1){
@@ -315,7 +322,7 @@ public class SnapActivity extends AppCompatActivity {
         String encryptedemail=first.toString()+last.toString();
 
 
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(emailpartwithout[0]).child("FAMILY_MEMBER").child(uid);
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(emailpartwithout[0]).child("familymember").child(uid);
         HashMap<String, String> userMap = new HashMap<>();
         userMap.put("name", name);
         userMap.put("state", state);
