@@ -67,7 +67,8 @@ public class MainActivity extends AppCompatActivity {
         allfamilylist=(RecyclerView) findViewById(R.id.recycler);
         allfamilylist.setHasFixedSize(true);
         allfamilylist.setLayoutManager(new LinearLayoutManager(this));
-        allfamdatabaseReference= FirebaseDatabase.getInstance().getReference().child("Users").child(email).child("familymember");
+        String emailpartwithout[] =email.split("@",2);
+        allfamdatabaseReference= FirebaseDatabase.getInstance().getReference().child("Users").child(emailpartwithout[0]).child("familymember");
         allfamdatabaseReference.keepSynced(true);
         fam=findViewById(R.id.fam);
         Toast.makeText(this, email, Toast.LENGTH_SHORT).show();
@@ -83,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        totalfam= FirebaseDatabase.getInstance().getReference().child("Users").child(email).child("TOTAL_FAMILY_MEMBER");
+        totalfam= FirebaseDatabase.getInstance().getReference().child("Users").child(emailpartwithout[0]).child("TOTAL_FAMILY_MEMBER");
         totalfam.keepSynced(true);
         totalfam.addValueEventListener(new ValueEventListener() {
             @Override

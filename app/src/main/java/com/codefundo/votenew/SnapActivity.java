@@ -126,6 +126,7 @@ public class SnapActivity extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                adddata(aadhaar);
                 showDialog(SnapActivity.this);
                 Intent i =new Intent(getApplicationContext(),MainActivity.class);
                 i.putExtra("email",emailfinal);
@@ -163,6 +164,24 @@ public class SnapActivity extends AppCompatActivity {
 
 
     }
+
+    private void adddata(String aadhaar) {
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child("voters");
+        HashMap<String, String> userMap = new HashMap<>();
+        userMap.put(aadhaar, aadhaar);
+        mDatabase.setValue(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+
+                if(task.isSuccessful()){
+                    Toast.makeText(getApplicationContext(),"Registered2!!",Toast.LENGTH_LONG).show();
+
+                }
+
+            }
+        });
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

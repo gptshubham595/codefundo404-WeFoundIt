@@ -2,13 +2,12 @@
 <LinearLayout android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center"
-    android:padding="5dp"
-    android:layout_margin="10dp"
+    android:padding="10dp"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="?android:selectableItemBackground">
     <de.hdodenhof.circleimageview.CircleImageView
-        android:layout_width="100dp"
-        android:padding="10dp"
+        android:layout_width="90dp"
+        android:paddingLeft="10dp"
         android:layout_marginLeft="8dp"
         android:src="@android:drawable/picture_frame"
         android:id="@+id/familymemberimage"
@@ -33,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:text="XXX"
                 android:textColor="#3c3c44"
-                android:textSize="12sp"
+                android:textSize="15sp"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -133,7 +132,7 @@
 
         <ImageView
             android:id="@+id/tick"
-            android:layout_width="30dp"
+            android:layout_width="40dp"
             android:layout_height="100dp"
             android:layout_margin="5dp"
             android:src="@drawable/done"
@@ -141,7 +140,7 @@
 
         <ImageView
             android:id="@+id/cross"
-            android:layout_width="30dp"
+            android:layout_width="40dp"
             android:layout_height="100dp"
             android:layout_margin="5dp"
             android:src="@drawable/ic_cancel_red_24dp"
