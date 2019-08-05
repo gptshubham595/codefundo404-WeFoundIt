@@ -127,6 +127,10 @@ public class SnapActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 showDialog(SnapActivity.this);
+                Intent i =new Intent(getApplicationContext(),MainActivity.class);
+                i.putExtra("email",emailfinal);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(i);
 
             }
         });
