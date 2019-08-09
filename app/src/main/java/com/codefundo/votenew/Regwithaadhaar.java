@@ -162,7 +162,7 @@ public class Regwithaadhaar extends AppCompatActivity {
             Toast.makeText(this, "USER ALREADY REGISTERD!!"+checkfinaluser[0], Toast.LENGTH_SHORT).show();
         if(checkfinaluser[0]==0)
             showDialog(Regwithaadhaar.this);
-        
+
 
     }
     public void findDupUser2(final String name){

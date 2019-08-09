@@ -668,5 +668,9 @@ public class MainActivity extends AppCompatActivity {
         mUser= FirebaseDatabase.getInstance().getReference().child("Users").child(email).child("familymember").child(aadhaar);
         mUser.keepSynced(true);
         mUser.removeValue();
+        String current_user_id = mAuth.getCurrentUser().getUid();
+        mUser= FirebaseDatabase.getInstance().getReference().child("Users").child(email).child("voters").child(current_user_id);
+        mUser.keepSynced(true);
+        mUser.removeValue();
     }
 }

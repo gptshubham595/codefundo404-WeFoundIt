@@ -370,9 +370,9 @@ public class SnapActivity extends AppCompatActivity {
         userMap.put("aadhaar", uid);
         userMap.put("email", email);
         userMap.put("hiddenemail", encryptedemail);
-        userMap.put("slotstart", "18.08.2019, "+fhour+":"+fmin+":"+"00");
+        userMap.put("slotstart", "10.08.2019, "+fhour+":"+fmin+":"+"00");
         //userMap.put("slotend", "18.08.2019, 10:35:35");
-        userMap.put("slotend", "18.08.2019, "+shour+":"+smin+":"+"00");
+        userMap.put("slotend", "10.08.2019, "+shour+":"+smin+":"+"00");
         //userMap.put("slotstart", "18.08.2019, 10:05:36");
         userMap.put("image", download_url);
         userMap.put("thumb_image", thumb_downloadUrl);
