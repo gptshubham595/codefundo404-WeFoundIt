@@ -14,7 +14,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="66fc0cab-2188-4d58-a818-adc887e831b8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/Regwithaadhaar.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/Regwithaadhaar.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -35,10 +34,14 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/Regwithaadhaar.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="128" column="58" selection-start-line="128" selection-start-column="58" selection-end-line="128" selection-end-column="58" />
+            <state relative-caret-position="510">
+              <caret line="153" column="48" selection-start-line="153" selection-start-column="48" selection-end-line="153" selection-end-column="48" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#onChildChanged#0;class#4280:5528" />
+                <element signature="method#onChildRemoved#0;class#4280:5528" />
+                <element signature="method#onChildMoved#0;class#4280:5528" />
+                <element signature="method#onCancelled#0;class#4280:5528" />
                 <element signature="method#findDupUser2#0;class#Regwithaadhaar#0" />
                 <element signature="method#finddupuser#0;class#Regwithaadhaar#0" />
               </folding>
@@ -178,8 +181,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>showDial</find>
-      <find>showDialog</find>
       <find>t[0]</find>
       <find>setthi</find>
       <find>counter</find>
@@ -207,6 +208,8 @@
       <find>voter</find>
       <find>java.lang.NumberFormatException:</find>
       <find>checkfina</find>
+      <find>showDial</find>
+      <find>finddup</find>
       <find>Regwithaadhaar.java</find>
     </findStrings>
   </component>
@@ -1032,10 +1035,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/Regwithaadhaar.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="128" column="58" selection-start-line="128" selection-start-column="58" selection-end-line="128" selection-end-column="58" />
+        <state relative-caret-position="510">
+          <caret line="153" column="48" selection-start-line="153" selection-start-column="48" selection-end-line="153" selection-end-column="48" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#onChildChanged#0;class#4280:5528" />
+            <element signature="method#onChildRemoved#0;class#4280:5528" />
+            <element signature="method#onChildMoved#0;class#4280:5528" />
+            <element signature="method#onCancelled#0;class#4280:5528" />
             <element signature="method#findDupUser2#0;class#Regwithaadhaar#0" />
             <element signature="method#finddupuser#0;class#Regwithaadhaar#0" />
           </folding>

@@ -119,17 +119,16 @@ public class Regwithaadhaar extends AppCompatActivity {
         mUserDatabase.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                for(DataSnapshot snapshot:dataSnapshot.getChildren()){
                     dupcheck admin = dataSnapshot.getValue(dupcheck.class); // pojo
                     if (admin != null) {
-                    if(admin.getAadhaar().equals(name)) {
+                    if(!admin.getAadhaar().equals(name)) {
+                        showDialog(Regwithaadhaar.this);
                         check[0] =1;
-                        Toast.makeText(Regwithaadhaar.this, "user found", Toast.LENGTH_SHORT).show();
-                        //Toast.makeText(Regwithaadhaar.this, ""+checkfinaluser[0], Toast.LENGTH_SHORT).show();
-                    }else{showDialog(Regwithaadhaar.this);
-                        Toast.makeText(Regwithaadhaar.this, "NO USER", Toast.LENGTH_SHORT).show();
+
+                    }else{
+                        Toast.makeText(Regwithaadhaar.this, "USER DUP", Toast.LENGTH_SHORT).show();
                     }
-                }}}
+                }}
 
 
             @Override
