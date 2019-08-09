@@ -141,7 +141,10 @@ public class VOTEFINAL extends AppCompatActivity {
         dialog.setCancelable(false);
         dialog.setContentView(R.layout.newcustom_layout4);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-
+        TextView partyname=dialog.findViewById(R.id.partyname);
+        TextView person=dialog.findViewById(R.id.personname);
+        partyname.setText(party);
+        person.setText(name);
         Button cancel = dialog.findViewById(R.id.retry);
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
