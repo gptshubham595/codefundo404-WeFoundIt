@@ -32,6 +32,7 @@ import static java.lang.Thread.sleep;
 public class Regwithaadhaar extends AppCompatActivity {
     Button scan;
     EditText e;
+    int done=0;
     DatabaseReference mUserDatabase;
     FirebaseAuth mAuth;
     String aadhaar,email;
@@ -60,7 +61,13 @@ public class Regwithaadhaar extends AppCompatActivity {
                     }else{
                         Toast.makeText(Regwithaadhaar.this, "Verified Aadhaar Number", Toast.LENGTH_SHORT).show();
                         findDupUser3(aadhaar);
-
+                        try {
+                            sleep(50);
+                        } catch (InterruptedException e1) {
+                            e1.printStackTrace();
+                        }finally {
+                            showDialog(Regwithaadhaar.this);
+                        }
                         //scan.setEnabled(true);
                     }
                 }else{
@@ -83,6 +90,7 @@ public class Regwithaadhaar extends AppCompatActivity {
 
     }
     public void showDialog(Activity activity) {
+
         final Dialog dialog = new Dialog(activity);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setCancelable(false);
@@ -106,7 +114,7 @@ public class Regwithaadhaar extends AppCompatActivity {
             }
         });
 
-
+        if(done==0)
         dialog.show();
     }
 
@@ -120,15 +128,27 @@ public class Regwithaadhaar extends AppCompatActivity {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                     dupcheck admin = dataSnapshot.getValue(dupcheck.class); // pojo
-                    if (admin != null) {
-                    if(!admin.getAadhaar().equals(name)) {
-                        showDialog(Regwithaadhaar.this);
-                        check[0] =1;
 
-                    }else{
+                    if(!admin.getAadhaar().equals(name)) {
+                        checkfinaluser[0] =1;
+                        try {
+                            sleep(20);
+                        } catch (InterruptedException e1) {
+                            e1.printStackTrace();
+                        }
+
+                        Toast.makeText(Regwithaadhaar.this, "USER NEW", Toast.LENGTH_SHORT).show();
+                        done = 0;
+                        Toast.makeText(Regwithaadhaar.this, "RUnning", Toast.LENGTH_SHORT).show();
+                       // showDialog(Regwithaadhaar.this);
+
+                    }
+                    else{
+                        done=1;
                         Toast.makeText(Regwithaadhaar.this, "USER DUP", Toast.LENGTH_SHORT).show();
                     }
-                }}
+
+            }
 
 
             @Override
@@ -197,8 +217,7 @@ public class Regwithaadhaar extends AppCompatActivity {
         Toast.makeText(this, "check="+checkfinaluser[0], Toast.LENGTH_SHORT).show();
         if(checkfinaluser[0]==1)
             Toast.makeText(this, "USER ALREADY REGISTERD!!"+checkfinaluser[0], Toast.LENGTH_SHORT).show();
-        if(checkfinaluser[0]==0)
-            showDialog(Regwithaadhaar.this);
+
 
     }
 
