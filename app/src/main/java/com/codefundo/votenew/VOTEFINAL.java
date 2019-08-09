@@ -59,8 +59,8 @@ public class VOTEFINAL extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         String emailpartwithout[] =email.split("@",2);
-        allpoliticalparty= FirebaseDatabase.getInstance().getReference().child("Users").child(emailpartwithout[0]).child("Party");
-
+        //allpoliticalparty= FirebaseDatabase.getInstance().getReference().child("Users").child(emailpartwithout[0]).child("Party");
+        allpoliticalparty= FirebaseDatabase.getInstance().getReference().child("Party");
 
     }@Override
     protected void onStart() {
@@ -207,7 +207,8 @@ public class VOTEFINAL extends AppCompatActivity {
 public void voteit(String party){
     final int[] votes = {0};
     final String emailpartwithout[] =email.split("@",2);
-    allpoliticalparty= FirebaseDatabase.getInstance().getReference().child("Users").child(emailpartwithout[0]).child("Party").child(party).child("votes");
+    //allpoliticalparty= FirebaseDatabase.getInstance().getReference().child("Users").child(emailpartwithout[0]).child("Party").child(party).child("votes");
+    allpoliticalparty= FirebaseDatabase.getInstance().getReference().child("Party").child(party).child("votes");
     allpoliticalparty.addValueEventListener(new ValueEventListener() {
         @Override
         public void onDataChange(DataSnapshot dataSnapshot) {

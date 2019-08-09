@@ -14,10 +14,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="66fc0cab-2188-4d58-a818-adc887e831b8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/MainActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/VOTEFINAL.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/VOTEFINAL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/politicalparty.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/politicalparty.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -37,8 +34,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/VOTEFINAL.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="222" column="15" selection-start-line="222" selection-start-column="15" selection-end-line="222" selection-end-column="15" />
+            <state relative-caret-position="291">
+              <caret line="214" column="63" lean-forward="true" selection-start-line="214" selection-start-column="63" selection-end-line="214" selection-end-column="63" />
               <folding>
                 <element signature="e#2141#2178#0" expanded="true" />
                 <element signature="e#8682#9308#0" expanded="true" />
@@ -181,7 +178,6 @@
       <find>viewho</find>
       <find>intent</find>
       <find>email</find>
-      <find>&quot;Party&quot;</find>
       <find>po</find>
       <find>recy</find>
       <find>allfamily</find>
@@ -189,9 +185,10 @@
       <find>check</find>
       <find>parseI</find>
       <find>voted</find>
-      <find>votes</find>
       <find>ok</find>
       <find>java.lang.NumberFormatException:</find>
+      <find>&quot;Party&quot;</find>
+      <find>votes</find>
     </findStrings>
   </component>
   <component name="GenerateSignedApkSettings">
@@ -521,7 +518,7 @@
       <window_info id="Structure" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Build" order="0" sideWeight="0.4986577" weight="0.6913408" />
       <window_info anchor="bottom" id="Run" order="1" sideWeight="0.49932885" weight="0.32960895" />
-      <window_info active="true" anchor="bottom" id="Logcat" order="2" sideWeight="0.4986577" visible="true" weight="0.71927375" />
+      <window_info anchor="bottom" id="Logcat" order="2" sideWeight="0.4986577" weight="0.71927375" />
       <window_info anchor="bottom" id="Android Profiler" order="3" />
       <window_info anchor="bottom" id="Event Log" order="4" sideWeight="0.5013423" side_tool="true" weight="0.71927375" />
       <window_info anchor="bottom" id="RNConsole" order="5" />
@@ -1003,8 +1000,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/VOTEFINAL.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="222" column="15" selection-start-line="222" selection-start-column="15" selection-end-line="222" selection-end-column="15" />
+        <state relative-caret-position="291">
+          <caret line="214" column="63" lean-forward="true" selection-start-line="214" selection-start-column="63" selection-end-line="214" selection-end-column="63" />
           <folding>
             <element signature="e#2141#2178#0" expanded="true" />
             <element signature="e#8682#9308#0" expanded="true" />
