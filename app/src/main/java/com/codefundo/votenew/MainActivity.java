@@ -220,9 +220,8 @@ public class MainActivity extends AppCompatActivity {
                 String secondsLeft = String.format("%d", ((serverUptimeSeconds1 % 86400) % 3600) % 60);
                 finalstart=minutesLeft;
                 finalend=secondsLeft;
-                Toast.makeText(MainActivity.this, "1="+diff+" 2="+diff2+" 3="+diff3+"MIN"+finalstart+"Sec"+finalend, Toast.LENGTH_SHORT).show();
-                finalstart=minutesLeft;
-                finalend=secondsLeft;
+                //Toast.makeText(MainActivity.this, "1="+diff+" 2="+diff2+" 3="+diff3+"MIN"+Math.abs(Integer.parseInt(finalstart))+"Sec"+Math.abs(Integer.parseInt(finalend)), Toast.LENGTH_SHORT).show();
+
 
                 //finalstart="0";finalend="0";
                 if(diff3>0){
@@ -246,7 +245,7 @@ public class MainActivity extends AppCompatActivity {
                     finalstart=minutesLeft;
                     finalend=secondsLeft;
                     Toast.makeText(MainActivity.this, finalstart, Toast.LENGTH_SHORT).show();
-                    Toast.makeText(MainActivity.this, finalend, Toast.LENGTH_SHORT).show();
+                 //   Toast.makeText(MainActivity.this, finalend, Toast.LENGTH_SHORT).show();
                 }
 
 
@@ -258,6 +257,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         }.start();
+
         return finalstart;
     }
     public String counter3s(String start,String end)
@@ -304,7 +304,7 @@ public class MainActivity extends AppCompatActivity {
                 String secondsLeft = String.format("%d", ((serverUptimeSeconds1 % 86400) % 3600) % 60);
                 finalstart=minutesLeft;
                 finalend=secondsLeft;
-                Toast.makeText(MainActivity.this, "1="+diff+" 2="+diff2+" 3="+diff3+"MIN"+finalstart+"Sec"+finalend, Toast.LENGTH_SHORT).show();
+             //   Toast.makeText(MainActivity.this, "1="+diff+" 2="+diff2+" 3="+diff3+"MIN"+finalstart+"Sec"+finalend, Toast.LENGTH_SHORT).show();
                 finalstart=minutesLeft;
                 finalend=secondsLeft;
 
@@ -329,8 +329,8 @@ public class MainActivity extends AppCompatActivity {
                     //    counter
                     finalstart=minutesLeft;
                     finalend=secondsLeft;
-                    Toast.makeText(MainActivity.this, finalstart, Toast.LENGTH_SHORT).show();
-                    Toast.makeText(MainActivity.this, finalend, Toast.LENGTH_SHORT).show();
+                //    Toast.makeText(MainActivity.this, finalstart, Toast.LENGTH_SHORT).show();
+                  //  Toast.makeText(MainActivity.this, finalend, Toast.LENGTH_SHORT).show();
                 }
 
 
@@ -388,7 +388,7 @@ public class MainActivity extends AppCompatActivity {
                 String secondsLeft = String.format("%d", ((serverUptimeSeconds1 % 86400) % 3600) % 60);
                 finalstart=minutesLeft;
                 finalend=secondsLeft;
-                Toast.makeText(MainActivity.this, "1="+diff+" 2="+diff2+" 3="+diff3+"MIN"+finalstart+"Sec"+finalend, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MainActivity.this, "1="+diff+" 2="+diff2+" 3="+diff3+"MIN"+finalstart+"Sec"+finalend, Toast.LENGTH_SHORT).show();
                 finalstart=minutesLeft;
                 finalend=secondsLeft;
 
@@ -441,7 +441,7 @@ public class MainActivity extends AppCompatActivity {
                 allfamily.class,R.layout.activity_fam,Allfamilyviewholder.class,allfamdatabaseReference
         ) {
             @Override
-            protected void populateViewHolder(Allfamilyviewholder viewHolder,final allfamily model, final int position) {
+            protected void populateViewHolder(final Allfamilyviewholder viewHolder, final allfamily model, final int position) {
                 Toast.makeText(MainActivity.this, model.getName(), Toast.LENGTH_SHORT).show();
                 viewHolder.setName(model.getName());
                 viewHolder.setImage(model.getImage());
@@ -449,9 +449,10 @@ public class MainActivity extends AppCompatActivity {
                 viewHolder.setDob(model.getDob());
                 viewHolder.setEligible(model.getEligible());
                 viewHolder.setGender(model.getGender());
-                String min=counter3f(model.getSlotstart(),model.getSlotend());
-                String sec=counter3s(model.getSlotstart(),model.getSlotend());
-                String t[]=counter3t(model.getSlotstart(),model.getSlotend());
+                final String min=counter3f(model.getSlotstart(),model.getSlotend());
+                final String sec=counter3s(model.getSlotstart(),model.getSlotend());
+                final String t[]=counter3t(model.getSlotstart(),model.getSlotend());
+
              Toast.makeText(MainActivity.this, min + " " + sec, Toast.LENGTH_SHORT).show();
                 viewHolder.setSlotend(counter3f(model.getSlotstart(),model.getSlotend()),counter3s(model.getSlotstart(),model.getSlotend()),counter3t(model.getSlotstart(),model.getSlotend()));
                 Toast.makeText(MainActivity.this, "ENDS="+model.getSlotend(), Toast.LENGTH_SHORT).show();
@@ -460,6 +461,7 @@ public class MainActivity extends AppCompatActivity {
                 viewHolder.mview.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        viewHolder.setthis(min,sec,t[0]);
                         showDialog(MainActivity.this,model.getAadhaar());
                     }
                 });
@@ -527,6 +529,7 @@ public class MainActivity extends AppCompatActivity {
             starting=famname;
         }
         public void setSlotend(String min, String sec, String[] tm){
+            Toast.makeText(mview.getContext(), "SETTING  GOT MIN="+min, Toast.LENGTH_SHORT).show();
             AppCompatTextView minleft =  mview.findViewById(R.id.minleft);
             AppCompatTextView secleft =  mview.findViewById(R.id.secleft);
             AppCompatTextView time =  mview.findViewById(R.id.time);
@@ -579,6 +582,17 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
+        public void setthis(String min, String sec, String s) {
+            Toast.makeText(mview.getContext(), "SETTING  GOT MIN="+min, Toast.LENGTH_SHORT).show();
+            AppCompatTextView minleft =  mview.findViewById(R.id.minleft);
+            AppCompatTextView secleft =  mview.findViewById(R.id.secleft);
+            AppCompatTextView time =  mview.findViewById(R.id.time);
+
+            minleft.setText(min);
+            secleft.setText(sec);
+            time.setText(Arrays.toString(new String[]{s}));
+
+        }
     }
     public void showDialog2(Activity activity, final String aadhaar) {
         final Dialog dialog = new Dialog(activity);
