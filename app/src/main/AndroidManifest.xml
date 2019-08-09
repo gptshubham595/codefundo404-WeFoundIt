@@ -43,10 +43,22 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".EnterPintoVote"/>
-        <activity android:name=".VOTEFINAL"/>
-        <activity android:name=".SnapActivity" />
-        <activity android:name=".PinActivity" />
+        <activity android:name=".Result"></activity>
+        <activity
+            android:name=".CamActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".EnterPintoVote"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".VOTEFINAL"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SnapActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PinActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".FingerActivity"
             android:screenOrientation="portrait">

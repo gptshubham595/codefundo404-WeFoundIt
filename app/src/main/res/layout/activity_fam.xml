@@ -162,7 +162,37 @@
 
             android:textColor="@android:color/holo_red_dark"
             android:layout_height="wrap_content" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:textSize="18sp"
+            android:id="@+id/dayleft"
+            android:textStyle="bold"
+            android:text="XX"
 
+            android:textColor="@android:color/holo_red_dark"
+            android:layout_height="wrap_content" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:text=":"
+            android:textColor="@android:color/holo_red_dark"
+            android:layout_height="wrap_content" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:textSize="18sp"
+            android:id="@+id/hourleft"
+            android:textStyle="bold"
+            android:text="XX"
+            android:textColor="@android:color/holo_red_dark"
+            android:layout_height="wrap_content" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:text=":"
+            android:textColor="@android:color/holo_red_dark"
+            android:layout_height="wrap_content" />
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:textSize="18sp"

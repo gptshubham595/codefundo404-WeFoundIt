@@ -3,9 +3,25 @@ package com.codefundo.votenew;
 import com.google.firebase.database.PropertyName;
 
 public class allfamily {
-    public  String name,image,aadhaar,dob,eligible,gender,slotend,slotstart;
+    public  String name,image,aadhaar,dob,eligible,gender,slotend,slotstart,voted,email;
     public allfamily(){
 
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getVoted() {
+        return voted;
+    }
+
+    public void setVoted(String voted) {
+        this.voted = voted;
     }
 
     public String getSlotend() {
@@ -24,11 +40,13 @@ public class allfamily {
         this.slotstart = slotstart;
     }
 
-    public allfamily(String name, String image, String aadhaar, String dob, String eligible, String gender, String slotend, String slotstart) {
+    public allfamily(String name, String image, String aadhaar, String dob, String eligible, String gender, String slotend, String slotstart,String voted,String emali) {
         this.name = name;
         this.image = image;
         this.aadhaar = aadhaar;
+        this.email=email;
         this.dob = dob;
+        this.voted=voted;
         this.eligible = eligible;
         this.gender = gender;
         this.slotend = slotend;

@@ -368,6 +368,7 @@ public class SnapActivity extends AppCompatActivity {
         userMap.put("mobile", mobile);
         userMap.put("pin", encryptedpin);
         userMap.put("aadhaar", uid);
+        userMap.put("voted", "NO");
         userMap.put("email", email);
         userMap.put("hiddenemail", encryptedemail);
         userMap.put("slotstart", "10.08.2019, "+fhour+":"+fmin+":"+"00");
