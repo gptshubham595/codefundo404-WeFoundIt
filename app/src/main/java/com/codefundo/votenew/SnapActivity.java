@@ -48,6 +48,7 @@ import java.security.Key;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
@@ -165,23 +166,7 @@ public class SnapActivity extends AppCompatActivity {
 
     }
 
-    private void adddata(String aadhaar) {
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child("voters");
-        HashMap<String, String> userMap = new HashMap<>();
-        userMap.put(aadhaar, aadhaar);
-        mDatabase.setValue(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-
-                if(task.isSuccessful()){
-                    Toast.makeText(getApplicationContext(),"Registered2!!",Toast.LENGTH_LONG).show();
-
-                }
-
-            }
-        });
-    }
-
+    
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -309,6 +294,25 @@ public class SnapActivity extends AppCompatActivity {
     }
 
 
+    private void adddata(String aadhaar) {
+        FirebaseUser current_user = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = current_user.getUid();
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child("voters");
+        HashMap<String, String> userMap = new HashMap<>();
+        userMap.put(uid, aadhaar);
+        mDatabase.setValue(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+
+                if(task.isSuccessful()){
+                    Toast.makeText(getApplicationContext(),"Registered2!!",Toast.LENGTH_LONG).show();
+
+                }
+
+            }
+        });
+    }
+
 
     public void setImagehere(final String user_thumb_image){
         mProgressDialog.dismiss();
@@ -348,6 +352,12 @@ public class SnapActivity extends AppCompatActivity {
 
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(emailpartwithout[0]).child("familymember").child(uid);
         HashMap<String, String> userMap = new HashMap<>();
+        Random rand = new Random();
+        int fhour = rand.nextInt(12)+8;
+        int fmin=rand.nextInt(12)*5;
+        int shour=fhour;
+        int smin=0;
+        if(fmin+30>59){smin=30-(60-fmin); shour++;}else{smin=fmin+30;}
         userMap.put("name", name);
         userMap.put("state", state);
         userMap.put("pincode", pc);
@@ -360,8 +370,10 @@ public class SnapActivity extends AppCompatActivity {
         userMap.put("aadhaar", uid);
         userMap.put("email", email);
         userMap.put("hiddenemail", encryptedemail);
-        userMap.put("slotend", "18.08.2019, 10:35:35");
-        userMap.put("slotstart", "18.08.2019, 10:05:36");
+        userMap.put("slotstart", "18.08.2019, "+fhour+":"+fmin+":"+"00");
+        //userMap.put("slotend", "18.08.2019, 10:35:35");
+        userMap.put("slotend", "18.08.2019, "+shour+":"+smin+":"+"00");
+        //userMap.put("slotstart", "18.08.2019, 10:05:36");
         userMap.put("image", download_url);
         userMap.put("thumb_image", thumb_downloadUrl);
 

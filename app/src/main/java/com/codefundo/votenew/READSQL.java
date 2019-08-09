@@ -3,8 +3,23 @@ package com.codefundo.votenew;
 import java.sql.*;
 
 public class READSQL {
+    public static final String hostName = "vote4us.database.windows.net"; // update me
+    public static final String dbName = "myfirst"; // update me
+    public static final String user = "gptshubham595"; // update me
+    public static final String a="yuBPUvK1Kf6LMnCFqS9Oug==";
+    public static String password="";
 
-    public static final String url = "jdbc:jtds:sqlserver://db-kvse4w-vot.database.windows.net:1433;database=kvse4w-vot;user=dbadmin@db-kvse4w-vot;password=Shivamclass12$#;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
+    {
+        try {
+            password = AESCrypt.decrypt(a);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static final String url = String.format("jdbc:sqlserver://%s:1433;database=%s;user=%s;password=%s;encrypt=true;"
+            + "hostNameInCertificate=*.database.windows.net;loginTimeout=30;", hostName, dbName, user, password);
+
     public static final String name = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
 
     public static Connection conn = null;
@@ -16,7 +31,7 @@ public class READSQL {
 
         try {
 
-            String SQL = "select * from dbo.Student";
+            String SQL = "select * from dbo.VOTERS";
             Class.forName(name);
             conn = DriverManager.getConnection(url);
 
@@ -24,7 +39,7 @@ public class READSQL {
             rs = stmt.executeQuery(SQL);
 
             while (rs.next()) {
-                System.out.println(rs.getString("name"));
+                System.out.println(rs.getString("FullName"));
             }
             close();
         } catch (Exception e) {

@@ -11,8 +11,11 @@
         android:layout_marginLeft="8dp"
         android:src="@android:drawable/picture_frame"
         android:id="@+id/familymemberimage"
-        android:layout_height="130dp"/>
-
+        android:layout_height="109dp"/>
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
     <LinearLayout
         android:layout_width="253dp"
         android:layout_marginRight="10dp"
@@ -126,7 +129,6 @@
                     android:textColor="#3c3c44"
                     android:textSize="15sp"
                     android:textStyle="bold" />
-
             </LinearLayout>
         </LinearLayout>
 
@@ -146,4 +148,48 @@
             android:src="@drawable/ic_cancel_red_24dp"
             android:visibility="gone" />
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:textSize="18sp"
+            android:id="@+id/time"
+            android:textStyle="bold"
+            android:text="TIME LEFT:  "
+
+            android:textColor="@android:color/holo_red_dark"
+            android:layout_height="wrap_content" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:textSize="18sp"
+            android:id="@+id/minleft"
+            android:textStyle="bold"
+            android:text="XX"
+
+            android:textColor="@android:color/holo_red_dark"
+            android:layout_height="wrap_content" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:text=":"
+            android:id="@+id/sep"
+            android:textColor="@android:color/holo_red_dark"
+            android:layout_height="wrap_content" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:textSize="18sp"
+            android:id="@+id/secleft"
+            android:textStyle="bold"
+            android:text="XX"
+            android:textColor="@android:color/holo_red_dark"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+</LinearLayout>
+
 </LinearLayout>

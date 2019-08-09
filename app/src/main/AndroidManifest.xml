@@ -43,8 +43,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".EnterPintoVote"></activity>
-        <activity android:name=".VOTEFINAL" />
+        <activity android:name=".EnterPintoVote"/>
+        <activity android:name=".VOTEFINAL"/>
         <activity android:name=".SnapActivity" />
         <activity android:name=".PinActivity" />
         <activity

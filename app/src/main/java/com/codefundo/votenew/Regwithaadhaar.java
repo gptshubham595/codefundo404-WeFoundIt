@@ -118,26 +118,38 @@ public class Regwithaadhaar extends AppCompatActivity {
         dialog.show();
     }
 
-    public boolean findDupUser3(final String name){
-        final boolean[] check = {false};
-        mUserDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(email);
-        mUserDatabase.keepSynced(true);
-        mUserDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+    public void findDupUser3(final String name){
+        String emailpartwithout[] =email.split("@",2);
+
+        mUserDatabase=FirebaseDatabase.getInstance().getReference().child("Users").child("voters");
+
+        mUserDatabase.addChildEventListener(new ChildEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot userSnapshot: dataSnapshot.getChildren()){
-                    alladmin2 allAdmin = userSnapshot.getValue(alladmin2.class);
-                    if (allAdmin != null && allAdmin.getFamilyMembers().contains(name)) {
-                        check[0] = true;
-                        Toast.makeText(Regwithaadhaar.this, "DUPUSER2", Toast.LENGTH_SHORT).show();
-                    }
-                    for(allfamily all:allAdmin.getFamilyMembers()){
-                        if(all.getAadhaar().equals(name)){
-                            check[0] = true;
-                            Toast.makeText(Regwithaadhaar.this, "DUPUSER3", Toast.LENGTH_SHORT).show();
-                        }
-                    }
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                alladmin2 admin = dataSnapshot.getValue(alladmin2.class); // pojo
+                if (admin != null) {
+                    if(admin.getFamilyMembers().contains(name)) {
+                        checkfinaluser[0]=1;
+                        Toast.makeText(Regwithaadhaar.this, "user found", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Regwithaadhaar.this, ""+checkfinaluser[0], Toast.LENGTH_SHORT).show();
+                    }else{showDialog(Regwithaadhaar.this);}
                 }
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
             }
 
             @Override
@@ -145,8 +157,9 @@ public class Regwithaadhaar extends AppCompatActivity {
 
             }
         });
-        Toast.makeText(this, "find="+check[0], Toast.LENGTH_SHORT).show();
-        return check[0];
+        if(checkfinaluser[0]==1)
+            Toast.makeText(this, "USER ALREADY REGISTERD!!"+checkfinaluser[0], Toast.LENGTH_SHORT).show();
+
     }
     public void findDupUser2(final String name){
 
@@ -172,6 +185,7 @@ public class Regwithaadhaar extends AppCompatActivity {
 
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
+
 
             }
 

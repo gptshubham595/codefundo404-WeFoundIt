@@ -3,19 +3,38 @@ package com.codefundo.votenew;
 import com.google.firebase.database.PropertyName;
 
 public class allfamily {
-    public  String name,image,aadhaar,dob,eligible,gender;
+    public  String name,image,aadhaar,dob,eligible,gender,slotend,slotstart;
     public allfamily(){
 
     }
 
-    public allfamily(String name, String image, String aadhaar,String dob, String eligible,String gender) {
+    public String getSlotend() {
+        return slotend;
+    }
+
+    public void setSlotend(String slotend) {
+        this.slotend = slotend;
+    }
+
+    public String getSlotstart() {
+        return slotstart;
+    }
+
+    public void setSlotstart(String slotstart) {
+        this.slotstart = slotstart;
+    }
+
+    public allfamily(String name, String image, String aadhaar, String dob, String eligible, String gender, String slotend, String slotstart) {
         this.name = name;
         this.image = image;
         this.aadhaar = aadhaar;
         this.dob = dob;
         this.eligible = eligible;
         this.gender = gender;
+        this.slotend = slotend;
+        this.slotstart = slotstart;
     }
+
     public String getGender() {
         return gender;
     }
