@@ -120,17 +120,17 @@ public class Regwithaadhaar extends AppCompatActivity {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 for(DataSnapshot snapshot:dataSnapshot.getChildren()){
-                    dupcheck admin = snapshot.getValue(dupcheck.class); // pojo
-                if (admin != null) {
+                    dupcheck admin = dataSnapshot.getValue(dupcheck.class); // pojo
+                    if (admin != null) {
                     if(admin.getAadhaar().equals(name)) {
                         check[0] =1;
                         Toast.makeText(Regwithaadhaar.this, "user found", Toast.LENGTH_SHORT).show();
-                        Toast.makeText(Regwithaadhaar.this, ""+checkfinaluser[0], Toast.LENGTH_SHORT).show();
-                    }else{
+                        //Toast.makeText(Regwithaadhaar.this, ""+checkfinaluser[0], Toast.LENGTH_SHORT).show();
+                    }else{showDialog(Regwithaadhaar.this);
                         Toast.makeText(Regwithaadhaar.this, "NO USER", Toast.LENGTH_SHORT).show();
                     }
-                }}
-            }
+                }}}
+
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
@@ -153,13 +153,6 @@ public class Regwithaadhaar extends AppCompatActivity {
 
             }
         });
-        Toast.makeText(this, "check="+checkfinaluser[0], Toast.LENGTH_SHORT).show();
-        if(check[0]==1)
-        {Toast.makeText(this, "USER ALREADY REGISTERD!!"+checkfinaluser[0], Toast.LENGTH_SHORT).show();}
-        if(check[0]==0)
-        {showDialog(Regwithaadhaar.this);}else{Toast.makeText(this, "USER ALREADY REGISTERD!!"+checkfinaluser[0], Toast.LENGTH_SHORT).show();
-        }
-        Toast.makeText(this, "going on", Toast.LENGTH_SHORT).show();
 
     }
     public void findDupUser2(final String name){
