@@ -452,7 +452,7 @@ public class MainActivity extends AppCompatActivity {
                 final String min=counter3f(model.getSlotstart(),model.getSlotend());
                 final String sec=counter3s(model.getSlotstart(),model.getSlotend());
                 final String t[]=counter3t(model.getSlotstart(),model.getSlotend());
-
+                viewHolder.setthis(min,sec,t[0]);
              Toast.makeText(MainActivity.this, min + " " + sec, Toast.LENGTH_SHORT).show();
                 viewHolder.setSlotend(counter3f(model.getSlotstart(),model.getSlotend()),counter3s(model.getSlotstart(),model.getSlotend()),counter3t(model.getSlotstart(),model.getSlotend()));
                 Toast.makeText(MainActivity.this, "ENDS="+model.getSlotend(), Toast.LENGTH_SHORT).show();
