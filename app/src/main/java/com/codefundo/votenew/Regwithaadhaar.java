@@ -59,7 +59,7 @@ public class Regwithaadhaar extends AppCompatActivity {
                         Toast.makeText(Regwithaadhaar.this, "Sorry Please Provide Proper Aadhaar Number", Toast.LENGTH_SHORT).show();
                     }else{
                         Toast.makeText(Regwithaadhaar.this, "Verified Aadhaar Number", Toast.LENGTH_SHORT).show();
-                        findDupUser3(aadhaar);
+                        findDupUser2(aadhaar);
                         try {
                             sleep(20);
                         } catch (InterruptedException e1) {
@@ -179,7 +179,7 @@ public class Regwithaadhaar extends AppCompatActivity {
                     checkfinaluser[0]=1;
                     Toast.makeText(Regwithaadhaar.this, "user found", Toast.LENGTH_SHORT).show();
                     Toast.makeText(Regwithaadhaar.this, ""+checkfinaluser[0], Toast.LENGTH_SHORT).show();
-                }else{showDialog(Regwithaadhaar.this);}
+                }
             }
 
             @Override
@@ -205,6 +205,11 @@ public class Regwithaadhaar extends AppCompatActivity {
         });
         if(checkfinaluser[0]==1)
         Toast.makeText(this, "USER ALREADY REGISTERD!!"+checkfinaluser[0], Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "check="+checkfinaluser[0], Toast.LENGTH_SHORT).show();
+        if(checkfinaluser[0]==1)
+            Toast.makeText(this, "USER ALREADY REGISTERD!!"+checkfinaluser[0], Toast.LENGTH_SHORT).show();
+        if(checkfinaluser[0]==0)
+            showDialog(Regwithaadhaar.this);
 
     }
 
