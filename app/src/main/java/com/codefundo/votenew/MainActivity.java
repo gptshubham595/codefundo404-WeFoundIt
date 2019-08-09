@@ -671,7 +671,7 @@ public class MainActivity extends AppCompatActivity {
         final String[] value = new String[1];
         String emailpartwithout[] =email.split("@",2);
         String emailfinal=emailpartwithout[0].toLowerCase();
-        DatabaseReference  mUserDatabase=FirebaseDatabase.getInstance().getReference().child("Users").child(emailfinal).child("DATE").child(yeard);
+        DatabaseReference  mUserDatabase=FirebaseDatabase.getInstance().getReference().child("DATE").child(yeard);
         mUserDatabase.keepSynced(true);
         mUserDatabase.addValueEventListener(new ValueEventListener() {
             @Override

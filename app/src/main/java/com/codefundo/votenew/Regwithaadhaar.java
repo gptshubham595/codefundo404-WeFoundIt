@@ -36,7 +36,7 @@ public class Regwithaadhaar extends AppCompatActivity {
     FirebaseAuth mAuth;
     String aadhaar,email;
     Boolean result=false;
-     int[] checkfinaluser = {0};
+   public static  int[] checkfinaluser = {0};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,16 +59,8 @@ public class Regwithaadhaar extends AppCompatActivity {
                         Toast.makeText(Regwithaadhaar.this, "Sorry Please Provide Proper Aadhaar Number", Toast.LENGTH_SHORT).show();
                     }else{
                         Toast.makeText(Regwithaadhaar.this, "Verified Aadhaar Number", Toast.LENGTH_SHORT).show();
-                        findDupUser2(aadhaar);
-                        try {
-                            sleep(20);
-                        } catch (InterruptedException e1) {
-                            e1.printStackTrace();
-                        }
-                        if(checkfinaluser[0]==1){
-                            Toast.makeText(Regwithaadhaar.this, "USER ALREADY REGISTERED!!" +
-                                    "", Toast.LENGTH_SHORT).show();
-                        }
+                        findDupUser3(aadhaar);
+
                         //scan.setEnabled(true);
                     }
                 }else{
@@ -119,21 +111,25 @@ public class Regwithaadhaar extends AppCompatActivity {
     }
 
     public void findDupUser3(final String name){
+        final int[] check = {0};
         String emailpartwithout[] =email.split("@",2);
 
-        mUserDatabase=FirebaseDatabase.getInstance().getReference().child("Users").child("voters");
+        mUserDatabase=FirebaseDatabase.getInstance().getReference().child("voters");
 
         mUserDatabase.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                alladmin2 admin = dataSnapshot.getValue(alladmin2.class); // pojo
+                for(DataSnapshot snapshot:dataSnapshot.getChildren()){
+                    dupcheck admin = snapshot.getValue(dupcheck.class); // pojo
                 if (admin != null) {
-                    if(admin.getFamilyMembers().contains(name)) {
-                        checkfinaluser[0]=1;
+                    if(admin.getAadhaar().equals(name)) {
+                        check[0] =1;
                         Toast.makeText(Regwithaadhaar.this, "user found", Toast.LENGTH_SHORT).show();
                         Toast.makeText(Regwithaadhaar.this, ""+checkfinaluser[0], Toast.LENGTH_SHORT).show();
-                    }if(checkfinaluser[0]!=1){showDialog(Regwithaadhaar.this);}
-                }
+                    }else{
+                        Toast.makeText(Regwithaadhaar.this, "NO USER", Toast.LENGTH_SHORT).show();
+                    }
+                }}
             }
 
             @Override
@@ -158,11 +154,12 @@ public class Regwithaadhaar extends AppCompatActivity {
             }
         });
         Toast.makeText(this, "check="+checkfinaluser[0], Toast.LENGTH_SHORT).show();
-        if(checkfinaluser[0]==1)
-            Toast.makeText(this, "USER ALREADY REGISTERD!!"+checkfinaluser[0], Toast.LENGTH_SHORT).show();
-        if(checkfinaluser[0]==0)
-            showDialog(Regwithaadhaar.this);
-
+        if(check[0]==1)
+        {Toast.makeText(this, "USER ALREADY REGISTERD!!"+checkfinaluser[0], Toast.LENGTH_SHORT).show();}
+        if(check[0]==0)
+        {showDialog(Regwithaadhaar.this);}else{Toast.makeText(this, "USER ALREADY REGISTERD!!"+checkfinaluser[0], Toast.LENGTH_SHORT).show();
+        }
+        Toast.makeText(this, "going on", Toast.LENGTH_SHORT).show();
 
     }
     public void findDupUser2(final String name){

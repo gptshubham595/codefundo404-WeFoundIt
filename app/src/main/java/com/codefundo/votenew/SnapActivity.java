@@ -297,7 +297,7 @@ public class SnapActivity extends AppCompatActivity {
     private void adddata(String aadhaar) {
         FirebaseUser current_user = FirebaseAuth.getInstance().getCurrentUser();
         String uid = current_user.getUid();
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child("voters");
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("voters");
         HashMap<String, String> userMap = new HashMap<>();
         userMap.put(uid, aadhaar);
         mDatabase.setValue(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {
