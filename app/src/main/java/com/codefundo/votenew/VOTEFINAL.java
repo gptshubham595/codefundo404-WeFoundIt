@@ -21,6 +21,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -204,28 +206,35 @@ public class VOTEFINAL extends AppCompatActivity {
     }
 public void voteit(String party){
     final int[] votes = {0};
-    String emailpartwithout[] =email.split("@",2);
+    final String emailpartwithout[] =email.split("@",2);
     allpoliticalparty= FirebaseDatabase.getInstance().getReference().child("Users").child(emailpartwithout[0]).child("Party").child(party).child("votes");
     allpoliticalparty.addValueEventListener(new ValueEventListener() {
         @Override
         public void onDataChange(DataSnapshot dataSnapshot) {
             String value = dataSnapshot.getValue(String.class);
-            votes[0] =Integer.parseInt(value)+1;
+            votes[0] =Integer.parseInt(value);
+
         }
 
         @Override
         public void onCancelled(DatabaseError error) {
         }
     });
-allpoliticalparty.setValue(""+votes[0]);
+    votes[0]++;
+allpoliticalparty.setValue(""+votes[0]).addOnCompleteListener(new OnCompleteListener<Void>() {
+    @Override
+    public void onComplete(@NonNull Task<Void> task) {
+        allpoliticalparty= FirebaseDatabase.getInstance().getReference().child("Users").child(emailpartwithout[0]).child("familymember").child(aadhaar).child("voted");
+        allpoliticalparty.setValue("YES");
 
-    allpoliticalparty= FirebaseDatabase.getInstance().getReference().child("Users").child(emailpartwithout[0]).child("familymember").child(aadhaar).child("voted");
-    allpoliticalparty.setValue("YES");
+        Toast.makeText(VOTEFINAL.this, "You have Voted!!", Toast.LENGTH_SHORT).show();
+        Intent i =new Intent(getApplicationContext(),MainActivity.class);
+        i.putExtra("email",email);
+        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(i);
+    }
+});
 
-    Toast.makeText(this, "You have Voted!!", Toast.LENGTH_SHORT).show();
-    Intent i =new Intent(getApplicationContext(),MainActivity.class);
-    i.putExtra("email",email);
-    i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
-    startActivity(i);
+
 }
 }

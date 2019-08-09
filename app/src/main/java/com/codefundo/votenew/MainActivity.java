@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView   allfamilylist;
     String email;
     private Context mContext;
+   public static int[] ch = {0};
 
     long startTime,startTime1,startTime2;
     DatabaseReference allfamdatabaseReference,mUser,totalfam;
@@ -646,15 +647,14 @@ public class MainActivity extends AppCompatActivity {
                 viewHolder.mview.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if(check(model.getEmail(),model.getAadhaar())==0){
+
                         viewHolder.setthis(day,hour,min,sec,t[0]);
                         if(!t[0].equals("[WAIT]") || !t[0].equals("[OVER]") )
-                        { showDialog(MainActivity.this,model.getAadhaar());}
+                        { showDialog(MainActivity.this,model.getEmail(),model.getAadhaar());}
                         else{
                             Toast.makeText(MainActivity.this, "SORRY wait or its over", Toast.LENGTH_SHORT).show();
-                        }}else{
-                            Toast.makeText(MainActivity.this, "SORRY YOU ALREADY VOTED!!", Toast.LENGTH_SHORT).show();
                         }
+
                     }
                 });
             }
@@ -797,8 +797,8 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
-    public int check(String email, String aadhaar){
-        final int[] ch = {0};
+    public void check(String email, String aadhaar){
+
         String emailpartwithout[] =email.split("@",2);
         DatabaseReference check=FirebaseDatabase.getInstance().getReference().child("Users").child(emailpartwithout[0]).child("familymember").child(aadhaar).child("voted");
         check.addValueEventListener(new ValueEventListener() {
@@ -817,7 +817,7 @@ public class MainActivity extends AppCompatActivity {
                 // Failed to read value
             }
         });
-        return ch[0];
+
     }
     public void showDialog2(Activity activity, final String aadhaar) {
         final Dialog dialog = new Dialog(activity);
@@ -845,7 +845,8 @@ public class MainActivity extends AppCompatActivity {
 
         dialog.show();
     }
-    public void showDialog(Activity activity, final String aadhaar) {
+    public void showDialog(Activity activity, String email, final String aadhaar) {
+        check(email,aadhaar);
         final Dialog dialog = new Dialog(activity);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setCancelable(false);
@@ -874,12 +875,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 dialog.cancel();
-                voteit(aadhaar,email);
+                voteit(aadhaar, MainActivity.this.email);
             }
         });
 
-
+        if(ch[0]==0)
         dialog.show();
+        else{
+            Toast.makeText(activity, "SORRY You already voted", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void voteit(String aadhaar,String email) {

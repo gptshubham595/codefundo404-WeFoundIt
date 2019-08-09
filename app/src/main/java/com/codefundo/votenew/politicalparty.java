@@ -5,12 +5,12 @@ public class politicalparty {
     String name;
     String image;
     String partyimg;
-    int votes;
+    String votes;
 
     public politicalparty() {
     }
 
-    public politicalparty(String party, String name, String image, String partyimg, int votes) {
+    public politicalparty(String party, String name, String image, String partyimg, String votes) {
         this.party = party;
         this.name = name;
         this.image = image;
@@ -26,11 +26,11 @@ public class politicalparty {
         this.name = name;
     }
 
-    public int getVotes() {
+    public String getVotes() {
         return votes;
     }
 
-    public void setVotes(int votes) {
+    public void setVotes(String votes) {
         this.votes = votes;
     }
 
