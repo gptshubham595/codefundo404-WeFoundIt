@@ -163,6 +163,11 @@
         android:backgroundTint="@android:color/holo_green_dark"
         android:drawableRight="@drawable/ic_add_box_black_24dp"
         android:layout_height="wrap_content" />
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:layout_width="wrap_content"
+        android:layout_below="@id/addfam"
+        android:id="@+id/swipe"
+        android:layout_height="wrap_content">
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_below="@id/addfam"
@@ -171,4 +176,5 @@
         android:layout_margin="3dp"
         android:layout_height="match_parent">
     </androidx.recyclerview.widget.RecyclerView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </RelativeLayout>

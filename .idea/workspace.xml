@@ -16,8 +16,7 @@
     <list default="true" id="66fc0cab-2188-4d58-a818-adc887e831b8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/app/release/app-release.apk" beforeDir="false" afterPath="$PROJECT_DIR$/app/release/app-release.apk" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/Regwithaadhaar.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/Regwithaadhaar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/SnapActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/SnapActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -63,9 +62,15 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="470">
-              <caret line="670" column="22" selection-start-line="670" selection-start-column="22" selection-end-line="670" selection-end-column="22" />
+            <state relative-caret-position="586">
+              <caret line="687" lean-forward="true" selection-start-line="687" selection-end-line="687" />
               <folding>
+                <element signature="e#3708#4262#0" expanded="true" />
+                <element signature="e#4261#4262#0" expanded="true" />
+                <element signature="method#counter#0;class#MainActivity#0" />
+                <element signature="method#counter3f#0;class#MainActivity#0" />
+                <element signature="method#counter3s#0;class#MainActivity#0" />
+                <element signature="method#counter3t#0;class#MainActivity#0" />
                 <element signature="method#getData#0;class#MainActivity#0" />
               </folding>
             </state>
@@ -76,8 +81,8 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
           <provider editor-type-id="android-designer2" />
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="203">
-              <caret line="105" column="8" selection-start-line="105" selection-start-column="8" selection-end-line="105" selection-end-column="8" />
+            <state relative-caret-position="441">
+              <caret line="168" column="30" selection-start-line="168" selection-start-column="30" selection-end-line="168" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -124,7 +129,7 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/SnapActivity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="206">
-              <caret line="372" column="23" selection-start-line="372" selection-start-column="21" selection-end-line="372" selection-end-column="23" />
+              <caret line="205" column="16" selection-start-line="205" selection-start-column="16" selection-end-line="205" selection-end-column="73" />
             </state>
           </provider>
         </entry>
@@ -159,8 +164,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>AES</find>
-      <find>.java:</find>
       <find>QUERY Da</find>
       <find>mic</find>
       <find>coun</find>
@@ -189,6 +192,8 @@
       <find>sl</find>
       <find>month</find>
       <find>delete</find>
+      <find>curre</find>
+      <find>current</find>
     </findStrings>
   </component>
   <component name="GenerateSignedApkSettings">
@@ -232,7 +237,6 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_forgot.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_register.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_enter_pinto_vote.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/alladmin.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/EnterPintoVote.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/voter.java" />
@@ -250,6 +254,7 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_fam.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/Regwithaadhaar.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/SnapActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/MainActivity.java" />
       </list>
     </option>
@@ -301,13 +306,13 @@
             <path>
               <item name="VOTE" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="votenew" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
             </path>
             <path>
               <item name="VOTE" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="layout" type="ddeffd01:AndroidResFolderTypeNode" />
             </path>
           </expand>
           <select />
@@ -882,23 +887,29 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/SnapActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="206">
-          <caret line="372" column="23" selection-start-line="372" selection-start-column="21" selection-end-line="372" selection-end-column="23" />
+          <caret line="205" column="16" selection-start-line="205" selection-start-column="16" selection-end-line="205" selection-end-column="73" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
       <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="105" column="8" selection-start-line="105" selection-start-column="8" selection-end-line="105" selection-end-column="8" />
+        <state relative-caret-position="441">
+          <caret line="168" column="30" selection-start-line="168" selection-start-column="30" selection-end-line="168" selection-end-column="30" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="470">
-          <caret line="670" column="22" selection-start-line="670" selection-start-column="22" selection-end-line="670" selection-end-column="22" />
+        <state relative-caret-position="586">
+          <caret line="687" lean-forward="true" selection-start-line="687" selection-end-line="687" />
           <folding>
+            <element signature="e#3708#4262#0" expanded="true" />
+            <element signature="e#4261#4262#0" expanded="true" />
+            <element signature="method#counter#0;class#MainActivity#0" />
+            <element signature="method#counter3f#0;class#MainActivity#0" />
+            <element signature="method#counter3s#0;class#MainActivity#0" />
+            <element signature="method#counter3t#0;class#MainActivity#0" />
             <element signature="method#getData#0;class#MainActivity#0" />
           </folding>
         </state>

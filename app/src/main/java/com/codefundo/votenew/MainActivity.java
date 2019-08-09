@@ -6,6 +6,7 @@ import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -55,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
     static long milliseconds = 0;
     static long milliseconds1 = 0;
     String finalstart="",finalend="";
+    SwipeRefreshLayout swipe;
     AppCompatTextView day,month,year;
     private FirebaseAuth mAuth;
     long diff=0,oldLong=0,NewLong=0;
@@ -65,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
 
         mAuth = FirebaseAuth.getInstance();
-
+        swipe=findViewById(R.id.swipe);
 
         email="";
         try{
@@ -86,7 +88,16 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(MainActivity.this, ""+ getData(email,"day"), Toast.LENGTH_SHORT).show();
         Toast.makeText(MainActivity.this, ""+ getData(email,"year"), Toast.LENGTH_SHORT).show();
         Toast.makeText(MainActivity.this, ""+ getData(email,"finaltime"), Toast.LENGTH_SHORT).show();
+        swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                Toast.makeText(MainActivity.this, ""+ getData(email,"month"), Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, ""+ getData(email,"day"), Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, ""+ getData(email,"year"), Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, ""+ getData(email,"finaltime"), Toast.LENGTH_SHORT).show();
 
+            }
+        });
 
 
 
