@@ -579,7 +579,9 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         viewHolder.setthis(min,sec,t[0]);
-                        if(!t[0].equals("[WAIT]") || !t[0].equals("[OVER]") )
+                        String str = Arrays.toString(new String[]{t[0]});
+                        str=str.replaceAll("\\[", "").replaceAll("\\]","");
+                        if(!str.equals("WAIT") || !str.equals("OVER") )
                         { showDialog(MainActivity.this,model.getEmail(),model.getAadhaar());}
                         else{
                             Toast.makeText(MainActivity.this, "SORRY wait or its over", Toast.LENGTH_SHORT).show();
@@ -714,7 +716,11 @@ public class MainActivity extends AppCompatActivity {
             AppCompatTextView minleft =  mview.findViewById(R.id.minleft);
             AppCompatTextView secleft =  mview.findViewById(R.id.secleft);
             AppCompatTextView time =  mview.findViewById(R.id.time);
-            if(!s.equals("[WAIT]") || !s.equals("[OVER]") || !s.equals("WAIT") || !s.equals("OVER") )
+
+
+            String str = Arrays.toString(new String[]{s});
+            str=str.replaceAll("\\[", "").replaceAll("\\]","");
+            if(!str.equals("WAIT") || !str.equals("OVER") )
             {minleft.setText(min);
 
                 secleft.setText(sec);}
@@ -722,10 +728,6 @@ public class MainActivity extends AppCompatActivity {
                 minleft.setText("XX");
                 secleft.setText("XX");
             }
-
-            String str = Arrays.toString(new String[]{s});
-            str=str.replaceAll("\\[", "").replaceAll("\\]","");
-
             time.setText(str);
 
         }
