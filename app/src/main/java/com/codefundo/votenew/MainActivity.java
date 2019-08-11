@@ -581,11 +581,13 @@ public class MainActivity extends AppCompatActivity {
                         viewHolder.setthis(min,sec,t[0]);
                         String str = Arrays.toString(new String[]{t[0]});
                         str=str.replaceAll("\\[", "").replaceAll("\\]","");
-                        if(!str.equals("WAIT") || !str.equals("OVER") )
-                        { showDialog(MainActivity.this,model.getEmail(),model.getAadhaar());}
-                        else{
+                        if(str.equals("WAIT") || str.equals("OVER") ) {
                             Toast.makeText(MainActivity.this, "SORRY wait or its over", Toast.LENGTH_SHORT).show();
                         }
+                        else{Toast.makeText(MainActivity.this, str, Toast.LENGTH_SHORT).show();
+                            showDialog(MainActivity.this,model.getEmail(),model.getAadhaar());}
+
+
 
                       //  showDialog(MainActivity.this,model.getEmail(),model.getAadhaar(),minstart,secstart);
                       //  viewHolder.setthis(minstart,secstart,currentsecstart,currentsecend);
