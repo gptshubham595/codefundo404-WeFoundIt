@@ -5,6 +5,11 @@
     android:padding="10dp"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="?android:selectableItemBackground">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:background="@drawable/shape4"
+        android:backgroundTint="#14FFEB3B"
+        android:layout_height="wrap_content">
     <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="90dp"
         android:paddingLeft="10dp"
@@ -138,7 +143,7 @@
             android:layout_height="100dp"
             android:layout_margin="5dp"
             android:src="@drawable/done"
-            android:visibility="visible" />
+            android:visibility="gone" />
 
         <ImageView
             android:id="@+id/cross"
@@ -160,37 +165,6 @@
             android:textStyle="bold"
             android:text="TIME LEFT:  "
 
-            android:textColor="@android:color/holo_red_dark"
-            android:layout_height="wrap_content" />
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:textSize="18sp"
-            android:id="@+id/dayleft"
-            android:textStyle="bold"
-            android:text="XX"
-
-            android:textColor="@android:color/holo_red_dark"
-            android:layout_height="wrap_content" />
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            android:text=":"
-            android:textColor="@android:color/holo_red_dark"
-            android:layout_height="wrap_content" />
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:textSize="18sp"
-            android:id="@+id/hourleft"
-            android:textStyle="bold"
-            android:text="XX"
-            android:textColor="@android:color/holo_red_dark"
-            android:layout_height="wrap_content" />
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            android:text=":"
             android:textColor="@android:color/holo_red_dark"
             android:layout_height="wrap_content" />
         <androidx.appcompat.widget.AppCompatTextView
@@ -222,4 +196,5 @@
 
 </LinearLayout>
 
+</LinearLayout>
 </LinearLayout>

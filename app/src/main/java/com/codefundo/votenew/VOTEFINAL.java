@@ -43,6 +43,7 @@ public class VOTEFINAL extends AppCompatActivity {
     RecyclerView allfamilylist;
     String email="";
     String aadhaar="";
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,6 +75,7 @@ public class VOTEFINAL extends AppCompatActivity {
                 viewHolder.setImage(model.getImage());
                 viewHolder.setName(model.getName());
                 viewHolder.setParty(model.getParty());
+                viewHolder.setManifesto(model.getManifesto());
                 viewHolder.setPartyimg(model.getPartyimg());viewHolder.mview.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -135,6 +137,11 @@ public class VOTEFINAL extends AppCompatActivity {
                 }
             });
 
+        }
+
+        public void setManifesto(String manifesto) {
+            TextView nameview = (TextView) mview.findViewById(R.id.manifesto);
+            nameview.setText(manifesto);
         }
     }
     public void showDialog2(Activity activity, final String party, String name) {

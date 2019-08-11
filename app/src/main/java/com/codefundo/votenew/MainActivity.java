@@ -143,7 +143,9 @@ public class MainActivity extends AppCompatActivity {
         Date endDate;
         try {
             endDate = formatter.parse(endTime);
-            milliseconds = endDate.getTime();
+            if (endDate != null) {
+                milliseconds = endDate.getTime();
+            }
 
         } catch (ParseException e) {
             // TODO Auto-generated catch block
@@ -187,83 +189,42 @@ public class MainActivity extends AppCompatActivity {
             }
         }.start();
     }
-    public String counter3d(String start,String end)
+    private String countermin(String Final)
     {
+        final String[] minutesLeft = new String[1];
+        final String[] secondsLeft = new String[1];
         SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy, HH:mm:ss");
         formatter.setLenient(false);
-
+        String endTime = Final;
 
         Date endDate;
         try {
-            endDate = formatter.parse(end);
-            milliseconds = endDate.getTime();
+            endDate = formatter.parse(endTime);
+            if (endDate != null) {
+                milliseconds = endDate.getTime();
+            }
 
         } catch (ParseException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        Date startDate;
-        try {
-            startDate = formatter.parse(start);
-            milliseconds1 = startDate.getTime();
 
-        } catch (ParseException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        final String[] daysLeft = {""};
-        startTime1 = milliseconds1;
-        startTime2 = System.currentTimeMillis();
+        startTime = System.currentTimeMillis();
 
-        diff = milliseconds - startTime1;
-        final long diff2=startTime2-startTime1;
-        final long diff3=startTime2-milliseconds;
+        diff = milliseconds - startTime;
+
 
         new CountDownTimer(milliseconds, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
 
                 startTime=startTime-1;
-                Long serverUptimeSeconds1 =
+                Long serverUptimeSeconds =
                         (millisUntilFinished - startTime) / 1000;
-                String minutesLeft = String.format("%d", ((serverUptimeSeconds1 % 86400) % 3600) / 60);
 
-                String secondsLeft = String.format("%d", ((serverUptimeSeconds1 % 86400) % 3600) % 60);
-                daysLeft[0] = String.format("%d", serverUptimeSeconds1 / 86400);
+                 minutesLeft[0] = String.format("%d", ((serverUptimeSeconds % 86400) % 3600) / 60);
 
-
-
-                finalstart=minutesLeft;
-                finalend=secondsLeft;
-                //Toast.makeText(MainActivity.this, "1="+diff+" 2="+diff2+" 3="+diff3+"MIN"+Math.abs(Integer.parseInt(finalstart))+"Sec"+Math.abs(Integer.parseInt(finalend)), Toast.LENGTH_SHORT).show();
-
-
-                //finalstart="0";finalend="0";
-                if(diff3>0){
-
-                    //AppCompatTextView dayleft=findViewById(R.id.dayleft);
-                    //id.time
-                    //minleft,secleft,sep =gone
-                    //    time.setText("SORRY TIME IS OVER");
-                }
-                if(diff2<=0){
-                    //AppCompatTextView dayleft=findViewById(R.id.dayleft);
-                    //id.time
-                    //minleft,secleft,sep =gone
-                    //    time.setText("WAIT");
-                }
-                if(diff2>=0 && diff3<=0){
-                    //AppCompatTextView dayleft=findViewById(R.id.dayleft);
-                    //id.time
-                    //minleft=minutesLeft,secleft=secondsLeft,sep =Visible
-                    //    counter
-                    finalstart=minutesLeft;
-                    finalend=secondsLeft;
-                    Toast.makeText(MainActivity.this, finalstart, Toast.LENGTH_SHORT).show();
-                    //   Toast.makeText(MainActivity.this, finalend, Toast.LENGTH_SHORT).show();
-                }
-
-
+                 secondsLeft[0] = String.format("%d", ((serverUptimeSeconds % 86400) % 3600) % 60);
 
             }
 
@@ -272,83 +233,44 @@ public class MainActivity extends AppCompatActivity {
 
             }
         }.start();
-
-        return daysLeft[0];
+        return minutesLeft[0];
     }
-    public String counter3h(String start,String end)
+    private String countersec(String Final)
     {
+        final String[] minutesLeft = new String[1];
+        final String[] secondsLeft = new String[1];
         SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy, HH:mm:ss");
         formatter.setLenient(false);
-
+        String endTime = Final;
 
         Date endDate;
         try {
-            endDate = formatter.parse(end);
-            milliseconds = endDate.getTime();
-
-        } catch (ParseException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        Date startDate;
-        try {
-            startDate = formatter.parse(start);
-            milliseconds1 = startDate.getTime();
+            endDate = formatter.parse(endTime);
+            if (endDate != null) {
+                milliseconds = endDate.getTime();
+            }
 
         } catch (ParseException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
-        startTime1 = milliseconds1;
-        startTime2 = System.currentTimeMillis();
-        final String[] hoursLeft = {""};
-        diff = milliseconds - startTime1;
-        final long diff2=startTime2-startTime1;
-        final long diff3=startTime2-milliseconds;
+        startTime = System.currentTimeMillis();
+
+        diff = milliseconds - startTime;
+
 
         new CountDownTimer(milliseconds, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
 
                 startTime=startTime-1;
-                Long serverUptimeSeconds1 =
+                Long serverUptimeSeconds =
                         (millisUntilFinished - startTime) / 1000;
-                String minutesLeft = String.format("%d", ((serverUptimeSeconds1 % 86400) % 3600) / 60);
-                hoursLeft[0] = String.format("%d", (serverUptimeSeconds1 % 86400) / 3600);
 
-                String secondsLeft = String.format("%d", ((serverUptimeSeconds1 % 86400) % 3600) % 60);
-                finalstart=minutesLeft;
-                finalend=secondsLeft;
-                //Toast.makeText(MainActivity.this, "1="+diff+" 2="+diff2+" 3="+diff3+"MIN"+Math.abs(Integer.parseInt(finalstart))+"Sec"+Math.abs(Integer.parseInt(finalend)), Toast.LENGTH_SHORT).show();
+                minutesLeft[0] = String.format("%d", ((serverUptimeSeconds % 86400) % 3600) / 60);
 
-
-                //finalstart="0";finalend="0";
-                if(diff3>0){
-
-                    //AppCompatTextView dayleft=findViewById(R.id.dayleft);
-                    //id.time
-                    //minleft,secleft,sep =gone
-                    //    time.setText("SORRY TIME IS OVER");
-                }
-                if(diff2<=0){
-                    //AppCompatTextView dayleft=findViewById(R.id.dayleft);
-                    //id.time
-                    //minleft,secleft,sep =gone
-                    //    time.setText("WAIT");
-                }
-                if(diff2>=0 && diff3<=0){
-                    //AppCompatTextView dayleft=findViewById(R.id.dayleft);
-                    //id.time
-                    //minleft=minutesLeft,secleft=secondsLeft,sep =Visible
-                    //    counter
-                    finalstart=minutesLeft;
-                    finalend=secondsLeft;
-                    Toast.makeText(MainActivity.this, finalstart, Toast.LENGTH_SHORT).show();
-                    //   Toast.makeText(MainActivity.this, finalend, Toast.LENGTH_SHORT).show();
-                }
-
-
+                secondsLeft[0] = String.format("%d", ((serverUptimeSeconds % 86400) % 3600) % 60);
 
             }
 
@@ -357,9 +279,9 @@ public class MainActivity extends AppCompatActivity {
 
             }
         }.start();
-
-        return hoursLeft[0];
+        return secondsLeft[0];
     }
+
     public String counter3f(String start,String end)
     {
         SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy, HH:mm:ss");
@@ -633,27 +555,38 @@ public class MainActivity extends AppCompatActivity {
                 viewHolder.setDob(model.getDob());
                 viewHolder.setEligible(model.getEligible());
                 viewHolder.setGender(model.getGender());
-                final String day=counter3d(model.getSlotstart(),model.getSlotend());
-                final String hour=counter3h(model.getSlotstart(),model.getSlotend());
+//                final String day=counter3d(model.getSlotstart(),model.getSlotend());
+  //              final String hour=counter3h(model.getSlotstart(),model.getSlotend());
                 final String min=counter3f(model.getSlotstart(),model.getSlotend());
                 final String sec=counter3s(model.getSlotstart(),model.getSlotend());
                 final String t[]=counter3t(model.getSlotstart(),model.getSlotend());
-                viewHolder.setthis(day,hour,min,sec,t[0]);
-             Toast.makeText(MainActivity.this, min + " " + sec, Toast.LENGTH_SHORT).show();
+                viewHolder.setthis(min,sec,t[0]);
+                //final Long minstart=Long.parseLong(countermin(model.getSlotend()))-Long.parseLong(countermin(model.getSlotstart()));
+                //final Long currentsecstart=Long.parseLong(countersec(model.getSlotend()));
+                //final Long currentsecend=Long.parseLong(countersec(model.getSlotstart()));
+                //final Long secstart=Long.parseLong(countersec(model.getSlotend()))-Long.parseLong(countersec(model.getSlotstart()));
+                //final String min=counter3f(model.getSlotstart(),model.getSlotend());
+                //final String sec=counter3s(model.getSlotstart(),model.getSlotend());
+                //final String t[]=counter3t(model.getSlotstart(),model.getSlotend());
+                //viewHolder.setthis(minstart,secstart,currentsecstart,currentsecend);
+            // Toast.makeText(MainActivity.this, min + " " + sec, Toast.LENGTH_SHORT).show();
                 viewHolder.setSlotend(counter3f(model.getSlotstart(),model.getSlotend()),counter3s(model.getSlotstart(),model.getSlotend()),counter3t(model.getSlotstart(),model.getSlotend()));
                 Toast.makeText(MainActivity.this, "ENDS="+model.getSlotend(), Toast.LENGTH_SHORT).show();
-
+                Toast.makeText(MainActivity.this, model.getName()+model.getSlotend(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, countermin(model.getSlotend()), Toast.LENGTH_SHORT).show();
                 final String userid=getRef(position).getKey();
                 viewHolder.mview.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
-                        viewHolder.setthis(day,hour,min,sec,t[0]);
+                        viewHolder.setthis(min,sec,t[0]);
                         if(!t[0].equals("[WAIT]") || !t[0].equals("[OVER]") )
                         { showDialog(MainActivity.this,model.getEmail(),model.getAadhaar());}
                         else{
                             Toast.makeText(MainActivity.this, "SORRY wait or its over", Toast.LENGTH_SHORT).show();
                         }
+
+                      //  showDialog(MainActivity.this,model.getEmail(),model.getAadhaar(),minstart,secstart);
+                      //  viewHolder.setthis(minstart,secstart,currentsecstart,currentsecend);
 
                     }
                 });
@@ -686,8 +619,11 @@ public class MainActivity extends AppCompatActivity {
                     day.setText(value[0]);
                 else if(yeard.equals("month"))
                     month.setText(value[0]);
-                else if(yeard.equals("finaltime"))
-                    counter(value[0]);
+                else if(yeard.equals("finaltime")) {
+                    Toast.makeText(MainActivity.this, yeard + "=" + value[0], Toast.LENGTH_SHORT).show();
+                     counter(value[0]);
+                }
+
                 else
                     Toast.makeText(MainActivity.this, "Sorry", Toast.LENGTH_SHORT).show();
             }
@@ -773,29 +709,54 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-
-        public void setthis(String day,String hour,String min, String sec, String s) {
+        public void setthis(String min, String sec, String s) {
             Toast.makeText(mview.getContext(), "SETTING  GOT MIN="+min, Toast.LENGTH_SHORT).show();
-            AppCompatTextView dayleft =  mview.findViewById(R.id.dayleft);
-            AppCompatTextView hrleft =  mview.findViewById(R.id.hourleft);
-
             AppCompatTextView minleft =  mview.findViewById(R.id.minleft);
             AppCompatTextView secleft =  mview.findViewById(R.id.secleft);
             AppCompatTextView time =  mview.findViewById(R.id.time);
             if(!s.equals("[WAIT]") || !s.equals("[OVER]") || !s.equals("WAIT") || !s.equals("OVER") )
             {minleft.setText(min);
-            dayleft.setText(day);
-            hrleft.setText(hour);
-            secleft.setText(sec);}
+
+                secleft.setText(sec);}
             else{
                 minleft.setText("XX");
-                hrleft.setText("XX");
-                dayleft.setText("XX");
                 secleft.setText("XX");
             }
-            time.setText(Arrays.toString(new String[]{s}));
+
+            String str = Arrays.toString(new String[]{s});
+            str=str.replaceAll("\\[", "").replaceAll("\\]","");
+
+            time.setText(str);
 
         }
+
+/*        public void setthis(Long min1, Long sec1, Long currentsecend, Long  currentsecstart) {
+            Toast.makeText(mview.getContext(), "SETTING  GOT MIN="+min1, Toast.LENGTH_SHORT).show();
+            String min=min1+"";
+            String sec=sec1+"";
+            //final Long currentsecstart=countersec(model.getSlotend());
+            //final Long currentsecend=countersec(model.getSlotstart());
+            AppCompatTextView minleft =  mview.findViewById(R.id.minleft);
+            AppCompatTextView secleft =  mview.findViewById(R.id.secleft);
+            AppCompatTextView time =  mview.findViewById(R.id.time);
+            if(currentsecstart<0){time.setText("OVER");minleft.setText("XX");
+                secleft.setText("XX");}
+            if(currentsecend<0){time.setText("WAIT");minleft.setText("XX");
+                secleft.setText("XX");}
+            if(min1<0){
+                minleft.setText("XX");
+                time.setText("OVER");
+                secleft.setText("XX");}
+            if(min1>0 && sec1>0) {
+                minleft.setText(min);
+                secleft.setText(sec);
+                time.setText("TIME LEFT");
+            }
+
+
+
+        }*/
+
     }
     public void check(String email, String aadhaar){
 
@@ -847,6 +808,10 @@ public class MainActivity extends AppCompatActivity {
     }
     public void showDialog(Activity activity, String email, final String aadhaar) {
         check(email,aadhaar);
+
+
+
+
         final Dialog dialog = new Dialog(activity);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setCancelable(false);
@@ -898,7 +863,7 @@ public class MainActivity extends AppCompatActivity {
         mUser.keepSynced(true);
         mUser.removeValue();
         String current_user_id = mAuth.getCurrentUser().getUid();
-        mUser= FirebaseDatabase.getInstance().getReference().child("Users").child(email).child("voters").child(current_user_id);
+        mUser= FirebaseDatabase.getInstance().getReference().child("voters").child(current_user_id);
         mUser.keepSynced(true);
         mUser.removeValue();
     }

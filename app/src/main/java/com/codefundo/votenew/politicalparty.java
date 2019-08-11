@@ -6,16 +6,25 @@ public class politicalparty {
     String image;
     String partyimg;
     String votes;
-
+    String manifesto;
     public politicalparty() {
     }
 
-    public politicalparty(String party, String name, String image, String partyimg, String votes) {
+    public String getManifesto() {
+        return manifesto;
+    }
+
+    public void setManifesto(String manifesto) {
+        this.manifesto = manifesto;
+    }
+
+    public politicalparty(String party, String name, String image, String partyimg, String votes, String manifesto) {
         this.party = party;
         this.name = name;
         this.image = image;
         this.partyimg = partyimg;
         this.votes = votes;
+        this.manifesto = manifesto;
     }
 
     public String getName() {

@@ -76,6 +76,7 @@ public class SnapActivity extends AppCompatActivity {
     String thumb_downloadUrl;
     Button mImageBtn;
     private CircleImageView mDisplayImage;
+    int fhour, fmin, shour, smin;
 
     private static final int GALLERY_PICK = 1;
 
@@ -205,7 +206,7 @@ public class SnapActivity extends AppCompatActivity {
 
                 String current_user_id = mAuth.getCurrentUser().getUid();
 
-                Toast.makeText(this, "Step 2", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "Step 2", Toast.LENGTH_SHORT).show();
                 Bitmap thumb_bitmap = null;
                 try {
                     thumb_bitmap = new Compressor(this)
@@ -216,35 +217,35 @@ public class SnapActivity extends AppCompatActivity {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                Toast.makeText(this, "Step 3", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "Step 3", Toast.LENGTH_SHORT).show();
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
                 thumb_bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
                 final byte[] thumb_byte = baos.toByteArray();
 
-                Toast.makeText(this, "Step 4", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "Step 4", Toast.LENGTH_SHORT).show();
                 StorageReference filepath = mImageStorage.child("profile_images").child(aadhaar + ".jpg");
                 final StorageReference thumb_filepath = mImageStorage.child("profile_images").child("thumbs").child(aadhaar + ".jpg");
 
 
-                Toast.makeText(this, "Step 5", Toast.LENGTH_SHORT).show();
+             //   Toast.makeText(this, "Step 5", Toast.LENGTH_SHORT).show();
                 filepath.putFile(resultUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
 
                         if(task.isSuccessful()){
-                            Toast.makeText(SnapActivity.this, "Step 6", Toast.LENGTH_SHORT).show();
+                           // Toast.makeText(SnapActivity.this, "Step 6", Toast.LENGTH_SHORT).show();
                             download_url = task.getResult().getDownloadUrl().toString();
 
                             UploadTask uploadTask = thumb_filepath.putBytes(thumb_byte);
                             uploadTask.addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                                 @Override
                                 public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> thumb_task) {
-                                    Toast.makeText(SnapActivity.this, "Step 7", Toast.LENGTH_SHORT).show();
+                                //    Toast.makeText(SnapActivity.this, "Step 7", Toast.LENGTH_SHORT).show();
                                     thumb_downloadUrl = thumb_task.getResult().getDownloadUrl().toString();
 
-                                    Toast.makeText(SnapActivity.this, thumb_downloadUrl, Toast.LENGTH_SHORT).show();
+                                 //   Toast.makeText(SnapActivity.this, thumb_downloadUrl, Toast.LENGTH_SHORT).show();
                                     if(thumb_task.isSuccessful()){
-                                        Toast.makeText(SnapActivity.this, "Step 8", Toast.LENGTH_SHORT).show();
+                                    //    Toast.makeText(SnapActivity.this, "Step 8", Toast.LENGTH_SHORT).show();
                                         Toast.makeText(SnapActivity.this, "Success Uploading.", Toast.LENGTH_LONG).show();
                                         try {
                                             adddatatobase(aadhaar,name,state,pc,dist,age,gender,dob,mobile,email,pin);
@@ -256,7 +257,7 @@ public class SnapActivity extends AppCompatActivity {
                                         Toast.makeText(getApplicationContext(),"Registered!!",Toast.LENGTH_LONG).show();
 
                                     } else {
-                                        Toast.makeText(SnapActivity.this, "Step 9", Toast.LENGTH_SHORT).show();
+                                     //   Toast.makeText(SnapActivity.this, "Step 9", Toast.LENGTH_SHORT).show();
                                         Toast.makeText(SnapActivity.this, "Error in uploading thumbnail.", Toast.LENGTH_LONG).show();
                                         mProgressDialog.dismiss();
                                         Intent i=new Intent(getApplicationContext(),ReaderActivity.class);
@@ -305,7 +306,7 @@ public class SnapActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<Void> task) {
 
                 if(task.isSuccessful()){
-                    Toast.makeText(getApplicationContext(),"Registered2!!",Toast.LENGTH_LONG).show();
+                   // Toast.makeText(getApplicationContext(),"Registered2!!",Toast.LENGTH_LONG).show();
 
                 }
 
@@ -353,10 +354,10 @@ public class SnapActivity extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(emailpartwithout[0]).child("familymember").child(uid);
         HashMap<String, String> userMap = new HashMap<>();
         Random rand = new Random();
-        int fhour = rand.nextInt(12)+8;
-        int fmin=rand.nextInt(12)*5;
-        int shour=fhour;
-        int smin=0;
+         fhour = rand.nextInt(12)+8;
+         fmin=rand.nextInt(12)*5;
+         shour=fhour;
+         smin=0;
         if(fmin+30>59){smin=30-(60-fmin); shour++;}else{smin=fmin+30;}
         userMap.put("name", name);
         userMap.put("state", state);
@@ -371,12 +372,13 @@ public class SnapActivity extends AppCompatActivity {
         userMap.put("voted", "NO");
         userMap.put("email", email);
         userMap.put("hiddenemail", encryptedemail);
-        userMap.put("slotstart", "10.08.2019, "+fhour+":"+fmin+":"+"00");
+        userMap.put("slotstart", "18.08.2019, "+fhour+":"+fmin+":"+"00");
         //userMap.put("slotend", "18.08.2019, 10:35:35");
-        userMap.put("slotend", "10.08.2019, "+shour+":"+smin+":"+"00");
+        userMap.put("slotend", "18.08.2019, "+shour+":"+smin+":"+"00");
         //userMap.put("slotstart", "18.08.2019, 10:05:36");
         userMap.put("image", download_url);
         userMap.put("thumb_image", thumb_downloadUrl);
+
 
 
 
@@ -405,7 +407,7 @@ public class SnapActivity extends AppCompatActivity {
                 // whenever data at this location is updated.
                 String value = dataSnapshot.getValue(String.class);
                 count=Integer.parseInt((value));
-                count++;
+
             }
 
             @Override
@@ -414,7 +416,7 @@ public class SnapActivity extends AppCompatActivity {
             }
         });
 
-
+        count++;
         myRef.setValue(""+count).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
@@ -422,7 +424,7 @@ public class SnapActivity extends AppCompatActivity {
                 if(task.isSuccessful()){
 
                     mLoginProgress.dismiss();
-                    Toast.makeText(getApplicationContext(),"Registered!!",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"FAMILY MEMEBER ADDED!!",Toast.LENGTH_LONG).show();
 
                 }
 
