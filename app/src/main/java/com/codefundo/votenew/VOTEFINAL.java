@@ -235,7 +235,6 @@ allpoliticalparty.setValue(""+votes[0]).addOnCompleteListener(new OnCompleteList
     public void onComplete(@NonNull Task<Void> task) {
         allpoliticalparty= FirebaseDatabase.getInstance().getReference().child("Users").child(emailpartwithout[0]).child("familymember").child(aadhaar).child("voted");
         allpoliticalparty.setValue("YES");
-
         Toast.makeText(VOTEFINAL.this, "You have Voted!!", Toast.LENGTH_SHORT).show();
         Intent i =new Intent(getApplicationContext(), CamMainActivity.class);
         i.putExtra("email",email);

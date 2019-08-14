@@ -45,8 +45,11 @@
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".Emailsend"/>
         <activity
-            android:name=".sample.CamMainActivity"
+            android:name=".FingerActivity"
             android:screenOrientation="portrait" />
+        <activity android:name=".sample.DemoCamActivity"
+            android:screenOrientation="portrait"/>
+
         <activity
             android:name=".Result"
             android:screenOrientation="portrait" />
@@ -66,7 +69,7 @@
             android:name=".PinActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".FingerActivity"
+            android:name=".sample.CamMainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

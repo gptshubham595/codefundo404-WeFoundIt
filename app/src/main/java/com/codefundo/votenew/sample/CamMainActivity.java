@@ -18,11 +18,15 @@ package com.codefundo.votenew.sample;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.view.View;
 import android.view.WindowManager;
 
 import com.androidhiddencamera.HiddenCameraFragment;
+import com.codefundo.votenew.MainActivity;
 import com.codefundo.votenew.R;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -45,18 +49,30 @@ public class CamMainActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        try{
+ /*       try{
             emailintent=getIntent().getExtras().get("email").toString().toLowerCase();
             aadhaar=getIntent().getExtras().get("aadhaar").toString().toLowerCase();
         }catch (Exception e ){e.printStackTrace();}
+*/
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (mHiddenCameraFragment != null) {    //Remove fragment from container if present
+                    getSupportFragmentManager()
+                            .beginTransaction()
+                            .remove(mHiddenCameraFragment)
+                            .commit();
+                    mHiddenCameraFragment = null;
+                }
+
+                startActivity(new Intent(CamMainActivity.this, DemoCamActivity.class));
+
+            }
+        }, 3000);
 
 
-        mHiddenCameraFragment = new DemoCamFragment();
 
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.fragment_container, mHiddenCameraFragment)
-                .commit();
+
     }
     @Override
     public void onBackPressed() {
