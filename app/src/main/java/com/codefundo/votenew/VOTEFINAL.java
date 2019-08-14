@@ -45,6 +45,7 @@ public class VOTEFINAL extends AppCompatActivity {
     RecyclerView allfamilylist;
     String email="";
     String aadhaar="";
+    static int votes=0;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -214,7 +215,7 @@ public class VOTEFINAL extends AppCompatActivity {
         dialog.show();
     }
 public void voteit(String party){
-    final int[] votes = {0};
+
     final String emailpartwithout[] =email.split("@",2);
     //allpoliticalparty= FirebaseDatabase.getInstance().getReference().child("Users").child(emailpartwithout[0]).child("Party").child(party).child("votes");
     allpoliticalparty= FirebaseDatabase.getInstance().getReference().child("Party").child(party).child("votes");
@@ -222,7 +223,7 @@ public void voteit(String party){
         @Override
         public void onDataChange(DataSnapshot dataSnapshot) {
             String value = dataSnapshot.getValue(String.class);
-            votes[0] =Integer.parseInt(value);
+            votes =Integer.parseInt(value);
 
         }
 
@@ -230,15 +231,18 @@ public void voteit(String party){
         public void onCancelled(DatabaseError error) {
         }
     });
-    votes[0]++;
-        allpoliticalparty.setValue(""+votes[0]).addOnCompleteListener(new OnCompleteListener<Void>() {
+        votes=votes+1;
+    Toast.makeText(this, ""+votes, Toast.LENGTH_SHORT).show();
+
+        allpoliticalparty.setValue(""+votes).addOnCompleteListener(new OnCompleteListener<Void>() {
     @Override
     public void onComplete(@NonNull Task<Void> task) {
-        allpoliticalparty= FirebaseDatabase.getInstance().getReference().child("Users").child(emailpartwithout[0]).child("familymember").child(aadhaar).child("voted");
-        allpoliticalparty.setValue("YES");
+        DatabaseReference allpoliticalparty2= FirebaseDatabase.getInstance().getReference().child("Users").child(emailpartwithout[0]).child("familymember").child(aadhaar).child("voted");
+        allpoliticalparty2.setValue("YES");
         Toast.makeText(VOTEFINAL.this, "You have Voted!!", Toast.LENGTH_SHORT).show();
         Intent i =new Intent(getApplicationContext(), MainActivity.class);
         i.putExtra("email",email);
+        i.putExtra("aadhaar",aadhaar);
         i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(i);
     }

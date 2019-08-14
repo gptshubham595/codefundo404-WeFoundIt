@@ -4,15 +4,20 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatTextView;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.Manifest;
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -36,8 +41,10 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -49,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
     String email;
     private Context mContext;
    public static int[] ch = {0};
-
+    private static final int MY_PERMISSIONS_REQUEST_ACCESS_CODE = 1;
     long startTime,startTime1,startTime2;
     DatabaseReference allfamdatabaseReference,mUser,totalfam;
     AppCompatTextView fam;
@@ -132,8 +139,39 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-
+    private static final String[] requiredPermissions = {
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.CAMERA,
+    };
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           @NonNull String permissions[], @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case MY_PERMISSIONS_REQUEST_ACCESS_CODE: {
+                if (!(grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+                    checkPermissions();
+                }
+            }
+        }
+    }
+    /**
+     * checking  permissions at Runtime.
+     */
+    @TargetApi(Build.VERSION_CODES.M)
+    private void checkPermissions() {
+        final List<String> neededPermissions = new ArrayList<>();
+        for (final String permission : requiredPermissions) {
+            if (ContextCompat.checkSelfPermission(getApplicationContext(),
+                    permission) != PackageManager.PERMISSION_GRANTED) {
+                neededPermissions.add(permission);
+            }
+        }
+        if (!neededPermissions.isEmpty()) {
+            requestPermissions(neededPermissions.toArray(new String[]{}),
+                    MY_PERMISSIONS_REQUEST_ACCESS_CODE);
+        }
+    }
     private void counter(String Final)
     {
         SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy, HH:mm:ss");

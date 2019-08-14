@@ -14,20 +14,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="66fc0cab-2188-4d58-a818-adc887e831b8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/activities/MainActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/listeners/PictureCapturingListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/services/APictureCapturingService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/services/PictureCapturingServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/ResultActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_result2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/release/app-release.apk" beforeDir="false" afterPath="$PROJECT_DIR$/app/release/app-release.apk" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/sample/CamMainActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/sample/DemoCamActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/sample/DemoCamFragment.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/sample/DemoCamService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_hidden_cam.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_maincam.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_hidden_cam.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/VOTEFINAL.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/VOTEFINAL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/activities/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/activities/MainActivity.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -44,61 +40,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/MainActivity.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/activities/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="43">
-              <caret line="24" selection-start-line="24" selection-end-line="24" />
+            <state relative-caret-position="153">
+              <caret line="108" column="8" selection-start-line="108" selection-start-column="8" selection-end-line="108" selection-end-column="8" />
               <folding>
-                <element signature="method#counter#0;class#MainActivity#0" />
-                <element signature="method#counter3f#0;class#MainActivity#0" />
-                <element signature="method#counter3s#0;class#MainActivity#0" />
-                <element signature="method#counter3t#0;class#MainActivity#0" />
+                <element signature="e#6727#6978#0" />
+                <element signature="e#7952#10570#0" expanded="true" />
+                <element signature="e#9985#10601#1" />
+                <element signature="e#10569#10570#0" expanded="true" />
               </folding>
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/EnterPintoVote.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="180" column="11" selection-start-line="180" selection-start-column="11" selection-end-line="180" selection-end-column="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_emailsend.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="25" selection-end-column="58" />
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer2" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/Emailsend.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="24">
-              <caret line="7" column="29" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="29" />
-              <folding>
-                <element signature="method#sendMessage#0;class#Emailsend#0" />
-                <element signature="method#displayMessage#0;class#Emailsend#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="65" column="41" selection-start-line="65" selection-start-column="41" selection-end-line="65" selection-end-column="41" />
-            </state>
-          </provider>
-          <provider editor-type-id="android-manifest" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -111,29 +65,21 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_maincam.xml">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/services/APictureCapturingService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="901">
-              <caret line="53" column="29" selection-start-line="53" selection-start-column="29" selection-end-line="53" selection-end-column="29" />
+            <state>
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
-          <provider editor-type-id="android-designer2" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/activities/MainActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="52">
-              <caret line="26" column="22" selection-start-line="26" selection-start-column="22" selection-end-line="26" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/VOTEFINAL.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="348">
-              <caret line="233" column="8" selection-start-line="233" selection-start-column="8" selection-end-line="233" selection-end-column="8" />
+            <state relative-caret-position="450">
+              <caret line="246" column="25" lean-forward="true" selection-start-line="242" selection-start-column="7" selection-end-line="246" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#setImage#0;class#Allfamilyviewholder#0;class#VOTEFINAL#0" />
@@ -144,13 +90,29 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/services/APictureCapturingService.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/SnapActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="217">
-              <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="24">
+              <caret line="123" column="8" selection-start-line="123" selection-start-column="8" selection-end-line="123" selection-end-column="69" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="64" column="50" selection-start-line="64" selection-start-column="50" selection-end-line="64" selection-end-column="50" />
+            </state>
+          </provider>
+          <provider editor-type-id="android-manifest" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/ChoicePortal.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="24">
+              <caret line="127" column="100" selection-start-line="127" selection-start-column="100" selection-end-line="127" selection-end-column="100" />
             </state>
           </provider>
         </entry>
@@ -166,27 +128,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>bitm</find>
-      <find>filepat</find>
-      <find>addda</find>
-      <find>emailpa</find>
-      <find>Main</find>
-      <find>setx</find>
-      <find>Random</find>
-      <find>Mail</find>
-      <find>emailp</find>
-      <find>vote</find>
-      <find>VOTE</find>
-      <find>Han</find>
-      <find>Cannot</find>
-      <find>Demo</find>
-      <find>forgo</find>
-      <find>gpt</find>
-      <find>pin</find>
-      <find>forg</find>
-      <find>Cam</find>
-      <find>mI</find>
-      <find>email</find>
       <find>onRe</find>
       <find>onReq</find>
       <find>para</find>
@@ -195,7 +136,28 @@
       <find>Fine</find>
       <find>Fin</find>
       <find>Intent</find>
+      <find>CamMainActivity</find>
+      <find>votes</find>
+      <find>check</find>
+      <find>requiredPermissions</find>
       <find>send</find>
+      <find>uplo</find>
+      <find>result</find>
+      <find>MainAc</find>
+      <find>MainActivity</find>
+      <find>.jpg</find>
+      <find>5</find>
+      <find>picture s</find>
+      <find>Rotation</find>
+      <find>rota</find>
+      <find>mIma</find>
+      <find>Progr</find>
+      <find>mProgressDi</find>
+      <find>MainActivity.java</find>
+      <find>download_url</find>
+      <find>MAin</find>
+      <find>Step6</find>
+      <find>Main</find>
     </findStrings>
   </component>
   <component name="GenerateSignedApkSettings">
@@ -210,7 +172,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/READSQL.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/newcustom_layout2.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_cam.xml" />
@@ -254,13 +215,14 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/sample/DemoCamFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/sample/DemoCamActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/sample/CamMainActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/services/APictureCapturingService.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_maincam.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/activities/MainActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/services/PictureCapturingServiceImpl.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/VOTEFINAL.java" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/ChoicePortal.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/activities/MainActivity.java" />
       </list>
     </option>
   </component>
@@ -322,7 +284,23 @@
             <path>
               <item name="VOTE" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="votenew" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="activities" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="VOTE" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="votenew" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="listeners" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="VOTE" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="votenew" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="services" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="VOTE" type="1abcf292:AndroidViewProjectNode" />
@@ -340,7 +318,7 @@
     <property name="ExportApk.SignV1" value="true" />
     <property name="ExportApk.SignV2" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/android-sdk" />
-    <property name="device.picker.selection" value="Pixel_2_API_28" />
+    <property name="device.picker.selection" value="85ZSY9HEHIZLGEFI" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../android-camera2-secret-picture-taker-master" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
@@ -527,9 +505,9 @@
       <window_info id="Structure" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Build" order="0" sideWeight="0.4986577" weight="0.6913408" />
       <window_info anchor="bottom" id="Run" order="1" sideWeight="0.49932885" weight="0.32960895" />
-      <window_info anchor="bottom" id="Logcat" order="2" sideWeight="0.4986577" weight="0.7639665" />
+      <window_info anchor="bottom" id="Logcat" order="2" sideWeight="0.4966443" weight="0.7639665" />
       <window_info anchor="bottom" id="Android Profiler" order="3" weight="0.32960895" />
-      <window_info anchor="bottom" id="Event Log" order="4" sideWeight="0.5013423" side_tool="true" weight="0.71927375" />
+      <window_info anchor="bottom" id="Event Log" order="4" sideWeight="0.5033557" side_tool="true" weight="0.7639665" />
       <window_info anchor="bottom" id="RNConsole" order="5" />
       <window_info anchor="bottom" id="Flutter Performance" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="7" />
@@ -583,32 +561,6 @@
     </layout-to-restore>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/Result.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_votefinal.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" selection-start-line="13" selection-end-line="13" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/newcustom_layout4.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="782">
-          <caret line="46" column="16" selection-start-line="46" selection-start-column="16" selection-end-line="46" selection-end-column="16" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/shape4.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="8" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/dupcheck.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -715,13 +667,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/SnapActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5151">
-          <caret line="357" column="3" selection-start-line="355" selection-start-column="3" selection-end-line="357" selection-end-column="3" />
         </state>
       </provider>
     </entry>
@@ -873,25 +818,41 @@
       </provider>
       <provider editor-type-id="android-designer2" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/EnterPintoVote.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/services/PictureCapturingServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="180" column="11" selection-start-line="180" selection-start-column="11" selection-end-line="180" selection-end-column="11" />
+        <state relative-caret-position="217">
+          <caret line="51" column="13" selection-start-line="51" selection-start-column="13" selection-end-line="51" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_result2.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/ResultActivity.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="65" column="41" selection-start-line="65" selection-start-column="41" selection-end-line="65" selection-end-column="41" />
+        <state relative-caret-position="260">
+          <caret line="152" column="5" lean-forward="true" selection-start-line="152" selection-start-column="5" selection-end-line="152" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#counter#0;class#MainActivity#0" />
+            <element signature="method#counter3f#0;class#MainActivity#0" />
+            <element signature="method#counter3s#0;class#MainActivity#0" />
+            <element signature="method#counter3t#0;class#MainActivity#0" />
+          </folding>
         </state>
       </provider>
-      <provider editor-type-id="android-manifest" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/listeners/PictureCapturingListener.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/FingerActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+        <state relative-caret-position="189">
+          <caret line="71" column="43" selection-start-line="71" selection-start-column="43" selection-end-line="71" selection-end-column="43" />
         </state>
       </provider>
     </entry>
@@ -903,54 +864,72 @@
       </provider>
       <provider editor-type-id="android-designer2" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/MainActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/EnterPintoVote.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="43">
-          <caret line="24" selection-start-line="24" selection-end-line="24" />
-          <folding>
-            <element signature="method#counter#0;class#MainActivity#0" />
-            <element signature="method#counter3f#0;class#MainActivity#0" />
-            <element signature="method#counter3s#0;class#MainActivity#0" />
-            <element signature="method#counter3t#0;class#MainActivity#0" />
-          </folding>
+        <state relative-caret-position="160">
+          <caret line="180" column="11" selection-start-line="180" selection-start-column="11" selection-end-line="180" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/listeners/PictureCapturingListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/services/APictureCapturingService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
+        <state>
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/services/PictureCapturingServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="51" column="13" selection-start-line="51" selection-start-column="13" selection-end-line="51" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="255">
+          <caret line="64" column="50" selection-start-line="64" selection-start-column="50" selection-end-line="64" selection-end-column="50" />
         </state>
       </provider>
+      <provider editor-type-id="android-manifest" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/activities/MainActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/SnapActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="52">
-          <caret line="26" column="22" selection-start-line="26" selection-start-column="22" selection-end-line="26" selection-end-column="22" />
+        <state relative-caret-position="24">
+          <caret line="123" column="8" selection-start-line="123" selection-start-column="8" selection-end-line="123" selection-end-column="69" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/VOTEFINAL.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="233" column="8" selection-start-line="233" selection-start-column="8" selection-end-line="233" selection-end-column="8" />
+        <state relative-caret-position="450">
+          <caret line="246" column="25" lean-forward="true" selection-start-line="242" selection-start-column="7" selection-end-line="246" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#setImage#0;class#Allfamilyviewholder#0;class#VOTEFINAL#0" />
             <element signature="method#setPartyimg#0;class#Allfamilyviewholder#0;class#VOTEFINAL#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/ChoicePortal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="24">
+          <caret line="127" column="100" selection-start-line="127" selection-start-column="100" selection-end-line="127" selection-end-column="100" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/activities/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="108" column="8" selection-start-line="108" selection-start-column="8" selection-end-line="108" selection-end-column="8" />
+          <folding>
+            <element signature="e#6727#6978#0" />
+            <element signature="e#7952#10570#0" expanded="true" />
+            <element signature="e#9985#10601#1" />
+            <element signature="e#10569#10570#0" expanded="true" />
           </folding>
         </state>
       </provider>
