@@ -14,6 +14,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="66fc0cab-2188-4d58-a818-adc887e831b8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/MainActivity.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,18 +35,41 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
-              <caret line="782" column="32" lean-forward="true" selection-start-line="782" selection-start-column="32" selection-end-line="782" selection-end-column="32" />
+            <state relative-caret-position="178">
+              <caret line="407" column="72" selection-start-line="407" selection-start-column="72" selection-end-line="407" selection-end-column="72" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2840#3125#0" expanded="true" />
-                <element signature="e#3124#3125#0" expanded="true" />
+                <element signature="e#2840#3069#0" expanded="true" />
+                <element signature="e#3068#3069#0" expanded="true" />
                 <element signature="e#7095#8952#0" />
-                <element signature="e#11632#14575#0" />
-                <element signature="e#14580#17548#0" />
-                <element signature="e#17553#20635#0" />
+                <element signature="e#10639#10877#0" expanded="true" />
+                <element signature="e#10876#10877#0" expanded="true" />
                 <element signature="e#25259#26979#0" />
+                <element signature="method#counterdiffclick#0;class#Allfamilyviewholder#0;class#MainActivity#0" />
+                <element signature="e#33071#33993#0" />
+                <element signature="e#33998#35526#0" />
+                <element signature="e#35532#35765#0" />
+                <element signature="e#35771#36232#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_fam.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="203">
+              <caret line="169" column="8" selection-start-line="169" selection-start-column="8" selection-end-line="169" selection-end-column="8" />
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer2" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/allfamily.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -65,7 +89,7 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/ChoicePortal.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="313">
-              <caret line="142" lean-forward="true" selection-start-line="142" selection-end-line="142" />
+              <caret line="142" selection-start-line="142" selection-end-line="142" />
             </state>
           </provider>
         </entry>
@@ -124,15 +148,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>picture s</find>
-      <find>Rotation</find>
-      <find>rota</find>
-      <find>mIma</find>
-      <find>mProgressDi</find>
-      <find>MainActivity.java</find>
-      <find>download_url</find>
-      <find>MAin</find>
-      <find>Step6</find>
       <find>uploadi</find>
       <find>Progr</find>
       <find>mProgressDialog</find>
@@ -146,7 +161,6 @@
       <find>Fireba</find>
       <find>2</find>
       <find>onS</find>
-      <find>Result.java</find>
       <find>showDia</find>
       <find>Intent</find>
       <find>Party</find>
@@ -154,6 +168,16 @@
       <find>Main</find>
       <find>WAIT</find>
       <find>str</find>
+      <find>showdia</find>
+      <find>setth</find>
+      <find>Sorry</find>
+      <find>model.getSlot</find>
+      <find>milliseconds</find>
+      <find>milli</find>
+      <find>starttime</find>
+      <find>Result.java</find>
+      <find>show</find>
+      <find>START</find>
     </findStrings>
   </component>
   <component name="GenerateSignedApkSettings">
@@ -479,13 +503,13 @@
       <window_info id="Build Variants" order="2" side_tool="true" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Capture Tool" order="4" />
-      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.3295302" />
+      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.3295302" />
       <window_info id="Resources Explorer" order="6" />
       <window_info id="Favorites" order="7" side_tool="true" />
       <window_info id="Structure" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Build" order="0" sideWeight="0.4986577" weight="0.6913408" />
       <window_info anchor="bottom" id="Run" order="1" sideWeight="0.49932885" weight="0.32960895" />
-      <window_info anchor="bottom" id="Logcat" order="2" sideWeight="0.4966443" weight="0.7639665" />
+      <window_info anchor="bottom" id="Logcat" order="2" sideWeight="0.4966443" weight="0.7360335" />
       <window_info anchor="bottom" id="Android Profiler" order="3" weight="0.32960895" />
       <window_info anchor="bottom" id="Event Log" order="4" sideWeight="0.5033557" side_tool="true" weight="0.7639665" />
       <window_info anchor="bottom" id="RNConsole" order="5" />
@@ -541,22 +565,6 @@
     </layout-to-restore>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_fam.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2533">
-          <caret line="149" column="39" selection-start-line="149" selection-start-column="39" selection-end-line="149" selection-end-column="39" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_choice_portal.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1785">
-          <caret line="105" column="36" selection-start-line="105" selection-start-column="36" selection-end-line="105" selection-end-column="36" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/hiddencamera/build.gradle" />
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/cam/CamMainActivity.java" />
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/cam/CameraPreview.java" />
@@ -898,23 +906,42 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/ChoicePortal.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="313">
-          <caret line="142" lean-forward="true" selection-start-line="142" selection-end-line="142" />
+          <caret line="142" selection-start-line="142" selection-end-line="142" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/allfamily.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_fam.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="169" column="8" selection-start-line="169" selection-start-column="8" selection-end-line="169" selection-end-column="8" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="782" column="32" lean-forward="true" selection-start-line="782" selection-start-column="32" selection-end-line="782" selection-end-column="32" />
+        <state relative-caret-position="178">
+          <caret line="407" column="72" selection-start-line="407" selection-start-column="72" selection-end-line="407" selection-end-column="72" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2840#3125#0" expanded="true" />
-            <element signature="e#3124#3125#0" expanded="true" />
+            <element signature="e#2840#3069#0" expanded="true" />
+            <element signature="e#3068#3069#0" expanded="true" />
             <element signature="e#7095#8952#0" />
-            <element signature="e#11632#14575#0" />
-            <element signature="e#14580#17548#0" />
-            <element signature="e#17553#20635#0" />
+            <element signature="e#10639#10877#0" expanded="true" />
+            <element signature="e#10876#10877#0" expanded="true" />
             <element signature="e#25259#26979#0" />
+            <element signature="method#counterdiffclick#0;class#Allfamilyviewholder#0;class#MainActivity#0" />
+            <element signature="e#33071#33993#0" />
+            <element signature="e#33998#35526#0" />
+            <element signature="e#35532#35765#0" />
+            <element signature="e#35771#36232#0" />
           </folding>
         </state>
       </provider>
