@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -60,14 +61,13 @@ public class Regwithaadhaar extends AppCompatActivity {
                         Toast.makeText(Regwithaadhaar.this, "Sorry Please Provide Proper Aadhaar Number", Toast.LENGTH_SHORT).show();
                     }else{
                         Toast.makeText(Regwithaadhaar.this, "Verified Aadhaar Number", Toast.LENGTH_SHORT).show();
-                        findDupUser3(aadhaar);
-                        try {
-                            sleep(50);
-                        } catch (InterruptedException e1) {
-                            e1.printStackTrace();
-                        }finally {
+                        if(findDupUser3(aadhaar)!=0){
                             showDialog(Regwithaadhaar.this);
+                        }else{
+                            Toast.makeText(Regwithaadhaar.this, "Sorry you are already registered", Toast.LENGTH_SHORT).show();
                         }
+
+
                         //scan.setEnabled(true);
                     }
                 }else{
@@ -118,61 +118,37 @@ public class Regwithaadhaar extends AppCompatActivity {
         dialog.show();
     }
 
-    public void findDupUser3(final String name){
-        final int[] check = {0};
+    public int findDupUser3(final String name){
+        final int[] check3 = {0};
         String emailpartwithout[] =email.split("@",2);
+        FirebaseUser current_user = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = current_user.getUid();
 
         mUserDatabase=FirebaseDatabase.getInstance().getReference().child("voters");
-
-        mUserDatabase.addChildEventListener(new ChildEventListener() {
+        mUserDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                    dupcheck admin = dataSnapshot.getValue(dupcheck.class); // pojo
-
-                    if(!admin.getAadhaar().equals(name)) {
-                        checkfinaluser[0] =1;
-                        try {
-                            sleep(20);
-                        } catch (InterruptedException e1) {
-                            e1.printStackTrace();
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot userSnapshot: dataSnapshot.getChildren()){
+                    if(userSnapshot.exists()){
+                    dupcheck admin = userSnapshot.getValue(dupcheck.class);
+                        if (admin != null) {
+                            if(admin.getAadhaar().equals(name)) {
+                                check3[0]=1;
+                            }else{
+                                check3[0]=0;
+                            }
                         }
-
-                        Toast.makeText(Regwithaadhaar.this, "USER NEW", Toast.LENGTH_SHORT).show();
-                        done = 0;
-                        Toast.makeText(Regwithaadhaar.this, "RUnning", Toast.LENGTH_SHORT).show();
-                       // showDialog(Regwithaadhaar.this);
-
-                    }
-                    else{
-                        done=1;
-                        Toast.makeText(Regwithaadhaar.this, "USER DUP", Toast.LENGTH_SHORT).show();
-                    }
-
-            }
-
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-            }
-
+                    }else{
+                        check3[0]=0;
+                    }}
+                }
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
             }
         });
-
+        Toast.makeText(this, "CHECK3="+check3[0], Toast.LENGTH_SHORT).show();
+return check3[0];
     }
     public void findDupUser2(final String name){
 

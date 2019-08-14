@@ -43,7 +43,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Result"></activity>
+        <activity android:name=".Emailsend"/>
+        <activity
+            android:name=".sample.CamMainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Result"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".CamActivity"
             android:screenOrientation="portrait" />
@@ -102,11 +108,8 @@
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.codefundo.votenew"
             android:exported="false"
-            android:grantUriPermissions="true">
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/provider_paths" />
-        </provider>
+            android:grantUriPermissions="true"
+            tools:replace="android:authorities"></provider>
     </application>
 
 </manifest>

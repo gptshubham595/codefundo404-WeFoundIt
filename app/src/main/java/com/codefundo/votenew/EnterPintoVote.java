@@ -127,7 +127,7 @@ public class EnterPintoVote extends AppCompatActivity {
                 if(!actualemail.equals(email.getText().toString())){email.setError("INVALID EMAIL");}
                 if(!finalpin.equals(pin_et.getText().toString())){pin_et.setError("INVALID PIN");}
                 if(finalpin.equals(pin_et.getText().toString()) && actualemail.equals(email.getText().toString())){
-                    Intent i =new Intent(getApplicationContext(),VOTEFINAL.class);
+                    Intent i =new Intent(getApplicationContext(),Emailsend.class);
                     i.putExtra("aadhaar",aadhaar);
                     i.putExtra("email",email.getText().toString());
                     startActivity(i);

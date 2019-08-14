@@ -191,7 +191,7 @@ public class SnapActivity extends AppCompatActivity {
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
 
             if (resultCode == RESULT_OK) {
-                Toast.makeText(this, "Step 1", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "Step 1", Toast.LENGTH_SHORT).show();
 
                 mProgressDialog = new ProgressDialog(SnapActivity.this);
                 mProgressDialog.setTitle("Uploading Image...");

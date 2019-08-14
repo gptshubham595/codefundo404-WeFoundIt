@@ -23,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.codefundo.votenew.sample.CamMainActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -561,6 +562,16 @@ public class MainActivity extends AppCompatActivity {
                 final String sec=counter3s(model.getSlotstart(),model.getSlotend());
                 final String t[]=counter3t(model.getSlotstart(),model.getSlotend());
                 viewHolder.setthis(min,sec,t[0]);
+                String str = Arrays.toString(new String[]{t[0]});
+                str=str.replaceAll("\\[", "").replaceAll("\\]","");
+                if(str.equals("WAIT") || str.equals("OVER") ) {
+                    viewHolder.setx(str);
+                   // Toast.makeText(MainActivity.this, "SORRY wait or its over", Toast.LENGTH_SHORT).show();
+                }
+                viewHolder.setthis(min,sec,t[0]);
+                viewHolder.setthis(min,sec,t[0]);
+
+
                 //final Long minstart=Long.parseLong(countermin(model.getSlotend()))-Long.parseLong(countermin(model.getSlotstart()));
                 //final Long currentsecstart=Long.parseLong(countersec(model.getSlotend()));
                 //final Long currentsecend=Long.parseLong(countersec(model.getSlotstart()));
@@ -578,17 +589,19 @@ public class MainActivity extends AppCompatActivity {
                 viewHolder.mview.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+
                         viewHolder.setthis(min,sec,t[0]);
                         String str = Arrays.toString(new String[]{t[0]});
                         str=str.replaceAll("\\[", "").replaceAll("\\]","");
                         if(str.equals("WAIT") || str.equals("OVER") ) {
+                            viewHolder.setx(str);
                             Toast.makeText(MainActivity.this, "SORRY wait or its over", Toast.LENGTH_SHORT).show();
                         }
                         else{Toast.makeText(MainActivity.this, str, Toast.LENGTH_SHORT).show();
                             showDialog(MainActivity.this,model.getEmail(),model.getAadhaar());}
 
 
-
+                        showDialog(MainActivity.this,model.getEmail(),model.getAadhaar());
                       //  showDialog(MainActivity.this,model.getEmail(),model.getAadhaar(),minstart,secstart);
                       //  viewHolder.setthis(minstart,secstart,currentsecstart,currentsecend);
 
@@ -734,6 +747,15 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
+        public void setx(String str) {
+            AppCompatTextView minleft =  mview.findViewById(R.id.minleft);
+            AppCompatTextView secleft =  mview.findViewById(R.id.secleft);
+            AppCompatTextView time =  mview.findViewById(R.id.time);
+            minleft.setText("XX");
+            time.setText(str);
+            secleft.setText("XX");
+        }
+
 /*        public void setthis(Long min1, Long sec1, Long currentsecend, Long  currentsecstart) {
             Toast.makeText(mview.getContext(), "SETTING  GOT MIN="+min1, Toast.LENGTH_SHORT).show();
             String min=min1+"";
@@ -856,7 +878,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void voteit(String aadhaar,String email) {
-        Intent i =new Intent(getApplicationContext(),EnterPintoVote.class);
+        Intent i =new Intent(getApplicationContext(), EnterPintoVote.class);
         i.putExtra("aadhaar",aadhaar);
         i.putExtra("email",email);
         startActivity(i);

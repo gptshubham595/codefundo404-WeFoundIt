@@ -20,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.codefundo.votenew.sample.CamMainActivity;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -236,7 +237,7 @@ allpoliticalparty.setValue(""+votes[0]).addOnCompleteListener(new OnCompleteList
         allpoliticalparty.setValue("YES");
 
         Toast.makeText(VOTEFINAL.this, "You have Voted!!", Toast.LENGTH_SHORT).show();
-        Intent i =new Intent(getApplicationContext(),MainActivity.class);
+        Intent i =new Intent(getApplicationContext(), CamMainActivity.class);
         i.putExtra("email",email);
         i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(i);
