@@ -10,6 +10,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.util.Log;
@@ -26,6 +27,7 @@ import com.codefundo.votenew.activities.MainActivity;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -37,6 +39,9 @@ import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
 import java.util.Arrays;
+
+import javax.mail.AuthenticationFailedException;
+import javax.mail.MessagingException;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -253,6 +258,7 @@ public void voteit(String party){
                 DatabaseReference allpoliticalparty2= FirebaseDatabase.getInstance().getReference().child("Users").child(emailpartwithout[0]).child("familymember").child(aadhaar).child("voted");
                 allpoliticalparty2.setValue("YES");
                 Toast.makeText(VOTEFINAL.this, "You have Voted!!", Toast.LENGTH_SHORT).show();
+                sendMessage(email);
                 Intent i =new Intent(getApplicationContext(), MainActivity.class);
                 i.putExtra("email",email);
                 i.putExtra("aadhaar",aadhaar);
@@ -283,4 +289,62 @@ public void voteit(String party){
         allpoliticalparty.setValue(time+"");
 
     }
+    private void sendMessage(String email1) {
+        String rec="gptshubham595@gmail.com";
+        String str[]=email1.split(" ");
+        String user="vote4usiitg@gmail.com";
+        String pass="iitg00000000";
+
+        SendEmailAsyncTask3 email = new SendEmailAsyncTask3();
+        email.activity = this;
+        email.m = new Mail(user, pass);
+        email.m.set_from(user);
+        email.m.setBody(aadhaar+": YOU HAVE VOTED");
+        email.m.set_to(str);
+        email.m.set_subject("VOTE4US Registeration Success!!");
+        email.execute();
+    }
+
+    public void displayMessage(String message) {
+        Snackbar.make(findViewById(R.id.fab), message, Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show();
+    }
+
+
+}
+
+class SendEmailAsyncTask3 extends AsyncTask<Void, Void, Boolean> {
+    Mail m;
+    VOTEFINAL activity;
+
+    public SendEmailAsyncTask3() {}
+
+    @Override
+    protected Boolean doInBackground(Void... params) {
+        try {
+            if (m.send()) {
+                activity.displayMessage("Email sent.");
+
+            } else {
+                activity.displayMessage("Email failed to send.");
+            }
+
+            return true;
+        } catch (AuthenticationFailedException e) {
+            Log.e(SendEmailAsyncTask.class.getName(), "Bad account details");
+            e.printStackTrace();
+            activity.displayMessage("Authentication failed.");
+            return false;
+        } catch (MessagingException e) {
+            Log.e(SendEmailAsyncTask.class.getName(), "Email failed");
+            e.printStackTrace();
+            activity.displayMessage("Email failed to send.");
+            return false;
+        } catch (Exception e) {
+            e.printStackTrace();
+            activity.displayMessage("Unexpected error occured.");
+            return false;
+        }
+    }
+
 }

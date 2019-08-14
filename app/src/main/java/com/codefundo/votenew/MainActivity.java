@@ -419,7 +419,7 @@ public class MainActivity extends AppCompatActivity {
             Long diffcurr2=   millisecondsend-System.currentTimeMillis();
 
             if(millisecondsstart[0]>=System.currentTimeMillis() && System.currentTimeMillis()<=millisecondsend){
-                Toast.makeText(mview.getContext(), "YES NOW VOTE", Toast.LENGTH_SHORT).show();
+             //   Toast.makeText(mview.getContext(), "YES NOW VOTE", Toast.LENGTH_SHORT).show();
                 new CountDownTimer(millisecondsend, 1000) {
                     @Override
                     public void onTick(long millisUntilFinished) {
@@ -447,7 +447,7 @@ public class MainActivity extends AppCompatActivity {
                         if(minleft.getText().toString().trim().equals("0")&&secleft.getText().toString().trim().equals("0")) {
                             onFinish();
                         }   if(!minleft.getText().toString().trim().equals("XX"))
-                            if(Integer.parseInt(minleft.getText().toString().trim())>35){
+                            if(Integer.parseInt(minleft.getText().toString().trim())>35 && Integer.parseInt(secleft.getText().toString().trim())>0){
                                 onFinish();
                             }
 
@@ -535,7 +535,7 @@ public class MainActivity extends AppCompatActivity {
                 return 0;
                 }
                 if(!minleft.getText().toString().trim().equals("XX"))
-                    if(Integer.parseInt(minleft.getText().toString().trim())>35){
+                    if(Integer.parseInt(minleft.getText().toString().trim())>35 && Integer.parseInt(secleft.getText().toString().trim())>0 ){
                 return 0 ;
                     }
 

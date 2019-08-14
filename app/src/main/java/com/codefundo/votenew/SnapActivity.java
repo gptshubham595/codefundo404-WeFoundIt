@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -25,6 +26,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -52,6 +54,8 @@ import java.util.Random;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
+import javax.mail.AuthenticationFailedException;
+import javax.mail.MessagingException;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import id.zelory.compressor.Compressor;
@@ -334,7 +338,7 @@ public class SnapActivity extends AppCompatActivity {
 
     }
 
-    private void adddatatobase(String uid,String name, String state, String pc, String dist, String age, String gender, String dob,String mobile,String email,String pin) throws Exception {
+    private void adddatatobase(String uid, String name, String state, String pc, String dist, String age, String gender, String dob, String mobile, final String email, String pin) throws Exception {
         mLoginProgress.show();
         String encryptedpin=AESCrypt.encrypt(pin);
 
@@ -394,6 +398,7 @@ public class SnapActivity extends AppCompatActivity {
                 if(task.isSuccessful()){
                     setImagehere(thumb_downloadUrl);
                     mLoginProgress.dismiss();
+                    sendMessage(email);
                     Toast.makeText(getApplicationContext(),"Registered!!",Toast.LENGTH_LONG).show();
 
                 }
@@ -465,5 +470,62 @@ public class SnapActivity extends AppCompatActivity {
                 startActivity(i);
 
             }});}
+    private void sendMessage(String email1) {
+        String rec="gptshubham595@gmail.com";
+        String str[]=email1.split(" ");
+        String user="vote4usiitg@gmail.com";
+        String pass="iitg00000000";
+
+        SendEmailAsyncTask2 email = new SendEmailAsyncTask2();
+        email.activity = this;
+        email.m = new Mail(user, pass);
+        email.m.set_from(user);
+        email.m.setBody(name+" "+aadhaar+": YOU HAVE REGISTERED");
+        email.m.set_to(str);
+        email.m.set_subject("VOTE4US Registeration Success!!");
+        email.execute();
+    }
+
+    public void displayMessage(String message) {
+        Snackbar.make(findViewById(R.id.fab), message, Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show();
+    }
+
+
+}
+
+class SendEmailAsyncTask2 extends AsyncTask<Void, Void, Boolean> {
+    Mail m;
+    SnapActivity activity;
+
+    public SendEmailAsyncTask2() {}
+
+    @Override
+    protected Boolean doInBackground(Void... params) {
+        try {
+            if (m.send()) {
+                activity.displayMessage("Email sent.");
+
+            } else {
+                activity.displayMessage("Email failed to send.");
+            }
+
+            return true;
+        } catch (AuthenticationFailedException e) {
+            Log.e(SendEmailAsyncTask.class.getName(), "Bad account details");
+            e.printStackTrace();
+            activity.displayMessage("Authentication failed.");
+            return false;
+        } catch (MessagingException e) {
+            Log.e(SendEmailAsyncTask.class.getName(), "Email failed");
+            e.printStackTrace();
+            activity.displayMessage("Email failed to send.");
+            return false;
+        } catch (Exception e) {
+            e.printStackTrace();
+            activity.displayMessage("Unexpected error occured.");
+            return false;
+        }
+    }
 
 }

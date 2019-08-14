@@ -16,6 +16,9 @@
         android:layout_height="40dp"
         android:layout_centerHorizontal="true"
         android:layout_margin="30dp"
+        android:textColor="#ffffff"
+        android:padding="5dp"
+        android:background="@android:color/holo_red_dark"
         android:text="Click here to SCAN"
         android:id="@+id/scan_btn"/>
     <RelativeLayout
@@ -170,9 +173,11 @@
     <EditText
         android:textSize="12sp"
         android:id="@+id/number"
+        android:layout_margin="2dp"
         android:inputType="number"
         android:layout_gravity="center"
         android:gravity="center"
+        android:background="@drawable/shape3"
         android:textColor="#000000"
         android:textStyle="bold"
         android:hint="Enter mobile Number"
@@ -186,7 +191,9 @@
         android:id="@+id/email"
         android:inputType="textEmailAddress"
         android:layout_gravity="center"
+        android:background="@drawable/shape3"
         android:gravity="center"
+        android:layout_margin="2dp"
         android:textColor="#000000"
         android:textStyle="bold"
         android:hint="Enter Email Id"
@@ -195,12 +202,15 @@
         android:layout_height="45dp" />
     <EditText
         android:textSize="12sp"
+        android:background="@drawable/shape4"
         android:id="@+id/pin"
         android:inputType="numberPassword"
         android:layout_gravity="center"
         android:gravity="center"
-        android:textColor="#000000"
+        android:textColor="#ffffff"
+        android:layout_margin="2dp"
         android:textStyle="bold"
+        android:textColorHint="#ffffff"
         android:hint="Enter Your 4 digit SECURE PIN"
         android:typeface="serif"
         android:maxLength="4"
@@ -215,6 +225,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/lin"
+        android:layout_marginTop="6dp"
         android:text="(1/2) Next Step"
         android:background="@android:color/holo_green_light"
         android:id="@+id/btn"/>

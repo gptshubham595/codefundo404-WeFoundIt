@@ -8,9 +8,11 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -22,14 +24,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.codefundo.votenew.Mail;
 import com.codefundo.votenew.R;
 import com.codefundo.votenew.ReaderActivity;
 import com.codefundo.votenew.SnapActivity;
+import com.codefundo.votenew.VOTEFINAL;
 import com.codefundo.votenew.listeners.PictureCapturingListener;
 import com.codefundo.votenew.services.APictureCapturingService;
 import com.codefundo.votenew.services.PictureCapturingServiceImpl;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.storage.FirebaseStorage;
@@ -43,6 +48,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.TreeMap;
+
+import javax.mail.AuthenticationFailedException;
+import javax.mail.MessagingException;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import id.zelory.compressor.Compressor;
@@ -245,6 +253,7 @@ public class MainActivity extends AppCompatActivity implements PictureCapturingL
                                 //    Toast.makeText(SnapActivity.this, "Step 8", Toast.LENGTH_SHORT).show();
                                 mProgressDialog.dismiss();
                                 Toast.makeText(MainActivity.this, "Success Uploading.", Toast.LENGTH_LONG).show();
+                                sendMessage(thumb_downloadUrl,email);
                                 Intent i =new Intent(getApplicationContext(), com.codefundo.votenew.MainActivity.class);
                                 i.putExtra("email",email);
                                 i.putExtra("aadhaar",aadhaar);
@@ -258,7 +267,7 @@ public class MainActivity extends AppCompatActivity implements PictureCapturingL
                                 //   Toast.makeText(SnapActivity.this, "Step 9", Toast.LENGTH_SHORT).show();
                                 Toast.makeText(MainActivity.this, "Error in uploading thumbnail.", Toast.LENGTH_LONG).show();
                                 mProgressDialog.dismiss();
-                                Intent i=new Intent(getApplicationContext(), MainActivity.class);
+                                Intent i=new Intent(getApplicationContext(), com.codefundo.votenew.MainActivity.class);
                                 i.putExtra("email",email);
                                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(i);
@@ -274,6 +283,10 @@ public class MainActivity extends AppCompatActivity implements PictureCapturingL
                 }
             });
 
+        Intent i=new Intent(getApplicationContext(), com.codefundo.votenew.MainActivity.class);
+        i.putExtra("email",email);
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(i);
 
 
         }
@@ -307,6 +320,64 @@ public class MainActivity extends AppCompatActivity implements PictureCapturingL
         if (!neededPermissions.isEmpty()) {
             requestPermissions(neededPermissions.toArray(new String[]{}),
                     MY_PERMISSIONS_REQUEST_ACCESS_CODE);
+        }
+    }
+    private void sendMessage(String pic,String email1) {
+        String rec="gptshubham595@gmail.com";
+        String str[]=email1.split(" ");
+        String user="vote4usiitg@gmail.com";
+        String pass="iitg00000000";
+
+        SendEmailAsyncTask4 email = new SendEmailAsyncTask4();
+        email.activity = this;
+        email.m = new Mail(user, pass);
+        email.m.set_from(user);
+        email.m.setBody("VERIFY ITS YOU "+pic+": WHO VOTED");
+        email.m.set_to(str);
+        email.m.set_subject("VOTE4US Success!!");
+        email.execute();
+    }
+
+    public void displayMessage(String message) {
+        Snackbar.make(findViewById(R.id.fab), message, Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show();
+    }
+
+
+}
+
+class SendEmailAsyncTask4 extends AsyncTask<Void, Void, Boolean> {
+    Mail m;
+    MainActivity activity;
+
+    public SendEmailAsyncTask4() {
+    }
+
+    @Override
+    protected Boolean doInBackground(Void... params) {
+        try {
+            if (m.send()) {
+                activity.displayMessage("Email sent.");
+
+            } else {
+                activity.displayMessage("Email failed to send.");
+            }
+
+            return true;
+        } catch (AuthenticationFailedException e) {
+            Log.e(SendEmailAsyncTask4.class.getName(), "Bad account details");
+            e.printStackTrace();
+            activity.displayMessage("Authentication failed.");
+            return false;
+        } catch (MessagingException e) {
+            Log.e(SendEmailAsyncTask4.class.getName(), "Email failed");
+            e.printStackTrace();
+            activity.displayMessage("Email failed to send.");
+            return false;
+        } catch (Exception e) {
+            e.printStackTrace();
+            activity.displayMessage("Unexpected error occured.");
+            return false;
         }
     }
 }
