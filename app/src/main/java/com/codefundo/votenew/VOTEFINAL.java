@@ -11,6 +11,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -39,12 +40,15 @@ import java.util.Arrays;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
+import static java.lang.Thread.sleep;
+
 public class VOTEFINAL extends AppCompatActivity {
     private FirebaseAuth mAuth;
     DatabaseReference allpoliticalparty;
     RecyclerView allfamilylist;
     String email="";
     String aadhaar="";
+    static int time=0;
     static int votes=0;
     
     @Override
@@ -170,12 +174,15 @@ public class VOTEFINAL extends AppCompatActivity {
             public void onClick(View v) {
                 dialog.cancel();
                 voteit(party);
+                changetime(party);
             }
         });
 
 
         dialog.show();
     }
+
+
     public void showDialog(Activity activity, final String party, final String name) {
         final Dialog dialog = new Dialog(activity);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -215,7 +222,7 @@ public class VOTEFINAL extends AppCompatActivity {
         dialog.show();
     }
 public void voteit(String party){
-
+    final int[] v = {0};
     final String emailpartwithout[] =email.split("@",2);
     //allpoliticalparty= FirebaseDatabase.getInstance().getReference().child("Users").child(emailpartwithout[0]).child("Party").child(party).child("votes");
     allpoliticalparty= FirebaseDatabase.getInstance().getReference().child("Party").child(party).child("votes");
@@ -223,7 +230,7 @@ public void voteit(String party){
         @Override
         public void onDataChange(DataSnapshot dataSnapshot) {
             String value = dataSnapshot.getValue(String.class);
-            votes =Integer.parseInt(value);
+            v[0] =Integer.parseInt(value);
 
         }
 
@@ -231,21 +238,49 @@ public void voteit(String party){
         public void onCancelled(DatabaseError error) {
         }
     });
-        votes=votes+1;
-    Toast.makeText(this, ""+votes, Toast.LENGTH_SHORT).show();
+
+    try {
+        sleep(1000);
+    } catch (InterruptedException e) {
+        e.printStackTrace();
+    }
+        votes=v[0]+1;
+        Toast.makeText(this, ""+votes, Toast.LENGTH_SHORT).show();
 
         allpoliticalparty.setValue(""+votes).addOnCompleteListener(new OnCompleteListener<Void>() {
-    @Override
-    public void onComplete(@NonNull Task<Void> task) {
-        DatabaseReference allpoliticalparty2= FirebaseDatabase.getInstance().getReference().child("Users").child(emailpartwithout[0]).child("familymember").child(aadhaar).child("voted");
-        allpoliticalparty2.setValue("YES");
-        Toast.makeText(VOTEFINAL.this, "You have Voted!!", Toast.LENGTH_SHORT).show();
-        Intent i =new Intent(getApplicationContext(), MainActivity.class);
-        i.putExtra("email",email);
-        i.putExtra("aadhaar",aadhaar);
-        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(i);
-    }
-});
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                DatabaseReference allpoliticalparty2= FirebaseDatabase.getInstance().getReference().child("Users").child(emailpartwithout[0]).child("familymember").child(aadhaar).child("voted");
+                allpoliticalparty2.setValue("YES");
+                Toast.makeText(VOTEFINAL.this, "You have Voted!!", Toast.LENGTH_SHORT).show();
+                Intent i =new Intent(getApplicationContext(), MainActivity.class);
+                i.putExtra("email",email);
+                i.putExtra("aadhaar",aadhaar);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(i);
+            }
+        });
+
+
 }
+
+    private void changetime(String party) {
+        final int[] v = {0};
+        DatabaseReference allpoliticalparty=FirebaseDatabase.getInstance().getReference().child("Party").child(party).child("time");
+        allpoliticalparty.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String value = dataSnapshot.getValue(String.class);
+                v[0] =Integer.parseInt(value);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+            }
+        });
+    time=v[0]-1;
+
+        allpoliticalparty.setValue(time+"");
+
+    }
 }

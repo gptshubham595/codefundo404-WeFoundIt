@@ -76,7 +76,13 @@ public class MainActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         swipe=findViewById(R.id.swipe);
-
+        findViewById(R.id.checkresult).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i= new Intent(getApplicationContext(),Result.class);
+                startActivity(i);
+            }
+        });
         email="";
         try{
             email=getIntent().getExtras().get("email").toString().toLowerCase();}catch (Exception e ){e.printStackTrace();}
@@ -654,6 +660,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+
     public  String getData(String email, final String yeard){
         final String[] value = new String[1];
         String emailpartwithout[] =email.split("@",2);
@@ -821,6 +829,7 @@ public class MainActivity extends AppCompatActivity {
         }*/
 
     }
+
     public void check(String email, String aadhaar){
 
         String emailpartwithout[] =email.split("@",2);

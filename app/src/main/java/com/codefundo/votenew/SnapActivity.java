@@ -56,6 +56,8 @@ import javax.crypto.spec.SecretKeySpec;
 import de.hdodenhof.circleimageview.CircleImageView;
 import id.zelory.compressor.Compressor;
 
+import static java.lang.Thread.sleep;
+
 public class SnapActivity extends AppCompatActivity {
 
     private ProgressDialog mLoginProgress;
@@ -79,6 +81,7 @@ public class SnapActivity extends AppCompatActivity {
     int fhour, fmin, shour, smin;
 
     private static final int GALLERY_PICK = 1;
+    static int counted=0;
 
     // Storage Firebase
     private StorageReference mImageStorage;
@@ -407,7 +410,6 @@ public class SnapActivity extends AppCompatActivity {
                 // whenever data at this location is updated.
                 String value = dataSnapshot.getValue(String.class);
                 count=Integer.parseInt((value));
-
             }
 
             @Override
@@ -415,9 +417,13 @@ public class SnapActivity extends AppCompatActivity {
                 // Failed to read value
             }
         });
-
-        count++;
-        myRef.setValue(""+count).addOnCompleteListener(new OnCompleteListener<Void>() {
+        try {
+            sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        counted=count+1;
+        myRef.setValue(""+counted).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
 

@@ -125,7 +125,7 @@ public class ChoicePortal extends AppCompatActivity {
                     mLoginProgress.dismiss();
 
                            if(mAuth.getCurrentUser().isEmailVerified()){
-                                Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
+                                Intent mainIntent = new Intent(getApplicationContext(), Result.class);
                                 mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 mainIntent.putExtra("email",emailpartwithout[0]);
                                 startActivity(mainIntent);

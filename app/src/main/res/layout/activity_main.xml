@@ -167,14 +167,26 @@
         android:layout_width="wrap_content"
         android:layout_below="@id/addfam"
         android:id="@+id/swipe"
+        android:layout_marginBottom="50dp"
         android:layout_height="wrap_content">
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_below="@id/addfam"
         android:background="#6BF7F3F3"
         android:id="@+id/recycler"
-        android:layout_margin="3dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
         android:layout_height="match_parent">
     </androidx.recyclerview.widget.RecyclerView>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:text="CHECK LIVE RESULTS"
+        android:layout_margin="8dp"
+        android:id="@+id/checkresult"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:background="@android:color/holo_blue_dark"
+        android:layout_alignParentBottom="true"
+        android:layout_height="wrap_content" />
 </RelativeLayout>
