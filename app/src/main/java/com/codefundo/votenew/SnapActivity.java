@@ -303,7 +303,7 @@ public class SnapActivity extends AppCompatActivity {
         String uid = current_user.getUid();
         mDatabase = FirebaseDatabase.getInstance().getReference().child("voters");
         HashMap<String, String> userMap = new HashMap<>();
-        userMap.put(uid, aadhaar);
+        userMap.put(aadhaar, aadhaar);
         mDatabase.setValue(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
