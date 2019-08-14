@@ -61,12 +61,7 @@ public class Regwithaadhaar extends AppCompatActivity {
                         Toast.makeText(Regwithaadhaar.this, "Sorry Please Provide Proper Aadhaar Number", Toast.LENGTH_SHORT).show();
                     }else{
                         Toast.makeText(Regwithaadhaar.this, "Verified Aadhaar Number", Toast.LENGTH_SHORT).show();
-                        if(findDupUser3(aadhaar)!=0){
-                            showDialog(Regwithaadhaar.this);
-                        }else{
-                            Toast.makeText(Regwithaadhaar.this, "Sorry you are already registered", Toast.LENGTH_SHORT).show();
-                        }
-
+                        findDupUser3(aadhaar);
 
                         //scan.setEnabled(true);
                     }
@@ -118,37 +113,52 @@ public class Regwithaadhaar extends AppCompatActivity {
         dialog.show();
     }
 
-    public int findDupUser3(final String name){
-        final int[] check3 = {0};
+    public void findDupUser3(final String name){
         String emailpartwithout[] =email.split("@",2);
         FirebaseUser current_user = FirebaseAuth.getInstance().getCurrentUser();
         String uid = current_user.getUid();
-
-        mUserDatabase=FirebaseDatabase.getInstance().getReference().child("voters");
-        mUserDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference().child("voters");
+        rootRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot userSnapshot: dataSnapshot.getChildren()){
-                    if(userSnapshot.exists()){
-                    dupcheck admin = userSnapshot.getValue(dupcheck.class);
-                        if (admin != null) {
-                            if(admin.getAadhaar().equals(name)) {
-                                check3[0]=1;
-                            }else{
-                                check3[0]=0;
-                            }
+            public void onDataChange(DataSnapshot snapshot) {
+                if (!snapshot.hasChild(name)) {
+                    Toast.makeText(Regwithaadhaar.this, "NEW!!", Toast.LENGTH_SHORT).show();
+                    //
+                    final Dialog dialog2 = new Dialog(Regwithaadhaar.this);
+                    dialog2.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                    dialog2.setCancelable(false);
+                    dialog2.setContentView(R.layout.newcustom_layout);
+                    dialog2.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+
+                    Button cancel = dialog2.findViewById(R.id.retry);
+                    cancel.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dialog2.cancel();
                         }
-                    }else{
-                        check3[0]=0;
-                    }}
+                    });
+                    Button ok = dialog2.findViewById(R.id.ok);
+                    ok.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dialog2.cancel();
+                            e.setEnabled(false);
+                            scan.setEnabled(true);
+                        }
+                    });
+
+                        dialog2.show();
+                    //
+                }else{
+                    Toast.makeText(Regwithaadhaar.this, "You are already registered!!", Toast.LENGTH_SHORT).show();
                 }
+            }
+
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
             }
         });
-        Toast.makeText(this, "CHECK3="+check3[0], Toast.LENGTH_SHORT).show();
-return check3[0];
     }
     public void findDupUser2(final String name){
 

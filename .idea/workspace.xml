@@ -11,11 +11,13 @@
   </component>
   <component name="BookmarkManager">
     <bookmark url="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/allfamily.java" line="81" />
+    <bookmark url="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/MainActivity.java" line="263" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="66fc0cab-2188-4d58-a818-adc887e831b8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/Regwithaadhaar.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/Regwithaadhaar.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,24 +34,39 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="178">
-              <caret line="407" column="72" selection-start-line="407" selection-start-column="72" selection-end-line="407" selection-end-column="72" />
+            <state relative-caret-position="306">
+              <caret line="454" selection-start-line="454" selection-end-line="454" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2840#3069#0" expanded="true" />
-                <element signature="e#3068#3069#0" expanded="true" />
+                <element signature="e#2933#3162#0" expanded="true" />
+                <element signature="e#3161#3162#0" expanded="true" />
                 <element signature="e#7095#8952#0" />
-                <element signature="e#10639#10877#0" expanded="true" />
-                <element signature="e#10876#10877#0" expanded="true" />
+                <element signature="e#10455#11129#0" expanded="true" />
+                <element signature="e#11128#11129#0" expanded="true" />
                 <element signature="e#25259#26979#0" />
-                <element signature="method#counterdiffclick#0;class#Allfamilyviewholder#0;class#MainActivity#0" />
                 <element signature="e#33071#33993#0" />
-                <element signature="e#33998#35526#0" />
                 <element signature="e#35532#35765#0" />
                 <element signature="e#35771#36232#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/Regwithaadhaar.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="249">
+              <caret line="124" column="44" lean-forward="true" selection-start-line="124" selection-start-column="44" selection-end-line="124" selection-end-column="44" />
+              <folding>
+                <element signature="e#4845#4994#0" expanded="true" />
+                <element signature="e#4993#4994#0" expanded="true" />
+                <element signature="e#5077#5302#0" expanded="true" />
+                <element signature="e#5301#5302#0" expanded="true" />
+                <element signature="method#findDupUser2#0;class#Regwithaadhaar#0" />
+                <element signature="method#finddupuser#0;class#Regwithaadhaar#0" />
               </folding>
             </state>
           </provider>
@@ -108,16 +125,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_res.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="325">
-              <caret line="84" column="52" selection-start-line="84" selection-start-column="52" selection-end-line="84" selection-end-column="52" />
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer2" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_result.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="493">
@@ -148,15 +155,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>uploadi</find>
-      <find>Progr</find>
-      <find>mProgressDialog</find>
-      <find>TOTAL</find>
-      <find>mPro</find>
-      <find>votes</find>
-      <find>count</find>
-      <find>ResultA</find>
-      <find>allfami</find>
       <find>Person</find>
       <find>Fireba</find>
       <find>2</find>
@@ -177,7 +175,16 @@
       <find>starttime</find>
       <find>Result.java</find>
       <find>show</find>
+      <find>Log.i</find>
+      <find>check</find>
+      <find>showd</find>
+      <find>showD</find>
+      <find>diff</find>
+      <find>counter</find>
+      <find>showDialog</find>
+      <find>diff2</find>
       <find>START</find>
+      <find>count</find>
     </findStrings>
   </component>
   <component name="GenerateSignedApkSettings">
@@ -192,7 +199,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/newcustom_layout3.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/newcustom_layout.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/allfamily.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/dupcheck.java" />
@@ -201,7 +207,6 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_fam.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/politicalparty.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_party.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/Regwithaadhaar.java" />
         <option value="$PROJECT_DIR$/hiddencamera/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/cam/CameraPreview.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/cam/CamMainActivity.java" />
@@ -243,6 +248,8 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/ChoicePortal.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/voter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/Regwithaadhaar.java" />
       </list>
     </option>
   </component>
@@ -298,13 +305,13 @@
             <path>
               <item name="VOTE" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="votenew" type="cbb59c9e:AndroidPsiDirectoryNode" />
             </path>
             <path>
               <item name="VOTE" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="res" type="d4f16f75:AndroidResFolderNode" />
-              <item name="layout" type="ddeffd01:AndroidResFolderTypeNode" />
             </path>
             <path>
               <item name="VOTE" type="1abcf292:AndroidViewProjectNode" />
@@ -503,7 +510,7 @@
       <window_info id="Build Variants" order="2" side_tool="true" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Capture Tool" order="4" />
-      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.3295302" />
+      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.3295302" />
       <window_info id="Resources Explorer" order="6" />
       <window_info id="Favorites" order="7" side_tool="true" />
       <window_info id="Structure" order="8" side_tool="true" />
@@ -565,8 +572,6 @@
     </layout-to-restore>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/hiddencamera/build.gradle" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/cam/CamMainActivity.java" />
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/cam/CameraPreview.java" />
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/CamActivity.java" />
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_cammain.xml" />
@@ -910,13 +915,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/allfamily.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_fam.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="203">
@@ -925,23 +923,50 @@
       </provider>
       <provider editor-type-id="android-designer2" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/allfamily.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="407" column="72" selection-start-line="407" selection-start-column="72" selection-end-line="407" selection-end-column="72" />
+        <state relative-caret-position="306">
+          <caret line="454" selection-start-line="454" selection-end-line="454" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2840#3069#0" expanded="true" />
-            <element signature="e#3068#3069#0" expanded="true" />
+            <element signature="e#2933#3162#0" expanded="true" />
+            <element signature="e#3161#3162#0" expanded="true" />
             <element signature="e#7095#8952#0" />
-            <element signature="e#10639#10877#0" expanded="true" />
-            <element signature="e#10876#10877#0" expanded="true" />
+            <element signature="e#10455#11129#0" expanded="true" />
+            <element signature="e#11128#11129#0" expanded="true" />
             <element signature="e#25259#26979#0" />
-            <element signature="method#counterdiffclick#0;class#Allfamilyviewholder#0;class#MainActivity#0" />
             <element signature="e#33071#33993#0" />
-            <element signature="e#33998#35526#0" />
             <element signature="e#35532#35765#0" />
             <element signature="e#35771#36232#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/voter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/Regwithaadhaar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="249">
+          <caret line="124" column="44" lean-forward="true" selection-start-line="124" selection-start-column="44" selection-end-line="124" selection-end-column="44" />
+          <folding>
+            <element signature="e#4845#4994#0" expanded="true" />
+            <element signature="e#4993#4994#0" expanded="true" />
+            <element signature="e#5077#5302#0" expanded="true" />
+            <element signature="e#5301#5302#0" expanded="true" />
+            <element signature="method#findDupUser2#0;class#Regwithaadhaar#0" />
+            <element signature="method#finddupuser#0;class#Regwithaadhaar#0" />
           </folding>
         </state>
       </provider>

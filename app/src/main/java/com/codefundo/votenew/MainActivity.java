@@ -261,7 +261,8 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         if(viewHolder.counterdiffclick(model.getSlotstart(),model.getSlotend())==1){
-                             showDialog(MainActivity.this,model.getEmail(),model.getAadhaar());
+                            if(model.getVoted().toLowerCase().equals("no")){
+                             showDialog(MainActivity.this,model.getEmail(),model.getAadhaar());}else{Toast.makeText(MainActivity.this, "Sorry YOU Already voted", Toast.LENGTH_SHORT).show();}
                         }else{
                             Toast.makeText(MainActivity.this, "Sorry", Toast.LENGTH_SHORT).show();
                         }
@@ -404,9 +405,9 @@ public class MainActivity extends AppCompatActivity {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
-
+            final Long[] startTime5 = {System.currentTimeMillis()};
             Long diff = Math.abs(millisecondsend - millisecondsstart[0]);
-
+            Long diff2=millisecondsend-System.currentTimeMillis();
             Toast.makeText(mview.getContext(), "START="+millisecondsstart[0], Toast.LENGTH_SHORT).show();
             Toast.makeText(mview.getContext(), "SYS="+System.currentTimeMillis(), Toast.LENGTH_SHORT).show();
             Toast.makeText(mview.getContext(), "START="+millisecondsstart[0]+"SYS="+System.currentTimeMillis()+"END="+millisecondsend, Toast.LENGTH_SHORT).show();
@@ -419,13 +420,13 @@ public class MainActivity extends AppCompatActivity {
 
             if(millisecondsstart[0]>=System.currentTimeMillis() && System.currentTimeMillis()<=millisecondsend){
                 Toast.makeText(mview.getContext(), "YES NOW VOTE", Toast.LENGTH_SHORT).show();
-                new CountDownTimer(diff, 1000) {
+                new CountDownTimer(millisecondsend, 1000) {
                     @Override
                     public void onTick(long millisUntilFinished) {
 
-                        millisecondsstart[0] = millisecondsstart[0] -1;
+                        startTime5[0] = startTime5[0] -1;
                         Long serverUptimeSeconds =
-                                Math.abs(millisUntilFinished - millisecondsstart[0]) / 1000;
+                                Math.abs(millisUntilFinished - startTime5[0]) / 1000;
 
                         String daysLeft = String.format("%d", serverUptimeSeconds / 86400);
                         //AppCompatTextView dayleft=mview.findViewById(R.id.dayleft);
@@ -443,10 +444,23 @@ public class MainActivity extends AppCompatActivity {
                         AppCompatTextView secleft=mview.findViewById(R.id.secleft);
                         secleft.setText(secondsLeft);
 
+                        if(minleft.getText().toString().trim().equals("0")&&secleft.getText().toString().trim().equals("0")) {
+                            onFinish();
+                        }   if(!minleft.getText().toString().trim().equals("XX"))
+                            if(Integer.parseInt(minleft.getText().toString().trim())>35){
+                                onFinish();
+                            }
+
+
+
                     }
 
                     @Override
                     public void onFinish() {
+                        AppCompatTextView minleft=mview.findViewById(R.id.minleft);
+                        AppCompatTextView secleft=mview.findViewById(R.id.secleft);
+                        minleft.setText(" XX ");
+                        secleft.setText(" XX ");
 
                     }
                 }.start();
@@ -513,6 +527,18 @@ public class MainActivity extends AppCompatActivity {
 
             if(millisecondsstart[0]>=System.currentTimeMillis() && System.currentTimeMillis()<=millisecondsend){
                 Toast.makeText(mview.getContext(), "YES NOW VOTE", Toast.LENGTH_SHORT).show();
+                AppCompatTextView minleft=mview.findViewById(R.id.minleft);
+                AppCompatTextView time=mview.findViewById(R.id.time);
+                AppCompatTextView secleft=mview.findViewById(R.id.secleft);
+
+                if(minleft.getText().toString().trim().equals("0")&&secleft.getText().toString().trim().equals("0")) {
+                return 0;
+                }
+                if(!minleft.getText().toString().trim().equals("XX"))
+                    if(Integer.parseInt(minleft.getText().toString().trim())>35){
+                return 0 ;
+                    }
+
 
                 return 1;
             }
@@ -592,7 +618,7 @@ public class MainActivity extends AppCompatActivity {
         dialog.show();
     }
     public void showDialog(Activity activity, String email, final String aadhaar) {
-        check(email,aadhaar);
+
 
         final Dialog dialog = new Dialog(activity);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
