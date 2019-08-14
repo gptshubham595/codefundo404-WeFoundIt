@@ -143,6 +143,11 @@
             android:id="@+id/forgot"
             android:layout_marginBottom="50dp"
             android:text="FORGOT PIN" />
-
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@android:drawable/ic_dialog_email" />
     </RelativeLayout>
 </RelativeLayout>

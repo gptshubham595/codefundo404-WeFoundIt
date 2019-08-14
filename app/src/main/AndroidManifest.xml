@@ -45,14 +45,6 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".Emailsend"/>
-        <activity
-            android:name=".FingerActivity"
-            android:screenOrientation="portrait" />
-        <activity android:name=".sample.DemoCamActivity"
-            android:screenOrientation="portrait"/>
-        <service android:name=".sample.DemoCamService"
-            />
-
 
         <activity
             android:name=".Result"
@@ -71,7 +63,7 @@
             android:name=".PinActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".sample.CamMainActivity"
+            android:name=".FingerActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -114,7 +106,12 @@
             android:authorities="com.codefundo.votenew"
             android:exported="false"
             android:grantUriPermissions="true"
-            tools:replace="android:authorities"></provider>
+            >
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
     </application>
 
 </manifest>

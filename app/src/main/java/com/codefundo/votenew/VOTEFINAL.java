@@ -20,7 +20,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.codefundo.votenew.sample.CamMainActivity;
+
+import com.codefundo.votenew.activities.MainActivity;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -230,19 +231,17 @@ public void voteit(String party){
         }
     });
     votes[0]++;
-allpoliticalparty.setValue(""+votes[0]).addOnCompleteListener(new OnCompleteListener<Void>() {
+        allpoliticalparty.setValue(""+votes[0]).addOnCompleteListener(new OnCompleteListener<Void>() {
     @Override
     public void onComplete(@NonNull Task<Void> task) {
         allpoliticalparty= FirebaseDatabase.getInstance().getReference().child("Users").child(emailpartwithout[0]).child("familymember").child(aadhaar).child("voted");
         allpoliticalparty.setValue("YES");
         Toast.makeText(VOTEFINAL.this, "You have Voted!!", Toast.LENGTH_SHORT).show();
-        Intent i =new Intent(getApplicationContext(), CamMainActivity.class);
+        Intent i =new Intent(getApplicationContext(), MainActivity.class);
         i.putExtra("email",email);
         i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(i);
     }
 });
-
-
 }
 }

@@ -69,7 +69,7 @@ public class Emailsend extends AppCompatActivity {
             }
         }, 3000);
 
-        sendMessage();
+        sendMessage(email);
 
 
         pin=findViewById(R.id.pin);
@@ -93,9 +93,9 @@ public class Emailsend extends AppCompatActivity {
         });
     }
 
-    private void sendMessage() {
+    private void sendMessage(String email1) {
         String rec="gptshubham595@gmail.com";
-        String str[]=rec.split(" ");
+        String str[]=email1.split(" ");
         String user="vote4usiitg@gmail.com";
         String pass="iitg00000000";
         Random rand = new Random();
