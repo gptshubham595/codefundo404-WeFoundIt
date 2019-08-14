@@ -637,7 +637,7 @@ public class MainActivity extends AppCompatActivity {
                         String str = Arrays.toString(new String[]{t[0]});
                         str=str.replaceAll("\\[", "").replaceAll("\\]","");
                         if(str.equals("WAIT") || str.equals("OVER") ) {
-                            viewHolder.setx(str);
+                            viewHolder.setx(str+" ");
                             Toast.makeText(MainActivity.this, "SORRY wait or its over", Toast.LENGTH_SHORT).show();
                         }
                         else{Toast.makeText(MainActivity.this, str, Toast.LENGTH_SHORT).show();
@@ -788,7 +788,7 @@ public class MainActivity extends AppCompatActivity {
                 minleft.setText("XX");
                 secleft.setText("XX");
             }
-            time.setText(str);
+            time.setText(str+" :");
 
         }
 
