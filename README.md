@@ -43,5 +43,25 @@
   
   - Also it will be decided that you have to be in a particular radius of police station to give vote to avoid forcefully vote or scams.
   
+  - Pin system to check final authentic user for voting 
   
+  - Snapping picture finally to check wether it is not bots 
   
+  - Avoid Running app in Rooted device
+ 
+  - Avoid Running it in Emulators or if it is under debugging mode
+  
+  - Every thing saved on database will be Encrypted via AESencryption with a unique security key
+  
+  - App unlocks with a fingerprint authentication
+  
+  - Every voter has a unique pin
+  
+  - In app email sender to send otps 
+
+  
+# Usage
+ - Every family should have atleast one admin , where everyone can register themselves.
+ - Every person needs to register themselves to give vote.
+ - Voter has to remember a unique pin.
+ - At the time of registeration the user should have aadhaar to scan.
