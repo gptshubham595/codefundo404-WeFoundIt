@@ -511,7 +511,7 @@ public class MainActivity extends AppCompatActivity {
             Long diffcurr=   millisecondsstart[0]-System.currentTimeMillis();
             Long diffcurr2=   millisecondsend-System.currentTimeMillis();
 
-            if(millisecondsstart[0]<=System.currentTimeMillis() && System.currentTimeMillis()<=millisecondsend){
+            if(millisecondsstart[0]>=System.currentTimeMillis() && System.currentTimeMillis()<=millisecondsend){
                 Toast.makeText(mview.getContext(), "YES NOW VOTE", Toast.LENGTH_SHORT).show();
 
                 return 1;
