@@ -83,7 +83,7 @@ public class Emailsend extends AppCompatActivity {
         vote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(pin.equals(code)){
+                if(pin.getText().toString().equals(code)){
                     Intent i =new Intent(getApplicationContext(),VOTEFINAL.class);
                     i.putExtra("aadhaar",aadhaar);
                     i.putExtra("email",email);
