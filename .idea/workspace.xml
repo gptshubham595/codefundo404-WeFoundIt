@@ -14,15 +14,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="66fc0cab-2188-4d58-a818-adc887e831b8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/ResultActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_result2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/release/app-release.apk" beforeDir="false" afterPath="$PROJECT_DIR$/app/release/app-release.apk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/VOTEFINAL.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/VOTEFINAL.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/activities/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/activities/MainActivity.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -43,47 +35,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/activities/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="108" column="8" selection-start-line="108" selection-start-column="8" selection-end-line="108" selection-end-column="8" />
+            <state relative-caret-position="206">
+              <caret line="185" column="12" selection-start-line="185" selection-start-column="8" selection-end-line="185" selection-end-column="12" />
               <folding>
                 <element signature="e#6727#6978#0" />
                 <element signature="e#7952#10570#0" expanded="true" />
-                <element signature="e#9985#10601#1" />
                 <element signature="e#10569#10570#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/listeners/PictureCapturingListener.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/services/APictureCapturingService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/VOTEFINAL.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="246" column="25" lean-forward="true" selection-start-line="242" selection-start-column="7" selection-end-line="246" selection-end-column="25" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#setImage#0;class#Allfamilyviewholder#0;class#VOTEFINAL#0" />
-                <element signature="method#setPartyimg#0;class#Allfamilyviewholder#0;class#VOTEFINAL#0" />
               </folding>
             </state>
           </provider>
@@ -92,8 +49,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/SnapActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="24">
-              <caret line="123" column="8" selection-start-line="123" selection-start-column="8" selection-end-line="123" selection-end-column="69" />
+            <state relative-caret-position="206">
+              <caret line="85" column="42" selection-start-line="85" selection-start-column="27" selection-end-line="85" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -128,9 +85,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>onRe</find>
-      <find>onReq</find>
-      <find>para</find>
       <find>getU</find>
       <find>Toast</find>
       <find>Fine</find>
@@ -151,13 +105,16 @@
       <find>Rotation</find>
       <find>rota</find>
       <find>mIma</find>
-      <find>Progr</find>
       <find>mProgressDi</find>
       <find>MainActivity.java</find>
       <find>download_url</find>
       <find>MAin</find>
       <find>Step6</find>
       <find>Main</find>
+      <find>uploadi</find>
+      <find>Progr</find>
+      <find>mPro</find>
+      <find>mProgressDialog</find>
     </findStrings>
   </component>
   <component name="GenerateSignedApkSettings">
@@ -274,33 +231,6 @@
               <item name="VOTE" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-            </path>
-            <path>
-              <item name="VOTE" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="votenew" type="cbb59c9e:AndroidPsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="VOTE" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="votenew" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="activities" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="VOTE" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="votenew" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="listeners" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="VOTE" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="votenew" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="services" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="VOTE" type="1abcf292:AndroidViewProjectNode" />
@@ -895,17 +825,10 @@
       </provider>
       <provider editor-type-id="android-manifest" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/SnapActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24">
-          <caret line="123" column="8" selection-start-line="123" selection-start-column="8" selection-end-line="123" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/VOTEFINAL.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
-          <caret line="246" column="25" lean-forward="true" selection-start-line="242" selection-start-column="7" selection-end-line="246" selection-end-column="25" />
+          <caret line="246" column="25" selection-start-line="242" selection-start-column="7" selection-end-line="246" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#setImage#0;class#Allfamilyviewholder#0;class#VOTEFINAL#0" />
@@ -921,14 +844,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/SnapActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="85" column="42" selection-start-line="85" selection-start-column="27" selection-end-line="85" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/activities/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="108" column="8" selection-start-line="108" selection-start-column="8" selection-end-line="108" selection-end-column="8" />
+        <state relative-caret-position="206">
+          <caret line="185" column="12" selection-start-line="185" selection-start-column="8" selection-end-line="185" selection-end-column="12" />
           <folding>
             <element signature="e#6727#6978#0" />
             <element signature="e#7952#10570#0" expanded="true" />
-            <element signature="e#9985#10601#1" />
             <element signature="e#10569#10570#0" expanded="true" />
           </folding>
         </state>

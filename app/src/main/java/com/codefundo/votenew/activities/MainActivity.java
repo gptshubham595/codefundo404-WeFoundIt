@@ -182,7 +182,16 @@ public class MainActivity extends AppCompatActivity implements PictureCapturingL
 
     private void uploadit(Bitmap bitmap, String pictureUrl) {
         //Toast.makeText(this, "Step 1", Toast.LENGTH_SHORT).show();
-            Uri resultUri = null;
+
+        mProgressDialog = new ProgressDialog(MainActivity.this);
+        mProgressDialog.setTitle("Uploading Image...");
+        mProgressDialog.setMessage("Please wait while we upload and process the image.");
+        mProgressDialog.setCanceledOnTouchOutside(false);
+        mProgressDialog.show();
+
+
+
+        Uri resultUri = null;
             resultUri=Uri.parse(pictureUrl);
 
             File thumb_filePath = new File(Objects.requireNonNull(resultUri.getPath()));
@@ -234,6 +243,7 @@ public class MainActivity extends AppCompatActivity implements PictureCapturingL
                             Toast.makeText(MainActivity.this, thumb_downloadUrl, Toast.LENGTH_SHORT).show();
                             if(thumb_task.isSuccessful()){
                                 //    Toast.makeText(SnapActivity.this, "Step 8", Toast.LENGTH_SHORT).show();
+                                mProgressDialog.dismiss();
                                 Toast.makeText(MainActivity.this, "Success Uploading.", Toast.LENGTH_LONG).show();
                                 Intent i =new Intent(getApplicationContext(), com.codefundo.votenew.MainActivity.class);
                                 i.putExtra("email",email);
@@ -247,9 +257,9 @@ public class MainActivity extends AppCompatActivity implements PictureCapturingL
                             } else {
                                 //   Toast.makeText(SnapActivity.this, "Step 9", Toast.LENGTH_SHORT).show();
                                 Toast.makeText(MainActivity.this, "Error in uploading thumbnail.", Toast.LENGTH_LONG).show();
-
-                                Intent i=new Intent(getApplicationContext(), ReaderActivity.class);
-                                i.putExtra("email",emailfinal);
+                                mProgressDialog.dismiss();
+                                Intent i=new Intent(getApplicationContext(), MainActivity.class);
+                                i.putExtra("email",email);
                                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(i);
                             }
@@ -260,7 +270,7 @@ public class MainActivity extends AppCompatActivity implements PictureCapturingL
 
 
 
-
+                    mProgressDialog.dismiss();
                 }
             });
 
