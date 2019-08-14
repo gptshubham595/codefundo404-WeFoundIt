@@ -10,6 +10,7 @@
 
     <uses-permission android:name="android.permission.STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
@@ -49,13 +50,14 @@
             android:screenOrientation="portrait" />
         <activity android:name=".sample.DemoCamActivity"
             android:screenOrientation="portrait"/>
+        <service android:name=".sample.DemoCamService"
+            />
+
 
         <activity
             android:name=".Result"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".CamActivity"
-            android:screenOrientation="portrait" />
+
         <activity
             android:name=".EnterPintoVote"
             android:screenOrientation="portrait" />

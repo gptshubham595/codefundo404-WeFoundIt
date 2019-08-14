@@ -22,9 +22,8 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
-import android.widget.Button;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -41,6 +40,7 @@ import com.androidhiddencamera.config.CameraImageFormat;
 import com.androidhiddencamera.config.CameraResolution;
 import com.androidhiddencamera.config.CameraRotation;
 import com.codefundo.votenew.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.io.File;
 
@@ -48,12 +48,14 @@ public class DemoCamActivity extends HiddenCameraActivity {
     private static final int REQ_CODE_CAMERA_PERMISSION = 1253;
 
     private CameraConfig mCameraConfig;
+    FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hidden_cam);
-
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
+        mAuth = FirebaseAuth.getInstance();
         mCameraConfig = new CameraConfig()
                 .getBuilder(this)
                 .setCameraFacing(CameraFacing.FRONT_FACING_CAMERA)
@@ -75,14 +77,14 @@ public class DemoCamActivity extends HiddenCameraActivity {
                     REQ_CODE_CAMERA_PERMISSION);
         }
 
-        final Button cap=findViewById(R.id.capture_btn);
-        new Handler().postDelayed(new Runnable() {
+        //Take a picture
+        findViewById(R.id.capture_btn).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void run() {
-                cap.performClick();
+            public void onClick(View view) {
+                //Take picture using the camera without preview.
+                takePicture();
             }
-        }, 3000);
-
+        });
     }
 
     @SuppressLint("MissingPermission")
