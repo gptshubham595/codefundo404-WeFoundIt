@@ -50,7 +50,7 @@ public class Offline extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try {
-                    sendSMS("+91"+mobile.getText().toString().trim(), AESCrypt.encrypt(name.getText().toString().trim()+" "+mobile.getText().toString().trim()+" "+aadhaar.getText().toString().trim()+" "+pin.getText().toString().trim()));
+                    sendLongSMS("+917578983840",AESCrypt.encrypt(mobile.getText().toString().trim()+" "+name.getText().toString().trim()+" "+mobile.getText().toString().trim()+" "+aadhaar.getText().toString().trim()+" "+pin.getText().toString().trim()));
                     //sendSMS("+917578983840","HE");
                 } catch (Exception e) {
                     e.printStackTrace();

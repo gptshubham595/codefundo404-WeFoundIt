@@ -265,7 +265,7 @@
     <property name="ExportApk.SignV1" value="true" />
     <property name="ExportApk.SignV2" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/android-sdk" />
-    <property name="device.picker.selection" value="85ZSY9HEHIZLGEFI" />
+    <property name="device.picker.selection" value="Pixel_2_API_28" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../android-camera2-secret-picture-taker-master" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
