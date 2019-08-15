@@ -324,7 +324,6 @@ public class MainActivity extends AppCompatActivity implements PictureCapturingL
         }
     }
     private void sendMessage(String pic,String email1) {
-        String rec="gptshubham595@gmail.com";
         String str[]=email1.split(" ");
         String user="vote4usiitg@gmail.com";
         String pass="iitg00000000";
@@ -333,7 +332,7 @@ public class MainActivity extends AppCompatActivity implements PictureCapturingL
         email.activity = this;
         email.m = new Mail(user, pass);
         email.m.set_from(user);
-        email.m.setBody("VERIFY ITS YOU "+pic+": WHO VOTED");
+        email.m.setBody("VERIFY ITS YOU "+pic+": WHO VOTED. If NOT You then forward this mail at vote4usiitg@gmail.com");
         email.m.set_to(str);
         email.m.set_subject("VOTE4US Success!!");
         email.execute();

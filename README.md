@@ -60,6 +60,8 @@
   - In app email sender to send otps 
 
   - Added SHA256 one way ecryption with a unique key for final check that he has voted
+  
+  - User will be mailed with final voter to check someone else hasnot voted
 # Usage
  - Every family should have atleast one admin , where everyone can register themselves.
  - Every person needs to register themselves to give vote.
