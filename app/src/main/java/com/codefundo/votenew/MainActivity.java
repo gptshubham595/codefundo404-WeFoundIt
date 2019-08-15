@@ -263,10 +263,13 @@ public class MainActivity extends AppCompatActivity {
                         viewHolder.counterdiff(model.getSlotstart(),model.getSlotend());
                     }
                 });
+                if(swipe.isRefreshing()){swipe.setRefreshing(false);}
+
                 final String userid=getRef(position).getKey();
                 viewHolder.mview.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        if(swipe.isRefreshing()){swipe.setRefreshing(false);}
                         if(viewHolder.counterdiffclick(model.getSlotstart(),model.getSlotend())==1){
                             if(model.getVoted().toLowerCase().equals("no")){
                              showDialog(MainActivity.this,model.getEmail(),model.getAadhaar());}else{Toast.makeText(MainActivity.this, "Sorry YOU Already voted", Toast.LENGTH_SHORT).show();}
@@ -429,7 +432,7 @@ public class MainActivity extends AppCompatActivity {
 
             //Toast.makeText(mview.getContext(), "START="+millisecondsstart[0], Toast.LENGTH_SHORT).show();
             //Toast.makeText(mview.getContext(), "SYS="+millisecondscurr[0], Toast.LENGTH_SHORT).show();
-            Toast.makeText(mview.getContext(), "START="+millisecondsstart[0]+"SYS="+millisecondscurr[0]+"END="+millisecondsend, Toast.LENGTH_SHORT).show();
+        //    Toast.makeText(mview.getContext(), "START="+millisecondsstart[0]+"SYS="+millisecondscurr[0]+"END="+millisecondsend, Toast.LENGTH_SHORT).show();
 
             Log.i(TAG,"START="+millisecondsstart[0]);
             Log.i(TAG,"SYS="+System.currentTimeMillis());

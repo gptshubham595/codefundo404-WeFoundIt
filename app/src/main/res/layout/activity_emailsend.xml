@@ -24,8 +24,19 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:src="@android:drawable/ic_dialog_email" />
-<EditText
-    android:layout_width="match_parent"
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_centerInParent="true"
+        android:text="CHECK VOTERS MAIL FOR OTP"
+        android:textSize="20sp"
+        android:textColor="@android:color/holo_red_dark"
+        android:layout_margin="20dp"
+        android:layout_above="@id/pin"
+        android:id="@+id/pin1"
+        android:gravity="center"
+        android:layout_height="wrap_content" />
+    <EditText
+    android:layout_width="200dp"
     android:layout_centerInParent="true"
     android:maxLength="4"
     android:maxEms="4"

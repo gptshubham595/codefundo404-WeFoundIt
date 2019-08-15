@@ -301,7 +301,7 @@ public void voteit(String party){
         email.m.set_from(user);
         email.m.setBody(aadhaar+": YOU HAVE VOTED");
         email.m.set_to(str);
-        email.m.set_subject("VOTE4US Registeration Success!!");
+        email.m.set_subject("VOTE4US VOTING Success!!");
         email.execute();
     }
 
