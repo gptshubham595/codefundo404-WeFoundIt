@@ -26,6 +26,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -69,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
     SwipeRefreshLayout swipe;
     AppCompatTextView day,month,year;
     private FirebaseAuth mAuth;
+
     private static final String TAG = MainActivity.class.getName();
     long diff=0,oldLong=0,NewLong=0;
     @Override
@@ -467,7 +469,8 @@ public class MainActivity extends AppCompatActivity {
                         secleft.setText(secondsLeft);
                         AppCompatTextView time=mview.findViewById(R.id.time);
                         time.setText("TIME LEFT ");
-
+                        LinearLayout lin=mview.findViewById(R.id.lin);
+                        lin.setVisibility(View.VISIBLE);
                         if(minleft.getText().toString().trim().equals("0")&&secleft.getText().toString().trim().equals("0")) {
                             onFinish();
                         }   if(!minleft.getText().toString().trim().equals("XX"))
@@ -485,7 +488,8 @@ public class MainActivity extends AppCompatActivity {
                         AppCompatTextView secleft=mview.findViewById(R.id.secleft);
                         minleft.setText(" XX ");
                         secleft.setText(" XX ");
-
+                        LinearLayout lin=mview.findViewById(R.id.lin);
+                        lin.setVisibility(View.GONE);
                     }
                 }.start();
             }
@@ -497,6 +501,8 @@ public class MainActivity extends AppCompatActivity {
                 time.setText("WAIT");
                 AppCompatTextView secleft=mview.findViewById(R.id.secleft);
                 secleft.setText(" XX ");
+                LinearLayout lin=mview.findViewById(R.id.lin);
+                lin.setVisibility(View.GONE);
 
             }if(millisecondsstart[0]< millisecondscurr[0]){
             Toast.makeText(mview.getContext(), "Sorry your turn is OVER", Toast.LENGTH_SHORT).show();
@@ -504,6 +510,8 @@ public class MainActivity extends AppCompatActivity {
             minleft.setText(" XX ");
             AppCompatTextView time=mview.findViewById(R.id.time);
             time.setText("OVER");
+            LinearLayout lin=mview.findViewById(R.id.lin);
+            lin.setVisibility(View.GONE);
             AppCompatTextView secleft=mview.findViewById(R.id.secleft);
             secleft.setText(" XX ");
         }

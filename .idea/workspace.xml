@@ -11,16 +11,12 @@
   </component>
   <component name="BookmarkManager">
     <bookmark url="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/allfamily.java" line="81" />
-    <bookmark url="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/MainActivity.java" line="273" />
+    <bookmark url="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/MainActivity.java" line="275" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="66fc0cab-2188-4d58-a818-adc887e831b8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/release/app-release.apk" beforeDir="false" afterPath="$PROJECT_DIR$/app/release/app-release.apk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/EnterPintoVote.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/EnterPintoVote.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/VOTEFINAL.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/VOTEFINAL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/activities/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/activities/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/content_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/content_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_fam.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_fam.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,8 +36,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/EnterPintoVote.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
-              <caret line="51" column="21" selection-start-line="51" selection-start-column="20" selection-end-line="51" selection-end-column="21" />
+            <state relative-caret-position="342">
+              <caret line="155" column="45" lean-forward="true" selection-start-line="155" selection-start-column="45" selection-end-line="155" selection-end-column="45" />
               <folding>
                 <element signature="class#SendEmailAsyncTask1#0" />
               </folding>
@@ -50,11 +46,11 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_snap.xml">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_fam.xml">
           <provider editor-type-id="android-designer2" />
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="577">
-              <caret line="59" column="58" selection-start-line="59" selection-start-column="58" selection-end-line="59" selection-end-column="58" />
+            <state relative-caret-position="306">
+              <caret line="167" column="45" selection-start-line="167" selection-start-column="45" selection-end-line="167" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -79,17 +75,19 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/VOTEFINAL.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="290" selection-start-line="290" selection-end-line="290" />
+            <state relative-caret-position="586">
+              <caret line="314" selection-start-line="314" selection-end-line="314" />
               <folding>
                 <element signature="method#setImage#0;class#Allfamilyviewholder#0;class#VOTEFINAL#0" />
                 <element signature="method#setPartyimg#0;class#Allfamilyviewholder#0;class#VOTEFINAL#0" />
                 <element signature="method#voteit#0;class#VOTEFINAL#0" />
                 <element signature="e#9747#10518#0" expanded="true" />
                 <element signature="e#10517#10518#0" expanded="true" />
+                <element signature="e#11981#12644#0" expanded="true" />
+                <element signature="e#12643#12644#0" expanded="true" />
                 <element signature="method#changetime#0;class#VOTEFINAL#0" />
               </folding>
             </state>
@@ -138,11 +136,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="274">
-              <caret line="505" column="33" selection-start-line="505" selection-start-column="33" selection-end-line="505" selection-end-column="33" />
+            <state relative-caret-position="586">
+              <caret line="600" lean-forward="true" selection-start-line="600" selection-end-line="600" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#9836#10485#0" expanded="true" />
@@ -167,7 +165,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>adddatat</find>
       <find>Voted</find>
       <find>&lt;=</find>
       <find>millisecondsc</find>
@@ -197,6 +194,7 @@
       <find>send</find>
       <find>s</find>
       <find>setVal</find>
+      <find>Votefi</find>
     </findStrings>
   </component>
   <component name="GenerateSignedApkSettings">
@@ -211,7 +209,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/politicalparty.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_party.xml" />
         <option value="$PROJECT_DIR$/hiddencamera/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/cam/CameraPreview.java" />
@@ -257,11 +254,12 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_maincam.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_votefinal.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_emailsend.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/content_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/activities/MainActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/EnterPintoVote.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/VOTEFINAL.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/EnterPintoVote.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_fam.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/MainActivity.java" />
       </list>
     </option>
   </component>
@@ -307,31 +305,7 @@
             <path>
               <item name="VOTE" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="votenew" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="activities" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="VOTE" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="votenew" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="activities" type="462c0819:PsiDirectoryNode" />
-              <item name="MainActivity.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
-            </path>
-            <path>
-              <item name="VOTE" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="votenew" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="EnterPintoVote.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
-            </path>
-            <path>
-              <item name="VOTE" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="votenew" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="SnapActivity.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
             </path>
             <path>
               <item name="VOTE" type="1abcf292:AndroidViewProjectNode" />
@@ -546,7 +520,7 @@
       <window_info id="Build Variants" order="2" side_tool="true" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Capture Tool" order="4" />
-      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.3295302" />
+      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.3295302" />
       <window_info id="Resources Explorer" order="6" />
       <window_info id="Favorites" order="7" side_tool="true" />
       <window_info id="Structure" order="8" side_tool="true" />
@@ -579,15 +553,15 @@
       <window_info id="Build Variants" order="2" side_tool="true" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Capture Tool" order="4" />
-      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.3295302" />
+      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.3295302" />
       <window_info id="Resources Explorer" order="6" />
       <window_info id="Favorites" order="7" side_tool="true" />
       <window_info id="Structure" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Build" order="0" sideWeight="0.4986577" weight="0.6913408" />
       <window_info anchor="bottom" id="Run" order="1" sideWeight="0.49932885" weight="0.32960895" />
-      <window_info anchor="bottom" id="Logcat" order="2" sideWeight="0.4986577" weight="0.7639665" />
-      <window_info anchor="bottom" id="Android Profiler" order="3" show_stripe_button="false" weight="0.32960895" />
-      <window_info anchor="bottom" id="Event Log" order="4" sideWeight="0.5013423" side_tool="true" weight="0.71927375" />
+      <window_info anchor="bottom" id="Logcat" order="2" sideWeight="0.4966443" weight="0.7360335" />
+      <window_info anchor="bottom" id="Android Profiler" order="3" weight="0.32960895" />
+      <window_info anchor="bottom" id="Event Log" order="4" sideWeight="0.5033557" side_tool="true" weight="0.7639665" />
       <window_info anchor="bottom" id="RNConsole" order="5" />
       <window_info anchor="bottom" id="Flutter Performance" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="7" />
@@ -787,14 +761,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_fam.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="169" column="8" selection-start-line="169" selection-start-column="8" selection-end-line="169" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/allfamily.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -930,10 +896,45 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/VOTEFINAL.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="586">
+          <caret line="314" selection-start-line="314" selection-end-line="314" />
+          <folding>
+            <element signature="method#setImage#0;class#Allfamilyviewholder#0;class#VOTEFINAL#0" />
+            <element signature="method#setPartyimg#0;class#Allfamilyviewholder#0;class#VOTEFINAL#0" />
+            <element signature="method#voteit#0;class#VOTEFINAL#0" />
+            <element signature="e#9747#10518#0" expanded="true" />
+            <element signature="e#10517#10518#0" expanded="true" />
+            <element signature="e#11981#12644#0" expanded="true" />
+            <element signature="e#12643#12644#0" expanded="true" />
+            <element signature="method#changetime#0;class#VOTEFINAL#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_fam.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="167" column="45" selection-start-line="167" selection-start-column="45" selection-end-line="167" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/EnterPintoVote.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="155" column="45" lean-forward="true" selection-start-line="155" selection-start-column="45" selection-end-line="155" selection-end-column="45" />
+          <folding>
+            <element signature="class#SendEmailAsyncTask1#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="505" column="33" selection-start-line="505" selection-start-column="33" selection-end-line="505" selection-end-column="33" />
+        <state relative-caret-position="586">
+          <caret line="600" lean-forward="true" selection-start-line="600" selection-end-line="600" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#9836#10485#0" expanded="true" />
@@ -942,31 +943,6 @@
             <element signature="method#showDialog2#0;class#MainActivity#0" />
             <element signature="method#showDialog#0;class#MainActivity#0" />
             <element signature="method#deleteit#0;class#MainActivity#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/EnterPintoVote.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="51" column="21" selection-start-line="51" selection-start-column="20" selection-end-line="51" selection-end-column="21" />
-          <folding>
-            <element signature="class#SendEmailAsyncTask1#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/codefundo/votenew/VOTEFINAL.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="290" selection-start-line="290" selection-end-line="290" />
-          <folding>
-            <element signature="method#setImage#0;class#Allfamilyviewholder#0;class#VOTEFINAL#0" />
-            <element signature="method#setPartyimg#0;class#Allfamilyviewholder#0;class#VOTEFINAL#0" />
-            <element signature="method#voteit#0;class#VOTEFINAL#0" />
-            <element signature="e#9747#10518#0" expanded="true" />
-            <element signature="e#10517#10518#0" expanded="true" />
-            <element signature="method#changetime#0;class#VOTEFINAL#0" />
           </folding>
         </state>
       </provider>
