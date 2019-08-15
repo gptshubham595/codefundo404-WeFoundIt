@@ -175,6 +175,7 @@ public class MainActivity extends AppCompatActivity implements PictureCapturingL
 
                     if (pictureUrl.contains("0_pic.jpg")) {
                         uploadBackPhoto.setImageBitmap(scaled);
+
                     } else if (pictureUrl.contains("1_pic.jpg")) {
                         uploadFrontPhoto.setImageBitmap(scaled);
 

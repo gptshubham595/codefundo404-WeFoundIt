@@ -33,6 +33,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.MutableData;
+import com.google.firebase.database.Transaction;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.NetworkPolicy;
@@ -54,7 +56,7 @@ public class VOTEFINAL extends AppCompatActivity {
     String email="";
     String aadhaar="";
     static int time=0;
-    static int votes=0;
+     int votes=0;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -178,8 +180,9 @@ public class VOTEFINAL extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 dialog.cancel();
-                voteit(party);
-                changetime(party);
+                //voteit(party);
+                //changetime(party);
+                setTime(party,"down");
             }
         });
 
@@ -226,6 +229,7 @@ public class VOTEFINAL extends AppCompatActivity {
 
         dialog.show();
     }
+
 public void voteit(String party){
     final int[] v = {0};
     final String emailpartwithout[] =email.split("@",2);
@@ -235,7 +239,8 @@ public void voteit(String party){
         @Override
         public void onDataChange(DataSnapshot dataSnapshot) {
             String value = dataSnapshot.getValue(String.class);
-            v[0] =Integer.parseInt(value);
+            v[0] =Integer.parseInt(value)+1;
+
 
         }
 
@@ -249,30 +254,111 @@ public void voteit(String party){
     } catch (InterruptedException e) {
         e.printStackTrace();
     }
-        votes=v[0]+1;
-        Toast.makeText(this, ""+votes, Toast.LENGTH_SHORT).show();
-
-        allpoliticalparty.setValue(""+votes).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                DatabaseReference allpoliticalparty2= FirebaseDatabase.getInstance().getReference().child("Users").child(emailpartwithout[0]).child("familymember").child(aadhaar).child("voted");
-                allpoliticalparty2.setValue("YES");
-                Toast.makeText(VOTEFINAL.this, "You have Voted!!", Toast.LENGTH_SHORT).show();
-                sendMessage(email);
-                Intent i =new Intent(getApplicationContext(), MainActivity.class);
-                i.putExtra("email",email);
-                i.putExtra("aadhaar",aadhaar);
-                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(i);
-            }
-        });
+        votes=v[0]++;
+    allpoliticalparty.setValue("" + votes).addOnCompleteListener(new OnCompleteListener<Void>() {
+        @Override
+        public void onComplete(@NonNull Task<Void> task) {
+            DatabaseReference allpoliticalparty2 = FirebaseDatabase.getInstance().getReference().child("Users").child(emailpartwithout[0]).child("familymember").child(aadhaar).child("voted");
+            allpoliticalparty2.setValue("YES");
+            Toast.makeText(VOTEFINAL.this, "You have Voted!!", Toast.LENGTH_SHORT).show();
+            sendMessage(email);
+            Intent i = new Intent(getApplicationContext(), MainActivity.class);
+            i.putExtra("email", email);
+            i.putExtra("aadhaar", aadhaar);
+            i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(i);
+        }
+    });
 
 
 }
 
+    public  void setVotes( String party, final String operation) {
+
+        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference().child("Party").child(party);
+        DatabaseReference votesRef = rootRef.child("votes");
+        votesRef.runTransaction(new Transaction.Handler() {
+            @Override
+            public Transaction.Result doTransaction(MutableData mutableData) {
+                Integer votes = Integer.parseInt(mutableData.getValue(String.class));
+                if (votes == null) {
+                    return Transaction.success(mutableData);
+                }
+
+                if (operation.equals("voted")) {
+                    votes++;
+                    mutableData.setValue(votes+"");
+
+                } else if (operation.equals("decreaseScore")){
+                    mutableData.setValue(votes - 1);
+                }
+
+                return Transaction.success(mutableData);
+            }
+
+            @Override
+            public void onComplete(DatabaseError databaseError, boolean b, DataSnapshot dataSnapshot) {
+                final String emailpartwithout[] =email.split("@",2);
+                DatabaseReference allpoliticalparty2 = FirebaseDatabase.getInstance().getReference().child("Users").child(emailpartwithout[0]).child("familymember").child(aadhaar).child("voted");
+                allpoliticalparty2.setValue("YES").addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        Toast.makeText(VOTEFINAL.this, "You have Voted!!", Toast.LENGTH_SHORT).show();
+                        sendMessage(email);
+                        Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                        i.putExtra("email", email);
+                        i.putExtra("aadhaar", aadhaar);
+                        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(i);
+                    }
+                });
+
+            }
+        });
+
+
+
+        }
+
+
+    public  void setTime(final String party, final String operation) {
+        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference().child("Party").child(party);
+        DatabaseReference timeRef = rootRef.child("time");
+        timeRef.runTransaction(new Transaction.Handler() {
+            @Override
+            public Transaction.Result doTransaction(MutableData mutableData) {
+                Integer votes = Integer.parseInt(mutableData.getValue(String.class));
+                if (votes == null) {
+                    return Transaction.success(mutableData);
+                }
+
+                if (operation.equals("voted")) {
+                    votes++;
+                    mutableData.setValue(""+votes);
+                    Toast.makeText(VOTEFINAL.this, "Voted", Toast.LENGTH_SHORT).show();
+                } else if (operation.equals("down")){
+                    votes--;
+                    mutableData.setValue(""+votes);
+                }
+
+                return Transaction.success(mutableData);
+            }
+
+            @Override
+            public void onComplete(DatabaseError databaseError, boolean b, DataSnapshot dataSnapshot) {
+                Toast.makeText(VOTEFINAL.this, "VotedTIME", Toast.LENGTH_SHORT).show();
+                setVotes(party,"voted");
+
+            }
+        });
+
+    }
+
+
+
     private void changetime(String party) {
         final int[] v = {0};
-        DatabaseReference allpoliticalparty=FirebaseDatabase.getInstance().getReference().child("Party").child(party).child("time");
+        DatabaseReference allpoliticalparty=FirebaseDatabase.getInstance().getReference().child("Party").child(party).child("votes");
         allpoliticalparty.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -284,8 +370,8 @@ public void voteit(String party){
             public void onCancelled(DatabaseError error) {
             }
         });
-    time=v[0]-1;
-
+    time=v[0]*-1;
+        allpoliticalparty=FirebaseDatabase.getInstance().getReference().child("Party").child(party).child("time");
         allpoliticalparty.setValue(time+"");
 
     }
