@@ -463,7 +463,7 @@ public class MainActivity extends AppCompatActivity {
                         AppCompatTextView secleft=mview.findViewById(R.id.secleft);
                         secleft.setText(secondsLeft);
                         AppCompatTextView time=mview.findViewById(R.id.time);
-                        secleft.setText("TIME LEFT ");
+                        time.setText("TIME LEFT ");
 
                         if(minleft.getText().toString().trim().equals("0")&&secleft.getText().toString().trim().equals("0")) {
                             onFinish();
