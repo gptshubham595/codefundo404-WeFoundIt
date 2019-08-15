@@ -44,6 +44,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".Offline.Offline"></activity>
         <activity android:name=".Emailsend" />
         <activity
             android:name=".Result"
@@ -60,8 +61,7 @@
         <activity
             android:name=".PinActivity"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".activities.MainActivity"/>
+        <activity android:name=".activities.MainActivity" />
         <activity
             android:name=".FingerActivity"
             android:screenOrientation="portrait">

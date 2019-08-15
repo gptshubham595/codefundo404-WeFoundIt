@@ -11,16 +11,17 @@
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="30dp"
-        android:textColor="#ffffff"
-        android:padding="5dp"
-        android:background="@android:color/holo_red_dark"
-        android:text="Click here to SCAN"
-        android:id="@+id/scan_btn"/>
+
+        <Button
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="30dp"
+            android:textColor="#ffffff"
+            android:padding="5dp"
+            android:background="@android:drawable/ic_menu_camera"
+            android:id="@+id/scan_btn"/>
+
     <RelativeLayout
         android:layout_width="wrap_content"
         android:background="@drawable/shape"
@@ -177,7 +178,7 @@
         android:inputType="number"
         android:layout_gravity="center"
         android:gravity="center"
-        android:background="@drawable/shape3"
+        android:background="@drawable/shape4"
         android:textColor="#000000"
         android:textStyle="bold"
         android:hint="Enter mobile Number"
@@ -191,7 +192,7 @@
         android:id="@+id/email"
         android:inputType="textEmailAddress"
         android:layout_gravity="center"
-        android:background="@drawable/shape3"
+        android:background="@drawable/shape4"
         android:gravity="center"
         android:layout_margin="2dp"
         android:textColor="#000000"
@@ -207,10 +208,10 @@
         android:inputType="numberPassword"
         android:layout_gravity="center"
         android:gravity="center"
-        android:textColor="#ffffff"
+        android:textColorHint="#000000"
         android:layout_margin="2dp"
         android:textStyle="bold"
-        android:textColorHint="#ffffff"
+        android:textColor="#000000"
         android:hint="Enter Your 4 digit SECURE PIN"
         android:typeface="serif"
         android:maxLength="4"
