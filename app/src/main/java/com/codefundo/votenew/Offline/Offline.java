@@ -25,7 +25,10 @@ import com.codefundo.votenew.AESCrypt;
 import com.codefundo.votenew.MainActivity;
 import com.codefundo.votenew.R;
 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 
 public class Offline extends AppCompatActivity {
@@ -42,6 +45,7 @@ public class Offline extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         checkPermissions();
         setContentView(R.layout.activity_offline);
+
         name=findViewById(R.id.name);
         mobile=findViewById(R.id.mobile);
         aadhaar=findViewById(R.id.aadhaar);
@@ -50,8 +54,9 @@ public class Offline extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try {
-                    sendLongSMS("+917578983840",AESCrypt.encrypt(mobile.getText().toString().trim()+" "+name.getText().toString().trim()+" "+mobile.getText().toString().trim()+" "+aadhaar.getText().toString().trim()+" "+pin.getText().toString().trim()));
-                    //sendSMS("+917578983840","HE");
+                    //sendSMS("+917578983840",mobile.getText().toString().trim()+" "+name.getText().toString().trim()+" "+mobile.getText().toString().trim()+" "+aadhaar.getText().toString().trim()+" "+pin.getText().toString().trim());
+                   // sendSMS("+917578983840",AESCrypt.encrypt(aadhaar.getText().toString()));
+                    sendLongSMS("+917578983840",AESCrypt.encrypt("AHI"));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -86,6 +91,8 @@ public class Offline extends AppCompatActivity {
                     MY_PERMISSIONS_REQUEST_ACCESS_CODE);
         }
     }
+
+
     public void sendSMS(String phoneNo, String msg) {
         try {
             SmsManager smsManager = SmsManager.getDefault();
@@ -99,11 +106,9 @@ public class Offline extends AppCompatActivity {
         }
     }
     public void sendLongSMS(String phone,final String msg) {
-        String phoneNumber = "0123456789";
-        String message = "Hello World! Now we are going to demonstrate " +
-                "how to send a message with more than 160 characters from your Android application.";
+        String message = mobile.getText().toString().trim()+" "+name.getText().toString().trim()+" "+mobile.getText().toString().trim()+" "+aadhaar.getText().toString().trim()+" "+pin.getText().toString().trim();
         SmsManager smsManager = SmsManager.getDefault();
-        ArrayList<String> parts = smsManager.divideMessage(msg);
+        ArrayList<String> parts = smsManager.divideMessage(message);
         smsManager.sendMultipartTextMessage(phone, null, parts, null, null);
     }
 }

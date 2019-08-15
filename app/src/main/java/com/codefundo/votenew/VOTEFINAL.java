@@ -40,6 +40,9 @@ import com.squareup.picasso.Callback;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
+import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 
 import javax.mail.AuthenticationFailedException;
@@ -158,6 +161,29 @@ public class VOTEFINAL extends AppCompatActivity {
             nameview.setText(manifesto);
         }
     }
+    public void showDialog3(Activity activity, final String key) {
+        final Dialog dialog = new Dialog(activity);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setCancelable(false);
+        dialog.setContentView(R.layout.newcustom_layout5);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        TextView keyth=dialog.findViewById(R.id.key);
+        keyth.setText(key);
+        try {
+            sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }finally{dialog.cancel();
+            Intent i = new Intent(getApplicationContext(), MainActivity.class);
+            i.putExtra("email", email);
+            i.putExtra("aadhaar", aadhaar);
+            i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(i);
+        }
+
+        dialog.show();
+    }
+
     public void showDialog2(Activity activity, final String party, String name) {
         final Dialog dialog = new Dialog(activity);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -189,7 +215,6 @@ public class VOTEFINAL extends AppCompatActivity {
 
         dialog.show();
     }
-
 
     public void showDialog(Activity activity, final String party, final String name) {
         final Dialog dialog = new Dialog(activity);
@@ -230,50 +255,8 @@ public class VOTEFINAL extends AppCompatActivity {
         dialog.show();
     }
 
-public void voteit(String party){
-    final int[] v = {0};
-    final String emailpartwithout[] =email.split("@",2);
-    //allpoliticalparty= FirebaseDatabase.getInstance().getReference().child("Users").child(emailpartwithout[0]).child("Party").child(party).child("votes");
-    allpoliticalparty= FirebaseDatabase.getInstance().getReference().child("Party").child(party).child("votes");
-    allpoliticalparty.addValueEventListener(new ValueEventListener() {
-        @Override
-        public void onDataChange(DataSnapshot dataSnapshot) {
-            String value = dataSnapshot.getValue(String.class);
-            v[0] =Integer.parseInt(value)+1;
 
-
-        }
-
-        @Override
-        public void onCancelled(DatabaseError error) {
-        }
-    });
-
-    try {
-        sleep(1000);
-    } catch (InterruptedException e) {
-        e.printStackTrace();
-    }
-        votes=v[0]++;
-    allpoliticalparty.setValue("" + votes).addOnCompleteListener(new OnCompleteListener<Void>() {
-        @Override
-        public void onComplete(@NonNull Task<Void> task) {
-            DatabaseReference allpoliticalparty2 = FirebaseDatabase.getInstance().getReference().child("Users").child(emailpartwithout[0]).child("familymember").child(aadhaar).child("voted");
-            allpoliticalparty2.setValue("YES");
-            Toast.makeText(VOTEFINAL.this, "You have Voted!!", Toast.LENGTH_SHORT).show();
-            sendMessage(email);
-            Intent i = new Intent(getApplicationContext(), MainActivity.class);
-            i.putExtra("email", email);
-            i.putExtra("aadhaar", aadhaar);
-            i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(i);
-        }
-    });
-
-
-}
-
-    public  void setVotes( String party, final String operation) {
+    public  void setVotes(final String party, final String operation) {
 
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference().child("Party").child(party);
         DatabaseReference votesRef = rootRef.child("votes");
@@ -303,13 +286,19 @@ public void voteit(String party){
                 allpoliticalparty2.setValue("YES").addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        Toast.makeText(VOTEFINAL.this, "You have Voted!!", Toast.LENGTH_SHORT).show();
-                        sendMessage(email);
-                        Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                        i.putExtra("email", email);
-                        i.putExtra("aadhaar", aadhaar);
-                        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                        startActivity(i);
+
+                        DatabaseReference allpoliticalparty2 = FirebaseDatabase.getInstance().getReference().child("Users").child(emailpartwithout[0]).child("familymember").child(aadhaar).child("partyvoted");
+                        allpoliticalparty2.setValue(getSHA256(party)).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                Toast.makeText(VOTEFINAL.this, "You have Voted!!", Toast.LENGTH_SHORT).show();
+                                sendMessage(email);
+                                showDialog3(VOTEFINAL.this,getSHA256(party));
+
+                            }
+                        });
+
+
                     }
                 });
 
@@ -356,25 +345,6 @@ public void voteit(String party){
 
 
 
-    private void changetime(String party) {
-        final int[] v = {0};
-        DatabaseReference allpoliticalparty=FirebaseDatabase.getInstance().getReference().child("Party").child(party).child("votes");
-        allpoliticalparty.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String value = dataSnapshot.getValue(String.class);
-                v[0] =Integer.parseInt(value);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) {
-            }
-        });
-    time=v[0]*-1;
-        allpoliticalparty=FirebaseDatabase.getInstance().getReference().child("Party").child(party).child("time");
-        allpoliticalparty.setValue(time+"");
-
-    }
     private void sendMessage(String email1) {
         String rec="gptshubham595@gmail.com";
         String str[]=email1.split(" ");
@@ -395,7 +365,30 @@ public void voteit(String party){
         Snackbar.make(findViewById(R.id.fab), message, Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show();
     }
+    private static final char[] hexArray = "0123456789abcdef".toCharArray();
 
+    public static String getSHA256(String data) {
+        StringBuilder sb = new StringBuilder();
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            md.update(data.getBytes());
+            byte[] byteData = md.digest();
+            sb.append(bytesToHex(byteData));
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        return sb.toString();
+    }
+
+    private static String bytesToHex(byte[] bytes) {
+        char[] hexChars = new char[bytes.length * 2];
+        for ( int j = 0; j < bytes.length; j++ ) {
+            int v = bytes[j] & 0xFF;
+            hexChars[j * 2] = hexArray[v >>> 4];
+            hexChars[j * 2 + 1] = hexArray[v & 0x0F];
+        }
+        return String.valueOf(hexChars);
+    }
 
 }
 
@@ -434,3 +427,4 @@ class SendEmailAsyncTask3 extends AsyncTask<Void, Void, Boolean> {
     }
 
 }
+

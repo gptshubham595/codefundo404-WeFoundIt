@@ -30,11 +30,15 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.MutableData;
+import com.google.firebase.database.Transaction;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.NetworkPolicy;
@@ -73,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = MainActivity.class.getName();
     long diff=0,oldLong=0,NewLong=0;
+    String fd;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,8 +89,10 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.checkresult).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                counterdiff(getDate(email,"day"));
+                Intent i= new Intent(getApplicationContext(),Result.class);
+                startActivity(i);
+           //     Toast.makeText(MainActivity.this, ""+getDate(), Toast.LENGTH_SHORT).show();
+               //setVotes("check");
             }
         });
         email="";
@@ -106,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
         getData(email,"day");
         getData(email,"year");
         getData(email,"finaltime");
-       
+
 
         totalfam= FirebaseDatabase.getInstance().getReference().child("Users").child(emailpartwithout[0]).child("TOTAL_FAMILY_MEMBER");
         totalfam.keepSynced(true);
@@ -138,18 +145,45 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-    private void counterdiff(String Start)
+    public  void setVotes(final String operation) {
+
+        DatabaseReference  mUserDatabase=FirebaseDatabase.getInstance().getReference().child("DATE").child("finaltime");
+        mUserDatabase.keepSynced(true);
+        mUserDatabase.runTransaction(new Transaction.Handler() {
+            @Override
+            public Transaction.Result doTransaction(MutableData mutableData) {
+                String votes = mutableData.getValue(String.class);
+                if (votes == null) {
+                    return Transaction.success(mutableData);
+                }
+                if (operation.equals("check")) {
+                    Toast.makeText(MainActivity.this, "check1", Toast.LENGTH_SHORT).show();
+                    counterdiff(votes);
+                }else{}
+
+
+                return Transaction.success(mutableData);
+            }
+
+            @Override
+            public void onComplete(DatabaseError databaseError, boolean b, DataSnapshot dataSnapshot) {}
+        });
+
+
+    }
+
+    private void counterdiff(final String data)
     {
+        Toast.makeText(MainActivity.this, "check2", Toast.LENGTH_SHORT).show();
         SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy, HH:mm:ss");
         formatter.setLenient(false);
-        final String[] startTime = {Start};
         final Long[] millisecondscurr = {null};
         final Long[] millisecondsstart = {null};
         String date = new SimpleDateFormat("dd.MM.yyyy, HH:mm:ss", Locale.getDefault()).format(new Date());
-        Date startDate,currentDate;
+        Date startDate, currentDate;
 
         try {
-            startDate = formatter.parse(startTime[0]);
+            startDate = formatter.parse(data);
             if (startDate != null) {
                 millisecondsstart[0] = startDate.getTime();
             }
@@ -168,18 +202,16 @@ public class MainActivity extends AppCompatActivity {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        final Long[] startTime5 = {System.currentTimeMillis()};
-
-        if(millisecondsstart[0]<= millisecondscurr[0] ){
-            Intent i= new Intent(getApplicationContext(),Result.class);
+        if (millisecondsstart[0] <= millisecondscurr[0]) {
+            Intent i = new Intent(getApplicationContext(), Result.class);
             startActivity(i);
-        }else{
+        } else {
             Toast.makeText(MainActivity.this, "WAIT For the result", Toast.LENGTH_SHORT).show();
         }
 
 
-
     }
+
 
     private static final String[] requiredPermissions = {
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
@@ -260,7 +292,6 @@ public class MainActivity extends AppCompatActivity {
                 String secondsLeft = String.format("%d", ((serverUptimeSeconds % 86400) % 3600) % 60);
                 AppCompatTextView secleft=findViewById(R.id.secleft);
                 secleft.setText(secondsLeft+"s");
-
             }
 
             @Override
@@ -328,41 +359,25 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public  String getDate(String email, final String yeard){
+    public  String getDate(){
+
         final String[] value = new String[1];
-        String emailpartwithout[] =email.split("@",2);
-        String emailfinal=emailpartwithout[0].toLowerCase();
-        DatabaseReference  mUserDatabase=FirebaseDatabase.getInstance().getReference().child("DATE").child(yeard);
+        DatabaseReference  mUserDatabase=FirebaseDatabase.getInstance().getReference().child("DATE").child("finaltime");
         mUserDatabase.keepSynced(true);
         mUserDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                value[0] = dataSnapshot.getValue(String.class);
-                //   Toast.makeText(MainActivity.this, "Hello day="+ value[0], Toast.LENGTH_SHORT).show();
-                if(yeard.equals("year"))
-                    year.setText(value[0]);
-                else if(yeard.equals("day"))
-                    day.setText(value[0]);
-                else if(yeard.equals("month"))
-                    month.setText(value[0]);
-                else if(yeard.equals("finaltime")) {
-                    //  Toast.makeText(MainActivity.this, yeard + "=" + value[0], Toast.LENGTH_SHORT).show();
-                    counter(value[0]);
-                }
-
-                else
-                    Toast.makeText(MainActivity.this, "Sorry", Toast.LENGTH_SHORT).show();
-            }
-
+                fd = dataSnapshot.getValue(String.class);
+                Toast.makeText(MainActivity.this, ""+value[0], Toast.LENGTH_SHORT).show();
+                         }
             @Override
             public void onCancelled(DatabaseError error) {
                 // Failed to read value
                 Toast.makeText(MainActivity.this, "SORRY", Toast.LENGTH_SHORT).show();
             }
         });
-        return value[0];
+
+        return fd;
     }
 
     public  void getData(String email, final String yeard){
