@@ -181,7 +181,7 @@
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     <androidx.appcompat.widget.AppCompatButton
         android:layout_width="match_parent"
-        android:text="CHECK LIVE RESULTS"
+        android:text="CHECK RESULTS"
         android:layout_margin="8dp"
         android:id="@+id/checkresult"
         android:textColor="#ffffff"

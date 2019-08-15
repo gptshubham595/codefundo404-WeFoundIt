@@ -84,8 +84,8 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.checkresult).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i= new Intent(getApplicationContext(),Result.class);
-                startActivity(i);
+
+                counterdiff(getDate(email,"day"));
             }
         });
         email="";
@@ -106,14 +106,7 @@ public class MainActivity extends AppCompatActivity {
         getData(email,"day");
         getData(email,"year");
         getData(email,"finaltime");
-        /////
-        //Toast.makeText(MainActivity.this, ""+ getData(email,"month"), Toast.LENGTH_SHORT).show();
-        //Toast.makeText(MainActivity.this, ""+ getData(email,"day"), Toast.LENGTH_SHORT).show();
-        //Toast.makeText(MainActivity.this, ""+ getData(email,"year"), Toast.LENGTH_SHORT).show();
-       // Toast.makeText(MainActivity.this, ""+ getData(email,"finaltime"), Toast.LENGTH_SHORT).show();
-
-
-
+       
 
         totalfam= FirebaseDatabase.getInstance().getReference().child("Users").child(emailpartwithout[0]).child("TOTAL_FAMILY_MEMBER");
         totalfam.keepSynced(true);
@@ -145,6 +138,49 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+    private void counterdiff(String Start)
+    {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy, HH:mm:ss");
+        formatter.setLenient(false);
+        final String[] startTime = {Start};
+        final Long[] millisecondscurr = {null};
+        final Long[] millisecondsstart = {null};
+        String date = new SimpleDateFormat("dd.MM.yyyy, HH:mm:ss", Locale.getDefault()).format(new Date());
+        Date startDate,currentDate;
+
+        try {
+            startDate = formatter.parse(startTime[0]);
+            if (startDate != null) {
+                millisecondsstart[0] = startDate.getTime();
+            }
+
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        try {
+            currentDate = formatter.parse(date);
+            if (date != null) {
+                millisecondscurr[0] = currentDate.getTime();
+            }
+
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        final Long[] startTime5 = {System.currentTimeMillis()};
+
+        if(millisecondsstart[0]<= millisecondscurr[0] ){
+            Intent i= new Intent(getApplicationContext(),Result.class);
+            startActivity(i);
+        }else{
+            Toast.makeText(MainActivity.this, "WAIT For the result", Toast.LENGTH_SHORT).show();
+        }
+
+
+
+    }
+
     private static final String[] requiredPermissions = {
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
             Manifest.permission.CAMERA,
@@ -292,6 +328,42 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public  String getDate(String email, final String yeard){
+        final String[] value = new String[1];
+        String emailpartwithout[] =email.split("@",2);
+        String emailfinal=emailpartwithout[0].toLowerCase();
+        DatabaseReference  mUserDatabase=FirebaseDatabase.getInstance().getReference().child("DATE").child(yeard);
+        mUserDatabase.keepSynced(true);
+        mUserDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                value[0] = dataSnapshot.getValue(String.class);
+                //   Toast.makeText(MainActivity.this, "Hello day="+ value[0], Toast.LENGTH_SHORT).show();
+                if(yeard.equals("year"))
+                    year.setText(value[0]);
+                else if(yeard.equals("day"))
+                    day.setText(value[0]);
+                else if(yeard.equals("month"))
+                    month.setText(value[0]);
+                else if(yeard.equals("finaltime")) {
+                    //  Toast.makeText(MainActivity.this, yeard + "=" + value[0], Toast.LENGTH_SHORT).show();
+                    counter(value[0]);
+                }
+
+                else
+                    Toast.makeText(MainActivity.this, "Sorry", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Toast.makeText(MainActivity.this, "SORRY", Toast.LENGTH_SHORT).show();
+            }
+        });
+        return value[0];
+    }
 
     public  void getData(String email, final String yeard){
         final String[] value = new String[1];

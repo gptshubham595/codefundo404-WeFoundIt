@@ -15,8 +15,12 @@
     android:layout_gravity="center"
     android:gravity="center"
     tools:context=".ChoicePortal">
-<TextView
-    android:layout_width="300dp"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+    <TextView
+    android:layout_width="match_parent"
     android:id="@+id/a"
     android:gravity="center"
     android:textColor="@android:color/holo_red_dark"
@@ -24,19 +28,20 @@
     android:textStyle="bold"
     android:layout_height="wrap_content" />
     <TextView
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_below="@id/a"
         android:gravity="center"
         android:textStyle="bold"
         android:textColor="@android:color/holo_red_dark"
         android:text="THERE SHOULD BE *ATLEAST ONE ADMIN"
         android:layout_height="wrap_content" />
+
     <FrameLayout
         android:id="@+id/login_layout"
         android:layout_width="300dp"
         android:background="@drawable/shape"
         android:layout_height="350dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="10dp"
         android:layout_gravity="center">
 
 
@@ -134,6 +139,15 @@
                 />
         </RelativeLayout>
     </FrameLayout>
-
-
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="300dp"
+        android:text="OFFLINE"
+        android:layout_gravity="center"
+        android:layout_margin="8dp"
+        android:id="@+id/offline"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:background="@android:color/holo_blue_dark"
+        android:layout_height="wrap_content" />
+    </LinearLayout>
 </RelativeLayout>

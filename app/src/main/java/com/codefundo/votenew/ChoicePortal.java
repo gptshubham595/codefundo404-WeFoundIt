@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import com.codefundo.votenew.Offline.Offline;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -58,7 +59,13 @@ public class ChoicePortal extends AppCompatActivity {
         login=findViewById(R.id.login);
         register=findViewById(R.id.register);
         help=findViewById(R.id.help);
-
+        findViewById(R.id.offline).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(getApplicationContext(), Offline.class);
+                startActivity(i);
+            }
+        });
         help.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
