@@ -100,21 +100,16 @@ public class MainActivity extends AppCompatActivity {
         day=findViewById(R.id.day);
         month=findViewById(R.id.month);
         year=findViewById(R.id.year);
+        getData(email,"month");
+        getData(email,"day");
+        getData(email,"year");
+        getData(email,"finaltime");
         /////
-        Toast.makeText(MainActivity.this, ""+ getData(email,"month"), Toast.LENGTH_SHORT).show();
-        Toast.makeText(MainActivity.this, ""+ getData(email,"day"), Toast.LENGTH_SHORT).show();
-        Toast.makeText(MainActivity.this, ""+ getData(email,"year"), Toast.LENGTH_SHORT).show();
-        Toast.makeText(MainActivity.this, ""+ getData(email,"finaltime"), Toast.LENGTH_SHORT).show();
-        swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                Toast.makeText(MainActivity.this, ""+ getData(email,"month"), Toast.LENGTH_SHORT).show();
-                Toast.makeText(MainActivity.this, ""+ getData(email,"day"), Toast.LENGTH_SHORT).show();
-                Toast.makeText(MainActivity.this, ""+ getData(email,"year"), Toast.LENGTH_SHORT).show();
-                Toast.makeText(MainActivity.this, ""+ getData(email,"finaltime"), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(MainActivity.this, ""+ getData(email,"month"), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(MainActivity.this, ""+ getData(email,"day"), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(MainActivity.this, ""+ getData(email,"year"), Toast.LENGTH_SHORT).show();
+       // Toast.makeText(MainActivity.this, ""+ getData(email,"finaltime"), Toast.LENGTH_SHORT).show();
 
-            }
-        });
 
 
 
@@ -126,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
                 String value1 = dataSnapshot.getValue(String.class);
-                Toast.makeText(MainActivity.this, value1, Toast.LENGTH_SHORT).show();
+           //     Toast.makeText(MainActivity.this, value1, Toast.LENGTH_SHORT).show();
                 fam.setText(value1);
             }
 
@@ -248,7 +243,7 @@ public class MainActivity extends AppCompatActivity {
         ) {
             @Override
             protected void populateViewHolder(final Allfamilyviewholder viewHolder, final allfamily model, final int position) {
-                Toast.makeText(MainActivity.this, model.getName(), Toast.LENGTH_SHORT).show();
+               // Toast.makeText(MainActivity.this, model.getName(), Toast.LENGTH_SHORT).show();
                 viewHolder.setName(model.getName());
                 viewHolder.setImage(model.getImage());
                 viewHolder.setAadhaar(model.getAadhaar());
@@ -256,7 +251,18 @@ public class MainActivity extends AppCompatActivity {
                 viewHolder.setEligible(model.getEligible());
                 viewHolder.setGender(model.getGender());
                 viewHolder.counterdiff(model.getSlotstart(),model.getSlotend());
-
+                swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                    @Override
+                    public void onRefresh() {
+                        viewHolder.setName(model.getName());
+                        viewHolder.setImage(model.getImage());
+                        viewHolder.setAadhaar(model.getAadhaar());
+                        viewHolder.setDob(model.getDob());
+                        viewHolder.setEligible(model.getEligible());
+                        viewHolder.setGender(model.getGender());
+                        viewHolder.counterdiff(model.getSlotstart(),model.getSlotend());
+                    }
+                });
                 final String userid=getRef(position).getKey();
                 viewHolder.mview.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -282,7 +288,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public  String getData(String email, final String yeard){
+    public  void getData(String email, final String yeard){
         final String[] value = new String[1];
         String emailpartwithout[] =email.split("@",2);
         String emailfinal=emailpartwithout[0].toLowerCase();
@@ -302,7 +308,7 @@ public class MainActivity extends AppCompatActivity {
                 else if(yeard.equals("month"))
                     month.setText(value[0]);
                 else if(yeard.equals("finaltime")) {
-                    Toast.makeText(MainActivity.this, yeard + "=" + value[0], Toast.LENGTH_SHORT).show();
+                  //  Toast.makeText(MainActivity.this, yeard + "=" + value[0], Toast.LENGTH_SHORT).show();
                      counter(value[0]);
                 }
 
@@ -316,7 +322,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "SORRY", Toast.LENGTH_SHORT).show();
             }
         });
-        return value[0];
+
     }
 
     public static class Allfamilyviewholder extends RecyclerView.ViewHolder{
@@ -420,9 +426,9 @@ public class MainActivity extends AppCompatActivity {
             final Long[] startTime5 = {System.currentTimeMillis()};
             Long diff = Math.abs(millisecondsend - millisecondsstart[0]);
             Long diff2=millisecondsend-System.currentTimeMillis();
-            millisecondscurr[0]+=1000000000;
-            Toast.makeText(mview.getContext(), "START="+millisecondsstart[0], Toast.LENGTH_SHORT).show();
-            Toast.makeText(mview.getContext(), "SYS="+millisecondscurr[0], Toast.LENGTH_SHORT).show();
+
+            //Toast.makeText(mview.getContext(), "START="+millisecondsstart[0], Toast.LENGTH_SHORT).show();
+            //Toast.makeText(mview.getContext(), "SYS="+millisecondscurr[0], Toast.LENGTH_SHORT).show();
             Toast.makeText(mview.getContext(), "START="+millisecondsstart[0]+"SYS="+millisecondscurr[0]+"END="+millisecondsend, Toast.LENGTH_SHORT).show();
 
             Log.i(TAG,"START="+millisecondsstart[0]);
@@ -456,6 +462,8 @@ public class MainActivity extends AppCompatActivity {
                         String secondsLeft = String.format("%d", ((serverUptimeSeconds % 86400) % 3600) % 60);
                         AppCompatTextView secleft=mview.findViewById(R.id.secleft);
                         secleft.setText(secondsLeft);
+                        AppCompatTextView time=mview.findViewById(R.id.time);
+                        secleft.setText("TIME LEFT ");
 
                         if(minleft.getText().toString().trim().equals("0")&&secleft.getText().toString().trim().equals("0")) {
                             onFinish();
@@ -546,7 +554,6 @@ public class MainActivity extends AppCompatActivity {
             final Long[] startTime5 = {System.currentTimeMillis()};
             Long diff = Math.abs(millisecondsend - millisecondsstart[0]);
             Long diff2=millisecondsend-System.currentTimeMillis();
-            millisecondscurr[0]+=1000000000;
 
             Log.i(TAG,"START="+millisecondsstart[0]);
             Log.i(TAG,"SYS="+System.currentTimeMillis());
