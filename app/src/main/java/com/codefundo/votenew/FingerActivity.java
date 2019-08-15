@@ -1,16 +1,21 @@
 package com.codefundo.votenew;
 
+import android.Manifest;
+import android.annotation.TargetApi;
 import android.app.Application;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.hardware.fingerprint.FingerprintManager;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.StrictMode;
@@ -44,7 +49,9 @@ import com.multidots.fingerprintauth.FingerPrintUtils;
 import com.scottyab.rootbeer.RootBeer;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import static java.lang.Thread.sleep;
@@ -53,6 +60,14 @@ import java.sql.*;
 import maes.tech.intentanim.CustomIntent;
 
 public class FingerActivity extends AppCompatActivity implements FingerPrintAuthCallback {
+    private static final String[] requiredPermissions = {
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.CAMERA,
+            Manifest.permission.SEND_SMS,
+            Manifest.permission.READ_SMS,
+    };
+    private static final int MY_PERMISSIONS_REQUEST_ACCESS_CODE = 1;
+
     private ImageView img;
     private TextView mAuthMsgTv;
     private ViewSwitcher mSwitcher;
@@ -173,6 +188,33 @@ public class FingerActivity extends AppCompatActivity implements FingerPrintAuth
     }
 ////==================
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           @NonNull String permissions[], @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case MY_PERMISSIONS_REQUEST_ACCESS_CODE: {
+                if (!(grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+                    checkPermissions();
+                }
+            }
+        }
+    }
+    @TargetApi(Build.VERSION_CODES.M)
+    private void checkPermissions() {
+        final List<String> neededPermissions = new ArrayList<>();
+
+        for (final String permission : requiredPermissions) {
+            if (ContextCompat.checkSelfPermission(getApplicationContext(),
+                    permission) != PackageManager.PERMISSION_GRANTED) {
+                neededPermissions.add(permission);
+            }
+        }
+        if (!neededPermissions.isEmpty()) {
+            requestPermissions(neededPermissions.toArray(new String[]{}),
+                    MY_PERMISSIONS_REQUEST_ACCESS_CODE);
+        }
+    }
 
 
     @Override
