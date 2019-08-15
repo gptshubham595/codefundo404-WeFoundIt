@@ -68,9 +68,9 @@
  - Voter has to remember a unique pin.
  - At the time of registeration the user should have aadhaar to scan.
  
- ![image](https://i.ibb.co/RHh93BF/Screenshot-1565820788.png)
- ![image](https://i.ibb.co/fkMKx6c/Screenshot-1565858776.png)
- ![image](https://i.ibb.co/6s1WyjZ/Screenshot-1565820747.png)
- ![image](https://i.ibb.co/Z2D3YFV/Screenshot-1565820741.png)
- ![image](https://i.ibb.co/61hSNLz/Screenshot-1565820810.png)
+ ![image](https://i.ibb.co/RHh93BF/Screenshot-1565820788.png | width=100)
+ ![image](https://i.ibb.co/fkMKx6c/Screenshot-1565858776.png | width=100)
+ ![image](https://i.ibb.co/6s1WyjZ/Screenshot-1565820747.png | width=100)
+ ![image](https://i.ibb.co/Z2D3YFV/Screenshot-1565820741.png | width=100)
+ ![image](https://i.ibb.co/61hSNLz/Screenshot-1565820810.png | width=100)
  
