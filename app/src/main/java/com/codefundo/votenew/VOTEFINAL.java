@@ -182,7 +182,7 @@ public class VOTEFINAL extends AppCompatActivity {
                 i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(i);
             }
-        }, 5000);
+        }, 6000);
 
 
 
