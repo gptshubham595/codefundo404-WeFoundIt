@@ -46,6 +46,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -381,9 +382,10 @@ public class MainActivity extends AppCompatActivity {
             String endTime = end;
             final String[] startTime = {Start};
             Long millisecondsend=null;
+            final Long[] millisecondscurr = {null};
             final Long[] millisecondsstart = {null};
-
-            Date endDate,startDate;
+            String date = new SimpleDateFormat("dd.MM.yyyy, HH:mm:ss", Locale.getDefault()).format(new Date());
+            Date endDate,startDate,currentDate;
             try {
                 endDate = formatter.parse(endTime);
                 if (endDate != null) {
@@ -405,12 +407,23 @@ public class MainActivity extends AppCompatActivity {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
+            try {
+                currentDate = formatter.parse(date);
+                if (date != null) {
+                    millisecondscurr[0] = currentDate.getTime();
+                }
+
+            } catch (ParseException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
             final Long[] startTime5 = {System.currentTimeMillis()};
             Long diff = Math.abs(millisecondsend - millisecondsstart[0]);
             Long diff2=millisecondsend-System.currentTimeMillis();
+            millisecondscurr[0]+=1000000000;
             Toast.makeText(mview.getContext(), "START="+millisecondsstart[0], Toast.LENGTH_SHORT).show();
-            Toast.makeText(mview.getContext(), "SYS="+System.currentTimeMillis(), Toast.LENGTH_SHORT).show();
-            Toast.makeText(mview.getContext(), "START="+millisecondsstart[0]+"SYS="+System.currentTimeMillis()+"END="+millisecondsend, Toast.LENGTH_SHORT).show();
+            Toast.makeText(mview.getContext(), "SYS="+millisecondscurr[0], Toast.LENGTH_SHORT).show();
+            Toast.makeText(mview.getContext(), "START="+millisecondsstart[0]+"SYS="+millisecondscurr[0]+"END="+millisecondsend, Toast.LENGTH_SHORT).show();
 
             Log.i(TAG,"START="+millisecondsstart[0]);
             Log.i(TAG,"SYS="+System.currentTimeMillis());
@@ -418,15 +431,15 @@ public class MainActivity extends AppCompatActivity {
             Long diffcurr=   millisecondsstart[0]-System.currentTimeMillis();
             Long diffcurr2=   millisecondsend-System.currentTimeMillis();
 
-            if(millisecondsstart[0]>=System.currentTimeMillis() && System.currentTimeMillis()<=millisecondsend){
+            if(millisecondsstart[0]<= millisecondscurr[0] && millisecondscurr[0] <=millisecondsend){
              //   Toast.makeText(mview.getContext(), "YES NOW VOTE", Toast.LENGTH_SHORT).show();
                 new CountDownTimer(millisecondsend, 1000) {
                     @Override
                     public void onTick(long millisUntilFinished) {
 
-                        startTime5[0] = startTime5[0] -1;
+                        millisecondscurr[0] = millisecondscurr[0] -1;
                         Long serverUptimeSeconds =
-                                Math.abs(millisUntilFinished - startTime5[0]) / 1000;
+                                Math.abs(millisUntilFinished - millisecondscurr[0]) / 1000;
 
                         String daysLeft = String.format("%d", serverUptimeSeconds / 86400);
                         //AppCompatTextView dayleft=mview.findViewById(R.id.dayleft);
@@ -465,7 +478,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }.start();
             }
-            if(System.currentTimeMillis()>millisecondsend){
+            if(millisecondscurr[0] >millisecondsend){
                 Toast.makeText(mview.getContext(), "Sorry WAIT for your turn", Toast.LENGTH_SHORT).show();
                 AppCompatTextView minleft=mview.findViewById(R.id.minleft);
                 minleft.setText(" XX ");
@@ -474,7 +487,7 @@ public class MainActivity extends AppCompatActivity {
                 AppCompatTextView secleft=mview.findViewById(R.id.secleft);
                 secleft.setText(" XX ");
 
-            }if(millisecondsstart[0]<System.currentTimeMillis()){
+            }if(millisecondsstart[0]< millisecondscurr[0]){
             Toast.makeText(mview.getContext(), "Sorry your turn is OVER", Toast.LENGTH_SHORT).show();
             AppCompatTextView minleft=mview.findViewById(R.id.minleft);
             minleft.setText(" XX ");
@@ -495,9 +508,10 @@ public class MainActivity extends AppCompatActivity {
             String endTime = end;
             final String[] startTime = {Start};
             Long millisecondsend=null;
+            final Long[] millisecondscurr = {null};
             final Long[] millisecondsstart = {null};
-
-            Date endDate,startDate;
+            String date = new SimpleDateFormat("dd.MM.yyyy, HH:mm:ss", Locale.getDefault()).format(new Date());
+            Date endDate,startDate,currentDate;
             try {
                 endDate = formatter.parse(endTime);
                 if (endDate != null) {
@@ -519,50 +533,50 @@ public class MainActivity extends AppCompatActivity {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
+            try {
+                currentDate = formatter.parse(date);
+                if (date != null) {
+                    millisecondscurr[0] = currentDate.getTime();
+                }
 
-            Long diff = millisecondsend - millisecondsstart[0];
+            } catch (ParseException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            final Long[] startTime5 = {System.currentTimeMillis()};
+            Long diff = Math.abs(millisecondsend - millisecondsstart[0]);
+            Long diff2=millisecondsend-System.currentTimeMillis();
+            millisecondscurr[0]+=1000000000;
 
+            Log.i(TAG,"START="+millisecondsstart[0]);
+            Log.i(TAG,"SYS="+System.currentTimeMillis());
+            Log.i(TAG,"END="+millisecondsend);
             Long diffcurr=   millisecondsstart[0]-System.currentTimeMillis();
             Long diffcurr2=   millisecondsend-System.currentTimeMillis();
 
-            if(millisecondsstart[0]>=System.currentTimeMillis() && System.currentTimeMillis()<=millisecondsend){
-                Toast.makeText(mview.getContext(), "YES NOW VOTE", Toast.LENGTH_SHORT).show();
+            if(millisecondsstart[0]<= millisecondscurr[0] && millisecondscurr[0] <=millisecondsend){
                 AppCompatTextView minleft=mview.findViewById(R.id.minleft);
-                AppCompatTextView time=mview.findViewById(R.id.time);
                 AppCompatTextView secleft=mview.findViewById(R.id.secleft);
 
                 if(minleft.getText().toString().trim().equals("0")&&secleft.getText().toString().trim().equals("0")) {
-                return 0;
-                }
-                if(!minleft.getText().toString().trim().equals("XX"))
-                    if(Integer.parseInt(minleft.getText().toString().trim())>35 && Integer.parseInt(secleft.getText().toString().trim())>0 ){
-                return 0 ;
+                    return 0;
+                }   if(!minleft.getText().toString().trim().equals("XX"))
+                    if(Integer.parseInt(minleft.getText().toString().trim())>35 && Integer.parseInt(secleft.getText().toString().trim())>0){
+                        return 0;
                     }
-
-
                 return 1;
-            }
-            if(System.currentTimeMillis()>millisecondsend){
-                Toast.makeText(mview.getContext(), "Sorry WAIT for your turn", Toast.LENGTH_SHORT).show();
-                AppCompatTextView minleft=mview.findViewById(R.id.minleft);
-                minleft.setText(" XX ");
-                AppCompatTextView time=mview.findViewById(R.id.time);
-                time.setText("WAIT");
-                AppCompatTextView secleft=mview.findViewById(R.id.secleft);
-                secleft.setText(" XX ");
-                return 0;
-            }if(millisecondsstart[0]<System.currentTimeMillis()){
-            Toast.makeText(mview.getContext(), "Sorry your turn is OVER", Toast.LENGTH_SHORT).show();
-            AppCompatTextView minleft=mview.findViewById(R.id.minleft);
-            minleft.setText(" XX ");
-            AppCompatTextView time=mview.findViewById(R.id.time);
-            time.setText("OVER");
-            AppCompatTextView secleft=mview.findViewById(R.id.secleft);
-            secleft.setText(" XX ");
-            return 0;}
 
+
+            }
+            if(millisecondscurr[0] >millisecondsend){
+                return 0;
+
+            }if(millisecondsstart[0]< millisecondscurr[0]){
+            return 0;
+        }
 
             return 0;
+
         }
 
 

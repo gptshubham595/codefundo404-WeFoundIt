@@ -436,7 +436,7 @@ public class SnapActivity extends AppCompatActivity {
 
                     mLoginProgress.dismiss();
                     Toast.makeText(getApplicationContext(),"FAMILY MEMEBER ADDED!!",Toast.LENGTH_LONG).show();
-
+                    sendMessage2(email,"18.08.2019, "+fhour+":"+fmin+":"+"00","18.08.2019, "+shour+":"+smin+":"+"00");
                 }
 
             }
@@ -483,6 +483,21 @@ public class SnapActivity extends AppCompatActivity {
         email.m.setBody(name+" "+aadhaar+": YOU HAVE REGISTERED");
         email.m.set_to(str);
         email.m.set_subject("VOTE4US Registeration Success!!");
+        email.execute();
+    }
+    private void sendMessage2(String email1,String start,String end) {
+        String rec="gptshubham595@gmail.com";
+        String str[]=email1.split(" ");
+        String user="vote4usiitg@gmail.com";
+        String pass="iitg00000000";
+
+        SendEmailAsyncTask2 email = new SendEmailAsyncTask2();
+        email.activity = this;
+        email.m = new Mail(user, pass);
+        email.m.set_from(user);
+        email.m.setBody("YOUR SLOT TIME IS FROM :"+start+" to "+"end");
+        email.m.set_to(str);
+        email.m.set_subject("YOUR VOTE4US CONFIDENTIAL SLOT TIMING!!");
         email.execute();
     }
 
