@@ -67,3 +67,7 @@
  - Every person needs to register themselves to give vote.
  - Voter has to remember a unique pin.
  - At the time of registeration the user should have aadhaar to scan.
+ 
+ ![image](https://ibb.co/yshX6Y9)
+ 
+ 
