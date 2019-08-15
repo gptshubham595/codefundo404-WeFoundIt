@@ -147,6 +147,7 @@ public class EnterPintoVote extends AppCompatActivity {
                     Intent i =new Intent(getApplicationContext(),Emailsend.class);
                     i.putExtra("aadhaar",aadhaar);
                     i.putExtra("email",email.getText().toString());
+                    i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(i);
                 }
             }

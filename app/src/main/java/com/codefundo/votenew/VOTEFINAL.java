@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
@@ -169,19 +170,23 @@ public class VOTEFINAL extends AppCompatActivity {
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         TextView keyth=dialog.findViewById(R.id.key);
         keyth.setText(key);
-        try {
-            sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }finally{dialog.cancel();
-            Intent i = new Intent(getApplicationContext(), MainActivity.class);
-            i.putExtra("email", email);
-            i.putExtra("aadhaar", aadhaar);
-            i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(i);
-        }
-
         dialog.show();
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                dialog.cancel();
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                i.putExtra("email", email);
+                i.putExtra("aadhaar", aadhaar);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(i);
+            }
+        }, 5000);
+
+
+
+
     }
 
     public void showDialog2(Activity activity, final String party, String name) {
