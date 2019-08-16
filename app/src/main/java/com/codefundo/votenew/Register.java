@@ -67,6 +67,7 @@ public class Register extends AppCompatActivity {
         mLoginProgress = new ProgressDialog(this,R.style.dialog);
 
         mUserDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
+        mUserDatabase.keepSynced(true);
         refreshButton= (ImageView) findViewById(R.id.regen);
         captchaInput= (EditText) findViewById(R.id.captchaInput);
         captchaImageView= (CaptchaImageView) findViewById(R.id.image);

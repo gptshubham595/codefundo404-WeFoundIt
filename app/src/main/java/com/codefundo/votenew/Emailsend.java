@@ -125,6 +125,7 @@ public class Emailsend extends AppCompatActivity {
     public void add(String email,String code,String aadhaar){
         String emailpartwithout[] =email.split("@",2);
         DatabaseReference allpoliticalparty= FirebaseDatabase.getInstance().getReference().child("Users").child(emailpartwithout[0]).child("familymember").child(aadhaar).child("code");
+        allpoliticalparty.keepSynced(true);
         allpoliticalparty.setValue(code).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {

@@ -50,6 +50,7 @@ FirebaseAuth mAuth;
     protected void onStart() {
         super.onStart();
         DatabaseReference mUsersDatabase=FirebaseDatabase.getInstance().getReference().child("Party");
+        mUsersDatabase.keepSynced(true);
         Query searchpeople=mUsersDatabase.orderByChild("time").limitToLast(15);
         FirebaseRecyclerAdapter<displayresult, Allfamilyviewholder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<displayresult, Allfamilyviewholder>(
                 displayresult.class,R.layout.activity_res, Allfamilyviewholder.class,searchpeople

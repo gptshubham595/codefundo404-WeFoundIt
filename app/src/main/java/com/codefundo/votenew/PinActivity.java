@@ -74,6 +74,7 @@ public class PinActivity extends AppCompatActivity {
         fbUser = mAuth.getCurrentUser();
         mLoginProgress = new ProgressDialog(this,R.style.dialog);
         mUserDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
+        mUserDatabase.keepSynced(true);
         String FILE_NAME="Userpin";
         pref = getApplicationContext().getSharedPreferences(FILE_NAME, MODE_PRIVATE);
         if(pref.getBoolean("pinsettingdone",true)){

@@ -734,6 +734,7 @@ public class MainActivity extends AppCompatActivity {
 
         String emailpartwithout[] =email.split("@",2);
         DatabaseReference check=FirebaseDatabase.getInstance().getReference().child("Users").child(emailpartwithout[0]).child("familymember").child(aadhaar).child("voted");
+        check.keepSynced(true);
         check.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

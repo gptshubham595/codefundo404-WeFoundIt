@@ -265,6 +265,7 @@ public class VOTEFINAL extends AppCompatActivity {
     public  void setVotes(final String party, final String operation) {
 
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference().child("Party").child(party);
+        rootRef.keepSynced(true);
         DatabaseReference votesRef = rootRef.child("votes");
         votesRef.runTransaction(new Transaction.Handler() {
             @Override
@@ -294,6 +295,7 @@ public class VOTEFINAL extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
 
                         DatabaseReference allpoliticalparty2 = FirebaseDatabase.getInstance().getReference().child("Users").child(emailpartwithout[0]).child("familymember").child(aadhaar).child("partyvoted");
+                        allpoliticalparty2.keepSynced(true);
                         allpoliticalparty2.setValue(getSHA256(party)).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
@@ -318,6 +320,7 @@ public class VOTEFINAL extends AppCompatActivity {
 
     public  void setTime(final String party, final String operation) {
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference().child("Party").child(party);
+        rootRef.keepSynced(true);
         DatabaseReference timeRef = rootRef.child("time");
         timeRef.runTransaction(new Transaction.Handler() {
             @Override

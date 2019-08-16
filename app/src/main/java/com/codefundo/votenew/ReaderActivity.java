@@ -92,11 +92,11 @@ public class ReaderActivity extends AppCompatActivity {
         mLoginProgress = new ProgressDialog(this,R.style.dialog);
 
         mUserDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
-
+        mUserDatabase.keepSynced(true);
         fbUser = mAuth.getCurrentUser();
         @SuppressLint("HardwareIds") final String id = Settings.Secure.getString(getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID) + "@gmail.com";
         mUserDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
-
+        mUserDatabase.keepSynced(true);
         mStorage = FirebaseStorage.getInstance().getReference();
 
 

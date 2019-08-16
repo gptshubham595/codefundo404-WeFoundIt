@@ -306,6 +306,7 @@ public class SnapActivity extends AppCompatActivity {
         FirebaseUser current_user = FirebaseAuth.getInstance().getCurrentUser();
         String uid = current_user.getUid();
         mDatabase = FirebaseDatabase.getInstance().getReference().child("voters");
+        mDatabase.keepSynced(true);
         HashMap<String, String> userMap = new HashMap<>();
         userMap.put(aadhaar, aadhaar);
         mDatabase.setValue(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -359,6 +360,7 @@ public class SnapActivity extends AppCompatActivity {
 
 
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(emailpartwithout[0]).child("familymember").child(uid);
+        mDatabase.keepSynced(true);
         HashMap<String, String> userMap = new HashMap<>();
         Random rand = new Random();
          fhour = rand.nextInt(12)+8;

@@ -118,6 +118,7 @@ public class Regwithaadhaar extends AppCompatActivity {
         FirebaseUser current_user = FirebaseAuth.getInstance().getCurrentUser();
         String uid = current_user.getUid();
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference().child("voters");
+        rootRef.keepSynced(true);
         rootRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
@@ -165,6 +166,7 @@ public class Regwithaadhaar extends AppCompatActivity {
         String emailpartwithout[] =email.split("@",2);
 
         mUserDatabase=FirebaseDatabase.getInstance().getReference().child("Users").child(emailpartwithout[0]).child("familymember");
+        mUserDatabase.keepSynced(true);
 
         mUserDatabase.addChildEventListener(new ChildEventListener() {
             @Override
@@ -212,7 +214,7 @@ public class Regwithaadhaar extends AppCompatActivity {
         final boolean[] check = {false};
         final boolean[] check2 = {false};
         mUserDatabase=FirebaseDatabase.getInstance().getReference().child("Users");
-
+        mUserDatabase.keepSynced(true);
         mUserDatabase.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
