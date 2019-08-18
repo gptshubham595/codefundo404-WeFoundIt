@@ -89,10 +89,11 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.checkresult).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i= new Intent(getApplicationContext(),Result.class);
-                startActivity(i);
+                //Intent i= new Intent(getApplicationContext(),Result.class);
+                //startActivity(i);
            //     Toast.makeText(MainActivity.this, ""+getDate(), Toast.LENGTH_SHORT).show();
-               //setVotes("check");
+            //   setVotes();
+                counterdiff("21.08.2019, 00:00:00");
             }
         });
         email="";
@@ -145,36 +146,28 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-    public  void setVotes(final String operation) {
-
+    public  void setVotes() {
+        final String[] votes = new String[1];
         DatabaseReference  mUserDatabase=FirebaseDatabase.getInstance().getReference().child("DATE").child("finaltime");
         mUserDatabase.keepSynced(true);
-        mUserDatabase.runTransaction(new Transaction.Handler() {
+        mUserDatabase.addValueEventListener(new ValueEventListener() {
             @Override
-            public Transaction.Result doTransaction(MutableData mutableData) {
-                String votes = mutableData.getValue(String.class);
-                if (votes == null) {
-                    return Transaction.success(mutableData);
-                }
-                if (operation.equals("check")) {
-                    Toast.makeText(MainActivity.this, "check1", Toast.LENGTH_SHORT).show();
-                    counterdiff(votes);
-                }else{}
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                votes[0] = dataSnapshot.getValue(String.class);
 
-
-                return Transaction.success(mutableData);
             }
 
             @Override
-            public void onComplete(DatabaseError databaseError, boolean b, DataSnapshot dataSnapshot) {}
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
         });
-
-
+        counterdiff(votes[0]);
     }
 
     private void counterdiff(final String data)
     {
-        Toast.makeText(MainActivity.this, "check2", Toast.LENGTH_SHORT).show();
+      //  Toast.makeText(MainActivity.this, "check2", Toast.LENGTH_SHORT).show();
         SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy, HH:mm:ss");
         formatter.setLenient(false);
         final Long[] millisecondscurr = {null};
@@ -203,6 +196,7 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         if (millisecondsstart[0] <= millisecondscurr[0]) {
+            //Toast.makeText(MainActivity.this, "STR"+millisecondsstart[0]+"CURR"+millisecondscurr[0], Toast.LENGTH_SHORT).show();
             Intent i = new Intent(getApplicationContext(), Result.class);
             startActivity(i);
         } else {
@@ -330,6 +324,8 @@ public class MainActivity extends AppCompatActivity {
                         viewHolder.setEligible(model.getEligible());
                         viewHolder.setGender(model.getGender());
                         viewHolder.counterdiff(model.getSlotstart(),model.getSlotend());
+                        if(swipe.isRefreshing()){swipe.setRefreshing(false);}
+
                     }
                 });
                 if(swipe.isRefreshing()){swipe.setRefreshing(false);}
@@ -338,14 +334,21 @@ public class MainActivity extends AppCompatActivity {
                 viewHolder.mview.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if(swipe.isRefreshing()){swipe.setRefreshing(false);}
-                        if(viewHolder.counterdiffclick(model.getSlotstart(),model.getSlotend())==1){
-                            if(model.getVoted().toLowerCase().equals("no")){
-                             showDialog(MainActivity.this,model.getEmail(),model.getAadhaar());}else{Toast.makeText(MainActivity.this, "Sorry YOU Already voted", Toast.LENGTH_SHORT).show();}
-                        }else{
-                            Toast.makeText(MainActivity.this, "Sorry", Toast.LENGTH_SHORT).show();
-                        }
 
+                       if(viewHolder.counterdiff2("21.08.2019, 00:00:00")==1) {
+                           if (swipe.isRefreshing()) {
+                               swipe.setRefreshing(false);
+                           }
+                           if (viewHolder.counterdiffclick(model.getSlotstart(), model.getSlotend()) == 1) {
+                               if (model.getVoted().toLowerCase().equals("no")) {
+                                   showDialog(MainActivity.this, model.getEmail(), model.getAadhaar());
+                               } else {
+                                   Toast.makeText(MainActivity.this, "Sorry YOU Already voted", Toast.LENGTH_SHORT).show();
+                               }
+                           } else {
+                               Toast.makeText(MainActivity.this, "Sorry", Toast.LENGTH_SHORT).show();
+                           }
+                       }
                     }
                 });
             }
@@ -606,7 +609,46 @@ public class MainActivity extends AppCompatActivity {
 
             
         }
+        private int counterdiff2(final String data)
+        {
+            //  Toast.makeText(MainActivity.this, "check2", Toast.LENGTH_SHORT).show();
+            SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy, HH:mm:ss");
+            formatter.setLenient(false);
+            final Long[] millisecondscurr = {null};
+            final Long[] millisecondsstart = {null};
+            String date = new SimpleDateFormat("dd.MM.yyyy, HH:mm:ss", Locale.getDefault()).format(new Date());
+            Date startDate, currentDate;
 
+            try {
+                startDate = formatter.parse(data);
+                if (startDate != null) {
+                    millisecondsstart[0] = startDate.getTime();
+                }
+
+            } catch (ParseException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            try {
+                currentDate = formatter.parse(date);
+                if (date != null) {
+                    millisecondscurr[0] = currentDate.getTime();
+                }
+
+            } catch (ParseException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            if (millisecondsstart[0] <= millisecondscurr[0]) {
+                //Toast.makeText(MainActivity.this, "STR"+millisecondsstart[0]+"CURR"+millisecondscurr[0], Toast.LENGTH_SHORT).show();
+                return 1;
+            } else {
+                Toast.makeText(mview.getContext(), "WAIT For the VOTING DAY", Toast.LENGTH_SHORT).show();
+                return 0;
+            }
+
+
+        }
         private int counterdiffclick(String Start,String end)
         {
             SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy, HH:mm:ss");

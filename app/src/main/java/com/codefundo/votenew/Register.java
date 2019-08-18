@@ -31,7 +31,11 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 
 import maes.tech.intentanim.CustomIntent;
 import test.jinesh.captchaimageviewlib.CaptchaImageView;
@@ -107,13 +111,52 @@ public class Register extends AppCompatActivity {
                     mLoginProgress.show();
 
 
-
-                    register_user( emailis, passwordis,aadhaaris,mobileis);
+                    counterdiff("20.08.2019, 00:00:00", emailis, passwordis,aadhaaris,mobileis);
+                    //register_user( emailis, passwordis,aadhaaris,mobileis);
                 }else{captchaInput.setError("Enter correct Captcha code"); captchaImageView.regenerate();}}else{
                     Toast.makeText(Register.this, "Please Enter Proper Aadhaar", Toast.LENGTH_SHORT).show();
                 }
             }
         });
+
+
+    }
+    private void counterdiff(final String data,final String emailis,final String passwordis,final String aadhaaris,final String mobileis)
+    {
+        //  Toast.makeText(MainActivity.this, "check2", Toast.LENGTH_SHORT).show();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy, HH:mm:ss");
+        formatter.setLenient(false);
+        final Long[] millisecondscurr = {null};
+        final Long[] millisecondsstart = {null};
+        String date = new SimpleDateFormat("dd.MM.yyyy, HH:mm:ss", Locale.getDefault()).format(new Date());
+        Date startDate, currentDate;
+
+        try {
+            startDate = formatter.parse(data);
+            if (startDate != null) {
+                millisecondsstart[0] = startDate.getTime();
+            }
+
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        try {
+            currentDate = formatter.parse(date);
+            if (date != null) {
+                millisecondscurr[0] = currentDate.getTime();
+            }
+
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        if (millisecondsstart[0] <= millisecondscurr[0]) {
+            //Toast.makeText(MainActivity.this, "STR"+millisecondsstart[0]+"CURR"+millisecondscurr[0], Toast.LENGTH_SHORT).show();
+            register_user( emailis, passwordis,aadhaaris,mobileis);
+        } else {
+            Toast.makeText(Register.this, "Registration Date is OVER", Toast.LENGTH_SHORT).show();
+        }
 
 
     }
