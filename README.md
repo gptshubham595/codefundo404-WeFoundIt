@@ -13,7 +13,9 @@
   An Android and Web-based Application with Azure Blockchain Database of the number of people around the whole of India. As part of the Digital India Initiative, the Government of India is offering Datasets on Open Government Data Platform India. So we are using this dataset. And for this, we are using Azure Blockchain technologies provided by Microsoft to gain high security and fast speed through the network.
   
   # Features And Ideation
-  - We are working on the topic ***Elections, referenda, and polls Management System***
+  - We are working on the topic ***Elections, referenda, and polls Management System*** 
+  
+  - **BOTH ONLINE AND OFFLINE**
     
   - Our Idea is to design an app for Android and host a Website using Microsoft dependencies and some more and going to show the count       of how many people around are there around whole India and to easily vote their political leaders and on their own will.
 
