@@ -5,7 +5,7 @@
  ![](https://img.shields.io/badge/-Java-brightgreen.svg)
  ![](https://img.shields.io/badge/-XML-blue.svg)
  ![](https://img.shields.io/badge/Android%20SDK%20Version-28.0.0-brightgreen.svg)
- 
+
  # The Challenge
  - To Demonstrate how Azure Blockchain can be used to make Elections, referendum, and polls more secure, reliable, and transparent.
 
@@ -69,6 +69,8 @@
  - Every person needs to register themselves to give vote.
  - Voter has to remember a unique pin.
  - At the time of registeration the user should have aadhaar to scan.
+ 
+ [![Youtube](https://img.youtube.com/vi/x0q_AWTN7lM/0.jpg)](https://www.youtube.com/watch?v=x0q_AWTN7lM)
  
 <div class="row">
   <div class="column">
