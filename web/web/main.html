@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>VOTE4US</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<link rel="stylesheet" href="./material.min.css">
+	<script src="./material.min.js"></script>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-auth.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script
+			  src="https://code.jquery.com/jquery-3.4.1.js"
+			  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+			  crossorigin="anonymous"></script>
+  <!-- CSS Files -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+  <link href="login2.css" rel="stylesheet" />
+	<!-- <script src="/script/dashboard.js"></script> -->
+    <!-- <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" /> -->
+    
+</head>
+<body>
+    <div class="wrapper ">
+        <div class="sidebar" data-color="white" data-active-color="danger">
+          <!--
+            Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
+        -->
+          <div class="logo">
+            <a href="http://www.creative-tim.com" class="simple-text logo-mini">
+              <div class="logo-image-small">
+                <img src="https://image.flaticon.com/icons/svg/1533/1533913.svg">
+              </div>
+            </a>
+            <a href="http://www.creative-tim.com" class="simple-text logo-normal">
+              VOTE4US
+              <!-- <div class="logo-image-big">
+                <img src="../assets/img/logo-big.png">
+              </div> -->
+            </a>
+          </div>
+          <div class="sidebar-wrapper">
+            <ul class="nav">
+              <li class="active ">
+                <a href="/dashboard">
+                  <img class="circular_img" src="https://image.flaticon.com/icons/svg/145/145859.svg" alt="icon" style="height:25px; width:25px;">
+                  Dashboard
+                </a>
+              </li>
+              <li>
+            </ul>
+          </div>
+        </div>
+        <div class="main-panel">
+            
+
+
+          <!-- Navbar -->
+          <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
+            <div class="container-fluid">
+              <div class="navbar-wrapper">
+                <div class="navbar-toggle">
+                  <button type="button" class="navbar-toggler">
+                    <span class="navbar-toggler-bar bar1"></span>
+                    <span class="navbar-toggler-bar bar2"></span>
+                    <span class="navbar-toggler-bar bar3"></span>
+                  </button>
+                </div>
+                <a class="navbar-brand" href="#pablo">VOTE4US</a>
+              </div>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-bar navbar-kebab"></span>
+                <span class="navbar-toggler-bar navbar-kebab"></span>
+                <span class="navbar-toggler-bar navbar-kebab"></span>
+              </button>
+              <div class="collapse navbar-collapse justify-content-end" id="navigation">
+                <form>
+                  <div class="input-group no-border">
+                    <input type="text" value="" class="form-control" placeholder="Search...">
+                    <div class="input-group-append">
+                      <div class="input-group-text">
+                        <i class="fas fa-search"></i>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </nav>
+          <!-- End Navbar -->
+          <!-- <div class="panel-header panel-header-lg">
+    
+      <canvas id="bigDashboardChart"></canvas>
+    
+    
+    </div> -->
+          <div class="content" id="con">  
+            <div class="row" id="politician">
+            </div>
+          </div>
+          <footer class="footer footer-black  footer-white ">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="credits ml-auto">
+                </div>
+              </div>
+            </div>
+          </footer>
+        </div>
+      </div>
+<!-- <script src='fireBase.js'></script> -->
+<script src='dashboard.js'></script>
+</body>
+</html>
