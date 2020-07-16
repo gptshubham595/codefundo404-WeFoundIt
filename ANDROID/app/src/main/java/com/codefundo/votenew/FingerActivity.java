@@ -2,62 +2,41 @@ package com.codefundo.votenew;
 
 import android.Manifest;
 import android.annotation.TargetApi;
-import android.app.Application;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.hardware.fingerprint.FingerprintManager;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.os.StrictMode;
-import android.preference.PreferenceManager;
 import android.provider.Settings;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
-import com.codefundo.votenew.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.iid.FirebaseInstanceId;
 import com.multidots.fingerprintauth.AuthErrorCodes;
 import com.multidots.fingerprintauth.FingerPrintAuthCallback;
 import com.multidots.fingerprintauth.FingerPrintAuthHelper;
 import com.multidots.fingerprintauth.FingerPrintUtils;
 import com.scottyab.rootbeer.RootBeer;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import static java.lang.Thread.sleep;
-import java.sql.*;
-
 import maes.tech.intentanim.CustomIntent;
+
+import static java.lang.Thread.sleep;
 
 public class FingerActivity extends AppCompatActivity implements FingerPrintAuthCallback {
     private static final String[] requiredPermissions = {
@@ -109,9 +88,9 @@ public class FingerActivity extends AppCompatActivity implements FingerPrintAuth
         }
         first=isFirstRun.toString();
         //    startActivity(new Intent(getApplicationContext(),MainActivitymob.class));
-        _tv = (TextView) findViewById( R.id.counter);
-        img=findViewById(R.id.tick);
-        mGoToSettingsBtn = (Button) findViewById(R.id.go_to_settings_btn);
+        _tv = findViewById(R.id.counter);
+        img = findViewById(R.id.tick);
+        mGoToSettingsBtn = findViewById(R.id.go_to_settings_btn);
         mGoToSettingsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -119,8 +98,8 @@ public class FingerActivity extends AppCompatActivity implements FingerPrintAuth
             }
         });
 
-        mSwitcher = (ViewSwitcher) findViewById(R.id.main_switcher);
-        mAuthMsgTv = (TextView) findViewById(R.id.auth_message_tv);
+        mSwitcher = findViewById(R.id.main_switcher);
+        mAuthMsgTv = findViewById(R.id.auth_message_tv);
         initTasks();
 
         checkTimer();
@@ -190,7 +169,7 @@ public class FingerActivity extends AppCompatActivity implements FingerPrintAuth
 
     @Override
     public void onRequestPermissionsResult(int requestCode,
-                                           @NonNull String permissions[], @NonNull int[] grantResults) {
+                                           @NonNull String[] permissions, @NonNull int[] grantResults) {
         switch (requestCode) {
             case MY_PERMISSIONS_REQUEST_ACCESS_CODE: {
                 if (!(grantResults.length > 0
@@ -200,6 +179,7 @@ public class FingerActivity extends AppCompatActivity implements FingerPrintAuth
             }
         }
     }
+
     @TargetApi(Build.VERSION_CODES.M)
     private void checkPermissions() {
         final List<String> neededPermissions = new ArrayList<>();
@@ -316,7 +296,8 @@ public class FingerActivity extends AppCompatActivity implements FingerPrintAuth
                 count++;
                 Toast.makeText(this, "You Have MAX 5 ATTEMPTS ", Toast.LENGTH_SHORT).show();
                 mAuthMsgTv.setText("Cannot recognize your finger print.Attempt = "+count);
-                if(count==5){mAuthMsgTv.setText("Sorry Please Try after 2 mins !.You Exceeded 5 times.");
+                if (count == 5) {
+                    mAuthMsgTv.setText("Sorry Please Try after 2 mins !.You Exceeded 5 times.\n");
 
                     startTimer(120000);
                     mFingerPrintAuthHelper.stopAuth();
@@ -324,8 +305,8 @@ public class FingerActivity extends AppCompatActivity implements FingerPrintAuth
 
                         public void onTick(long millisUntilFinished) {
 
-                            _tv.setText(""+String.format("%d min, %d sec",
-                                    TimeUnit.MILLISECONDS.toMinutes( millisUntilFinished),
+                            _tv.setText("" + String.format("%d min, %d sec",
+                                    TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished),
                                     TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) -
                                             TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished))));
                         }

@@ -12,8 +12,8 @@ apply plugin: 'com.github.kt3k.coveralls'
 
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion '29.0.1'
+    compileSdkVersion 30
+    buildToolsVersion '30.0.1'
 
     // This is important, it will run lint checks but won't abort build
     lintOptions {
@@ -22,7 +22,7 @@ android {
 
     defaultConfig {
         minSdkVersion 16
-        targetSdkVersion 29
+        targetSdkVersion 30
     }
 
     buildTypes {
@@ -47,7 +47,7 @@ tasks.coveralls {
 }
 
 dependencies {
-    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
 }
 
 
